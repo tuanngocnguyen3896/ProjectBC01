@@ -1,0 +1,49 @@
+<div class="login">
+    <div class="form-cont">
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="form">
+        <h1 class="form-heading">Login</h1>
+        <div class="form-content">
+          <div class="form-row">
+            <label htmlFor="first-name" class="form-label">
+              Username
+            </label>
+            <input
+              formControlName="taiKhoan"
+              type="text"
+              id="first-name"
+              class="form-textbox input-animate-target"
+              required
+            />
+            <div *ngIf="loginForm.get('taiKhoan').touched && !loginForm.get('taiKhoan').valid">
+              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('taiKhoan').errors.required">
+                  Username is required !
+              </div>
+          </div>
+          </div>
+          <div class="form-row">
+            <label htmlFor="last-name" class="form-label">
+              Password
+            </label>
+            <input
+            formControlName="matKhau"
+              type="password"
+              id="last-name"
+              class="form-textbox input-animate-target"
+              required
+            />
+            <div *ngIf="loginForm.get('matKhau').touched && !loginForm.get('matKhau').valid">
+              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('matKhau').errors.required">
+                  Password is required !
+              </div>
+          </div>
+          </div>
+          <button type="submit" class="form-submit">
+              Submit
+            </button>
+          <p class="login-sign-up">Don't have account? 
+          <a href="#" class="ms-2" [routerLink]="['/auth/register']">Sign up now</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>

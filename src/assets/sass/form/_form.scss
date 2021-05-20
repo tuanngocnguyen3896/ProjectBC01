@@ -1,0 +1,109 @@
+.login {
+    display:flex;
+    background: linear-gradient(120deg, $bgBlue, $bgPurple, $bgBlue);
+    width: 100%;
+    min-height: 100vh;
+    select,
+    textarea,
+    input {
+      width: 100%;
+      padding: 0.5em;
+      margin: 0;
+      font-weight: 400;
+      font-size: 1rem;
+      color: $textC333;
+    }
+    label {
+      display: inline-block;
+      font-weight: 700;
+    }
+    .form-cont {
+      position: relative;
+      width:40%;
+      height: 80vh;
+      padding: 40px;
+      border-radius: 20px;
+      margin: auto;
+      background-color: $bgGray1;
+      .form-heading {
+        margin-bottom: 5px;
+        text-align: center;
+        font-weight: $bold;
+      }
+      .input-animate {
+        position: relative;
+        -webkit-transition: color 200ms ease-in-out;
+        -o-transition: color 200ms ease-in-out;
+        transition: color 200ms ease-in-out;
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          border-bottom: solid 3px;
+          color: $bgBlue;
+          -webkit-transition: width 200ms ease-in-out;
+          -o-transition: width 200ms ease-in-out;
+          transition: width 200ms ease-in-out;
+        }
+      }
+  
+      .input-animate-target {
+        border: none;
+        &:focus,
+        &:valid {
+          outline: none;
+        }
+        &:focus ~ .input-animate:before,
+        &:valid ~ .input-animate:before {
+          width: 100%;
+        }
+      }
+  
+      .form-row {
+        position: relative;
+        margin-top: 10px;
+        .form-label {
+          margin-bottom: 5px;
+          font-size: $paraSize2;
+          color: $textC333;
+          font-weight: $bold;
+        }
+        .form-textbox:valid ~ .form-check-icon:after {
+          content: "\f00c";
+          position: absolute;
+          right: 0.5em;
+          bottom: 0.4em;
+          font-family: FontAwesome;
+          color: $bgBlue;
+        }
+      }
+  
+      .form-submit {
+        display: block;
+        width: 75%;
+        padding: 10px;
+        border: none;
+        margin: 30px auto 0;
+        background: linear-gradient(240deg, $bgBlue, $bgPurple, $bgBlue);
+        background-size: 200%;
+        font-weight: $bold;
+        color: $white;
+        transition: 0.2s ease-in;
+        &:hover,
+        &:focus {
+          opacity: 0.8;
+          background-position: right;
+        }
+      }
+      .login-sign-up{
+        position:absolute;
+        bottom:5%;
+        left:28%;
+        font-size: $paraSize2;
+          color: $textC333;
+          font-weight: $bold;
+      }
+    }
+  }
