@@ -33,8 +33,8 @@ const AuthRoute:Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    EffectsModule.forFeature([AuthEffects]),
     StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
-    EffectsModule.forFeature([AuthEffects])
   ]
 })
 export class AuthModule { }

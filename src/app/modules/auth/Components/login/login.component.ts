@@ -15,10 +15,10 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      taiKhoan: new FormControl('',[
+      taiKhoan: new FormControl('123',[
         Validators.required
       ]),
-      matKhau: new FormControl('',[
+      matKhau: new FormControl('123',[
         Validators.required
       ])
     })
@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
   onLoginSubmit(){
     const taiKhoan = this.loginForm.value.taiKhoan;
     const matKhau = this.loginForm.value.matKhau;
-    console.log('taikhoan: ',taiKhoan,'mat khau: ',matKhau);
-    this.store.dispatch(loginAction({taiKhoan,matKhau}));
-    
+    this.store.dispatch(loginAction({taiKhoan,matKhau}));    
   }
   
 }

@@ -2,9 +2,10 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { exhaustMap, map, tap } from "rxjs/operators";
+import { of } from "rxjs";
+import { exhaustMap, map, mergeMap, tap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
-import { loginAction, loginSuccess, logoutAction } from "../_actions/auth.actions";
+import { autoLogin, loginAction, loginSuccess, logoutAction, signupAction, signupSuccess } from "../_actions/auth.actions";
 import { AuthService } from "../_services/auth.service";
 
 @Injectable()
@@ -22,13 +23,12 @@ export class AuthEffects {
             return this.authService.login(action.taiKhoan, action.matKhau).pipe(
               map((data) => {
                 this.authService.setUserInLocalStorage(data);
-                // const user = this.authService.formatUser(data)
                 return loginSuccess({ user : data});
               }),
             );
           })
         );
-    
+           
     });
     loginRedirect$ = createEffect(
       () => {
@@ -52,4 +52,41 @@ export class AuthEffects {
         );
       }, {dispatch : false}
     )
+    signUp$ = createEffect(() => {
+      return this.actions$.pipe(
+        ofType(signupAction),
+        exhaustMap((action) => {
+          return this.authService.signUp(action.taiKhoan, action.matKhau,action.hoTen,action.maNhom,action.email).pipe(
+            map((data) => {
+              this.authService.setUserInLocalStorage(data);
+              return signupSuccess({user: data});
+            })
+          );
+        })
+      );
+    });
+    signUpRedirect$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(signupSuccess),
+            tap((action) => {
+                this.router.navigate(['/']);
+            })
+        );
+    }, 
+        {dispatch: false}
+    );
+    autoLogin$ = createEffect(
+      () => {
+        return this.actions$.pipe(
+          ofType(autoLogin),
+          mergeMap((action) => {
+            const user = this.authService.getUserFromLocalStorage();
+            console.log('getitem: ', user);            
+             // Reload trang chỗ nào k chạy 
+            return of(loginSuccess({user}));
+          })
+        );
+      }
+    )
+    
 }

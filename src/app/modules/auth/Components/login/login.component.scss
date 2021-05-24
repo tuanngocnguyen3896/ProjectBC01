@@ -1,3 +1,10 @@
 @import "../../../../../assets/sass/helpers/variable";
 @import "../../../../../assets/sass/form/form";
-  
+.errors-message{
+    position: absolute;
+    top: 50%;
+    left: -70%;
+    background: $bgPink;
+    color: $white;
+    font-weight: $bold;
+}

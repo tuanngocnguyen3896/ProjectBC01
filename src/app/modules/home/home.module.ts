@@ -13,6 +13,7 @@ import { CoursesEffects } from './_effects/courses.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CoursesCategoriesComponent } from './Components/courses-categories/courses-categories.component';
 import { CoursesReducer } from './_reducers/courses.reducers';
+import { CoursesListComponent } from './Components/courses-list/courses-list.component';
 
 const HomeRoute:Routes = [
   
@@ -20,7 +21,8 @@ const HomeRoute:Routes = [
   {path:'home',component:HomeComponent},
   {path:'courses',component:CoursesComponent,
   children: [
-    {path:'detail/:id',component:CoursesDetailComponent},
+     {path:'courses-list',component:CoursesListComponent},
+     {path:'details/:id',component:CoursesDetailComponent},
   ]
   },
 
@@ -35,7 +37,8 @@ const HomeRoute:Routes = [
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CoursesCategoriesComponent
+    CoursesCategoriesComponent,
+    CoursesListComponent
   ],
   imports: [
     CommonModule,

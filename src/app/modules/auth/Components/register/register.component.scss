@@ -1,5 +1,13 @@
 @import "../../../../../assets/sass/helpers/variable";
 @import "../../../../../assets/sass/form/form";
 .form-cont{
-    height: 80vh !important;
+    height: 90vh !important;
+}
+.errors-message{
+    position: absolute;
+    top: 50%;
+    left: -70%;
+    background: $bgPink;
+    color: $white;
+    font-weight: $bold;
 }

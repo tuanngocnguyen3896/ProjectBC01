@@ -1,6 +1,6 @@
 <div class="login flex">
     <div class="form-cont">
-      <form [formGroup]='signUpForm' (click)="onSignUpSubmit()" class="form form-group">
+      <form [formGroup]='signUpForm' (ngSubmit)="onSignUpSubmit()" class="form form-group">
         <h1 class="form-heading">Sign Up</h1>
         <div class="form-content">
           <div class="form-row">
@@ -15,10 +15,10 @@
               required
             />
             <div *ngIf="signUpForm.get('taiKhoan').touched && !signUpForm.get('taiKhoan').valid">
-              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('taiKhoan').errors.required">
-                  Username is required !
+              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('taiKhoan').errors.required">
+                Username is required !
               </div>
-          </div>
+            </div>
           </div>
           <div class="form-row">
             <label class="form-label">
@@ -32,10 +32,10 @@
               required
             />
             <div *ngIf="signUpForm.get('matKhau').touched && !signUpForm.get('matKhau').valid">
-              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('taiKhoan').errors.required">
-                  Username is required !
+              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('matKhau').errors.required">
+                Password is required !
               </div>
-          </div>
+            </div>
           </div>
           <div class="form-row">
             <label class="form-label">
@@ -49,11 +49,27 @@
               required
             />
             <div *ngIf="signUpForm.get('hoTen').touched && !signUpForm.get('hoTen').valid">
-              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('taiKhoan').errors.required">
-                  Username is required !
+              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('hoTen').errors.required">
+                Name is required !
               </div>
+            </div>
           </div>
-           
+          <div class="form-row">
+            <label class="form-label">
+              maNhom
+            </label>
+            <input
+              formControlName="maNhom"
+              type="text"
+              id="first-name"
+              class="form-textbox input-animate-target"
+              required
+            />
+            <div *ngIf="signUpForm.get('maNhom').touched && !signUpForm.get('maNhom').valid">
+              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('maNhom').errors.required">
+                maNhom is required !
+              </div>
+            </div>
           </div>
           <div class="form-row">
             <label class="form-label">
@@ -67,13 +83,13 @@
               formControlName="email"
             />
             <div *ngIf="signUpForm.get('email').touched && !signUpForm.get('email').valid">
-              <div style="height:20px;line-height:0" class="alert alert-danger" *ngIf="loginForm.get('taiKhoan').errors.required">
-                  Username is required !
+              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('email').errors.required">
+                Email is required !
               </div>
-          </div>
+            </div>
           </div>
           
-          <button type="submit" class="form-submit">
+          <button [disabled]="!signUpForm.valid" type="submit" class="form-submit">
              Sign up
             </button>
           <p class="login-sign-up">Already have account 
