@@ -1,33 +1,59 @@
-import { createAction, props } from "@ngrx/store";
 import { User, UserSignup } from "src/app/core/Models/User.model";
+import { Action } from '@ngrx/store';
 
-export const LOGIN_ACTION = '[auth page] login action';
-export const LOGIN_SUCCESS = '[auth page] login success';
-// LOGOUT
-export const LOGOUT_ACTION = '[auth page] logout action';
-// AUTO LOGIN
-export const AUTO_LOGIN_ACTION = '[auth page] auto login action';
+export enum AuthActionTypes {
+    LOGIN_ACTION = '[auth page] login action',
+    LOGIN_SUCCESS = '[auth page] login success',
+    LOGIN_FAIL = '[auth page] login fail',
 
-export const SIGNUP_ACTION = '[auth page] signup action';
-export const SIGNUP_SUCCESS = '[auth page] signup success';
+    LOGOUT_ACTION = '[auth page] logout action',
 
-export const loginAction = createAction(
-    LOGIN_ACTION,
-    props<{taiKhoan:string, matKhau:string}>()
-)
-export const loginSuccess = createAction(
-    LOGIN_SUCCESS,
-    props<{user: User}>()
-)
+    REGISTER_ACTION = '[auth page] register action',
+    REGISTER_SUCCESS = '[auth page] register success',
+    REGISTER_FAIL = '[auth page] register fail',
 
-export const logoutAction = createAction(LOGOUT_ACTION);  
+    AUTO_LOGIN = '[auth page] auto login',
 
-export const signupAction = createAction(
-    SIGNUP_ACTION,
-    props<{taiKhoan:string, matKhau: string, hoTen:string ,maNhom:string, email: string}>()    
-);
-export const signupSuccess = createAction(
-    SIGNUP_SUCCESS,
-    props<{user: UserSignup}>()
-);
-export const autoLogin = createAction(AUTO_LOGIN_ACTION);
+    SET_ERROR_MESSAGE = '[auth page] set error message'
+}
+
+export class Login implements Action {
+    readonly type = AuthActionTypes.LOGIN_ACTION;
+    constructor(public payload: {taiKhoan: string, matKhau: string}) {}
+}
+export class LoginSuccess implements Action {
+    readonly type = AuthActionTypes.LOGIN_SUCCESS;
+    constructor(public payload: User) {}
+}
+export class LoginFail implements Action {
+    readonly type = AuthActionTypes.LOGIN_FAIL;
+    constructor(public error: string) {}
+} 
+export class Logout implements Action {
+    readonly type = AuthActionTypes.LOGOUT_ACTION;
+}
+export class AutoLogin implements Action {
+    readonly type = AuthActionTypes.AUTO_LOGIN;
+}
+export class Register implements Action {
+    readonly type = AuthActionTypes.REGISTER_ACTION;
+    constructor(public payload: {taiKhoan: string, matKhau: string,hoTen:string ,maNhom:string, email: string}) {}
+}
+export class RegisterSuccess implements Action {
+    readonly type = AuthActionTypes.REGISTER_SUCCESS;
+    constructor(public payload: UserSignup) {}
+}
+export class RegisterFail implements Action {
+    readonly type = AuthActionTypes.REGISTER_FAIL;
+    constructor(public message: string) {}
+}
+
+export class GetErrorMessage implements Action {
+    readonly type = AuthActionTypes.SET_ERROR_MESSAGE;
+    constructor(public message: string) {}
+}
+
+export type AuthActions = | Login | AutoLogin | LoginSuccess | LoginFail | Logout | Register | RegisterSuccess | RegisterFail;
+
+
+

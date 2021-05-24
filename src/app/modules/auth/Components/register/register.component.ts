@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AppState } from 'src/app/shared/reducers';
-import { signupAction } from '../../_actions/auth.actions';
+import { Register } from '../../_actions/auth.actions';
+import { errorMessage } from '../../_selectors/auth.selectors';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +13,7 @@ import { signupAction } from '../../_actions/auth.actions';
 })
 export class RegisterComponent implements OnInit {
   signUpForm: FormGroup;
+  errorMessage: Observable<string>
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
@@ -30,18 +33,25 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('',[
         Validators.required
       ]),
-    })
+    });
+
+    this.errorMessage = this.store.select(errorMessage);
+
   }
   onSignUpSubmit(){
     if(!this.signUpForm.valid){
       return;
     }
-    const taiKhoan = this.signUpForm.value.taiKhoan;
-    const matKhau = this.signUpForm.value.matKhau;
-    const hoTen = this.signUpForm.value.hoTen;
-    const email = this.signUpForm.value.email;
-    const maNhom = this.signUpForm.value.maNhom;
-    this.store.dispatch(signupAction({taiKhoan,matKhau,hoTen,maNhom,email}));
+    const payload = {
+      taiKhoan : this.signUpForm.value.taiKhoan,
+      matKhau : this.signUpForm.value.matKhau,
+      hoTen : this.signUpForm.value.hoTen,
+      email : this.signUpForm.value.email,
+      maNhom : this.signUpForm.value.maNhom
+    }
+    
+   
+    this.store.dispatch(new Register(payload));
     return;
   }
 }

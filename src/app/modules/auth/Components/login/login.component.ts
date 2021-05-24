@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AppState } from 'src/app/shared/reducers';
-import { loginAction } from '../../_actions/auth.actions';
+import {Login} from '../../_actions/auth.actions';
+import { errorMessage } from '../../_selectors/auth.selectors';
+// import { loginAction } from '../../_actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,7 @@ import { loginAction } from '../../_actions/auth.actions';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private store: Store<AppState>) { }
-  
+  errorMessage: Observable<string>
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       taiKhoan: new FormControl('123',[
@@ -22,11 +25,16 @@ export class LoginComponent implements OnInit {
         Validators.required
       ])
     })
+    this.errorMessage = this.store.select(errorMessage);
+    
   }
   onLoginSubmit(){
-    const taiKhoan = this.loginForm.value.taiKhoan;
-    const matKhau = this.loginForm.value.matKhau;
-    this.store.dispatch(loginAction({taiKhoan,matKhau}));    
+    const payload = {
+      taiKhoan : this.loginForm.value.taiKhoan,
+      matKhau : this.loginForm.value.matKhau,
+    }
+    // this.store.dispatch(loginAction(payload));    
+    this.store.dispatch(new Login(payload));
   }
   
 }

@@ -3,10 +3,18 @@
 .form-cont{
     height: 90vh !important;
 }
-.errors-message{
+.valid-message{
     position: absolute;
     top: 50%;
     left: -70%;
+    background: $bgPink;
+    color: $white;
+    font-weight: $bold;
+}
+.error-message{
+    position: absolute;
+    top: 50%;
+    right: -70%;
     background: $bgPink;
     color: $white;
     font-weight: $bold;

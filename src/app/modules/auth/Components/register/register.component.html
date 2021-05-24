@@ -15,7 +15,7 @@
               required
             />
             <div *ngIf="signUpForm.get('taiKhoan').touched && !signUpForm.get('taiKhoan').valid">
-              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('taiKhoan').errors.required">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('taiKhoan').errors.required">
                 Username is required !
               </div>
             </div>
@@ -32,7 +32,7 @@
               required
             />
             <div *ngIf="signUpForm.get('matKhau').touched && !signUpForm.get('matKhau').valid">
-              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('matKhau').errors.required">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('matKhau').errors.required">
                 Password is required !
               </div>
             </div>
@@ -49,7 +49,7 @@
               required
             />
             <div *ngIf="signUpForm.get('hoTen').touched && !signUpForm.get('hoTen').valid">
-              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('hoTen').errors.required">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('hoTen').errors.required">
                 Name is required !
               </div>
             </div>
@@ -66,7 +66,7 @@
               required
             />
             <div *ngIf="signUpForm.get('maNhom').touched && !signUpForm.get('maNhom').valid">
-              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('maNhom').errors.required">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('maNhom').errors.required">
                 maNhom is required !
               </div>
             </div>
@@ -83,7 +83,7 @@
               formControlName="email"
             />
             <div *ngIf="signUpForm.get('email').touched && !signUpForm.get('email').valid">
-              <div style="height:20px;line-height:0" class="errors-message alert alert-danger" *ngIf="signUpForm.get('email').errors.required">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('email').errors.required">
                 Email is required !
               </div>
             </div>
@@ -97,5 +97,8 @@
           </p>
         </div>
       </form>
+      <div class="error-message alert alert-danger" *ngIf="errorMessage | async as error">
+        {{ error }}
+      </div>
     </div>
   </div>

@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User, UserSignup } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private domain  = 'https://elearning0706.cybersoft.edu.vn/api';
   constructor(
     private http: HttpClient,
     private store: Store<AppState>    
@@ -16,31 +16,38 @@ export class AuthService {
 
   login(taiKhoan: string, matKhau: string): Observable<User>{
     return this.http.post<User>(
-      'https://elearning0706.cybersoft.edu.vn/api/quanlynguoidung/dangnhap',
+      `${this.domain}/quanlynguoidung/dangnhap`,
       {taiKhoan, matKhau , returnSecureToken: true}
     );
   }
-  
+  logout(){
+    localStorage.removeItem('userData');
+    localStorage.removeItem('accessToken');
+    
+  };
 
-  signUp(taiKhoan: string, matKhau: string, hoTen:string , maNhom:string, email: string): Observable<UserSignup>{
+  register(taiKhoan: string, matKhau: string, hoTen:string , maNhom:string, email: string): Observable<UserSignup>{
     return this.http.post<UserSignup>(
-      'https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy',
+      `${this.domain}/QuanLyNguoiDung/DangKy`,
       {taiKhoan, matKhau , hoTen ,maNhom , email,  returnSecureToken: true}
     );
   }
-
-
   setUserInLocalStorage(user: User){
-    localStorage.setItem('userData', JSON.stringify(user))
+    localStorage.setItem('userData', JSON.stringify(user));
+    localStorage.setItem('accessToken', JSON.stringify(user.accessToken));
+  }
+  getToken(): string {
+    return localStorage.getItem('token');
   }
   getUserFromLocalStorage(){
     const userDataString = localStorage.getItem('userData');
     if(userDataString){
-      return JSON.parse(userDataString);
+      const userData = JSON.parse(userDataString);
+      return userData;
     };
     return null
   }
-  logout(){
-    localStorage.removeItem('userData');
-  };
+  errorMessage(error:string){
+
+  }
 }

@@ -1,7 +1,7 @@
 export interface User {
     taiKhoan:string,
     matKhau:string,
-    
+    accessToken?: string;
 }
 export interface UserSignup {
     taiKhoan:string,
@@ -9,4 +9,5 @@ export interface UserSignup {
     hoTen:string,
     maNhom:string, 
     email:string
+    accessToken?: string;
 }
