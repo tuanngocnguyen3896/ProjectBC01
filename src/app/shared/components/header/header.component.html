@@ -22,10 +22,15 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <a *ngIf="!(isLoggedIn | async)" class="nav-link" href="#" [routerLink]="['/auth/login']">Login</a>
-        <!-- <p>Hello {{user.taikhoan}}</p> -->
-        <a (click)="onLogout($event)" *ngIf="isLoggedIn | async" class="nav-link" href="#"
-      >Logout</a>
+        <div *ngIf="(isLoggedIn | async); then doSomething; else doSomethingElse;"></div>
+        <ng-template #doSomething>
+          <p>Hello ! {{user.taiKhoan}}</p>
+          <a (click)="onLogout($event)" class="nav-link" href="#">Logout</a>
+        </ng-template>
+        <ng-template #doSomethingElse>
+          <a class="nav-link" href="#" [routerLink]="['/auth/login']">Login</a>
+        </ng-template>
+
     </div>
   </div>
 </nav>

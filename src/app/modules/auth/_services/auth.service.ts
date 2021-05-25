@@ -17,7 +17,7 @@ export class AuthService {
   login(taiKhoan: string, matKhau: string): Observable<User>{
     return this.http.post<User>(
       `${this.domain}/quanlynguoidung/dangnhap`,
-      {taiKhoan, matKhau , returnSecureToken: true}
+      {taiKhoan, matKhau}
     );
   }
   logout(){
@@ -26,19 +26,18 @@ export class AuthService {
     
   };
 
-  register(taiKhoan: string, matKhau: string, hoTen:string , maNhom:string, email: string): Observable<UserSignup>{
+  register(taiKhoan: string, matKhau: string, hoTen:string, soDT:number , maNhom:string, email: string): Observable<UserSignup>{
     return this.http.post<UserSignup>(
       `${this.domain}/QuanLyNguoiDung/DangKy`,
-      {taiKhoan, matKhau , hoTen ,maNhom , email,  returnSecureToken: true}
+      {taiKhoan, matKhau , hoTen, soDT , maNhom , email}
     );
   }
   setUserInLocalStorage(user: User){
     localStorage.setItem('userData', JSON.stringify(user));
-    localStorage.setItem('accessToken', JSON.stringify(user.accessToken));
   }
-  getToken(): string {
-    return localStorage.getItem('token');
-  }
+  // getToken(): string {
+  //   return localStorage.getItem('token');
+  // }
   getUserFromLocalStorage(){
     const userDataString = localStorage.getItem('userData');
     if(userDataString){
@@ -47,7 +46,5 @@ export class AuthService {
     };
     return null
   }
-  errorMessage(error:string){
-
-  }
+  
 }

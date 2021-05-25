@@ -18,24 +18,42 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
     switch (action.type) {
         case AuthActionTypes.LOGIN_ACTION:
             return {
+                ...state,
                 loggedIn: true,
                 user: action.payload,
+            };
+            
+        case AuthActionTypes.LOGIN_SUCCESS:
+            return {
+                ...state,
                 errorMessage: null
             };
         case AuthActionTypes.LOGIN_FAIL: {
             return {
                 ...state,
                 errorMessage: action.error,
+                
             };
         }
+        case AuthActionTypes.REGISTER_SUCCESS: {
+            return {
+                ...state,
+                errorMessage: null,
+            };
+        }    
         case AuthActionTypes.REGISTER_FAIL: {
             return {
                 ...state,
-                errorMessage: action.message,
+                errorMessage: action.error,
             };
         }    
         case AuthActionTypes.LOGOUT_ACTION:
             return initialState;
+        case AuthActionTypes.SET_ERROR_MESSAGE:
+            return {
+                ...state,
+                errorMessage: action.error
+            }    
         default:
             return state;
     }

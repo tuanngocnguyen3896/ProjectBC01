@@ -9,6 +9,11 @@ export const isLoggedIn = createSelector(
     selectAuthState,(state) => {
     return state.loggedIn;
 })
+export const userLogin = createSelector(
+    selectAuthState,(state) => {
+    return state.user;
+})
+
 export const isLoggedOut = createSelector(
     selectAuthState,(state) => {
     return !state.loggedIn;

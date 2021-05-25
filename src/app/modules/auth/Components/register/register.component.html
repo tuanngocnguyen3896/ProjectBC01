@@ -56,6 +56,23 @@
           </div>
           <div class="form-row">
             <label class="form-label">
+              Phone
+            </label>
+            <input
+              formControlName="soDT"
+              type="text"
+              id="first-name"
+              class="form-textbox input-animate-target"
+              required
+            />
+            <div *ngIf="signUpForm.get('soDT').touched && !signUpForm.get('soDT').valid">
+              <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('soDT').errors.required">
+                Name is required !
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">
               maNhom
             </label>
             <input

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/Models/User.model';
 import { Logout } from 'src/app/modules/auth/_actions/auth.actions';
-import { isLoggedIn} from 'src/app/modules/auth/_selectors/auth.selectors';
+import { isLoggedIn, userLogin} from 'src/app/modules/auth/_selectors/auth.selectors';
 import { AppState } from '../../reducers';
 @Component({
   selector: 'app-header',
@@ -12,12 +12,16 @@ import { AppState } from '../../reducers';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
+  user: User;
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.store.select(isLoggedIn);
+    this.store.select(userLogin).subscribe((state) => {
+      this.user = state;
+    })
   }
   onLogout(event: Event){
     event.preventDefault();

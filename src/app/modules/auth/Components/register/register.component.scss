@@ -1,7 +1,7 @@
 @import "../../../../../assets/sass/helpers/variable";
 @import "../../../../../assets/sass/form/form";
 .form-cont{
-    height: 90vh !important;
+    height: 100vh !important;
 }
 .valid-message{
     position: absolute;
@@ -18,4 +18,7 @@
     background: $bgPink;
     color: $white;
     font-weight: $bold;
+}
+.login-sign-up{
+    bottom: 0% !important;
 }

@@ -37,7 +37,7 @@ export class AutoLogin implements Action {
 }
 export class Register implements Action {
     readonly type = AuthActionTypes.REGISTER_ACTION;
-    constructor(public payload: {taiKhoan: string, matKhau: string,hoTen:string ,maNhom:string, email: string}) {}
+    constructor(public payload: {taiKhoan: string, matKhau: string,hoTen:string,soDT:number ,maNhom:string, email: string}) {}
 }
 export class RegisterSuccess implements Action {
     readonly type = AuthActionTypes.REGISTER_SUCCESS;
@@ -45,15 +45,16 @@ export class RegisterSuccess implements Action {
 }
 export class RegisterFail implements Action {
     readonly type = AuthActionTypes.REGISTER_FAIL;
-    constructor(public message: string) {}
+    constructor(public error: string) {}
 }
-
-export class GetErrorMessage implements Action {
+export class SetErrorMessage implements Action {
     readonly type = AuthActionTypes.SET_ERROR_MESSAGE;
-    constructor(public message: string) {}
+    constructor(public error: string) {}
 }
 
-export type AuthActions = | Login | AutoLogin | LoginSuccess | LoginFail | Logout | Register | RegisterSuccess | RegisterFail;
+
+
+export type AuthActions = | Login | AutoLogin | LoginSuccess | LoginFail | Logout | Register | RegisterSuccess | RegisterFail | SetErrorMessage;
 
 
 

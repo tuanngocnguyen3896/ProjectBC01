@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/shared/reducers';
-import {Login} from '../../_actions/auth.actions';
+import {Login, SetErrorMessage} from '../../_actions/auth.actions';
 import { errorMessage } from '../../_selectors/auth.selectors';
 // import { loginAction } from '../../_actions/auth.actions';
 
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
         Validators.required
       ])
     })
+    this.store.dispatch(new SetErrorMessage(null));
     this.errorMessage = this.store.select(errorMessage);
-    
   }
   onLoginSubmit(){
     const payload = {
