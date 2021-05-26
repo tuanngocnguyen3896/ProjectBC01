@@ -1,4 +1,4 @@
-import { User, UserSignup } from "src/app/core/Models/User.model";
+import { User, UserReponseData } from "src/app/core/Models/User.model";
 import { Action } from '@ngrx/store';
 
 export enum AuthActionTypes {
@@ -14,12 +14,17 @@ export enum AuthActionTypes {
 
     AUTO_LOGIN = '[auth page] auto login',
 
-    SET_ERROR_MESSAGE = '[auth page] set error message'
+    SET_ERROR_MESSAGE = '[auth page] set error message',
+
+    // User
+    LOAD_USER_ACTION = '[auth page] load user',
+    LOAD_USER_SUCCESS = '[auth page] load user success',
+    LOAD_USER_FAIL = '[auth page] load user fail',
 }
 
 export class Login implements Action {
     readonly type = AuthActionTypes.LOGIN_ACTION;
-    constructor(public payload: {taiKhoan: string, matKhau: string}) {}
+    constructor(public payload: User) {}
 }
 export class LoginSuccess implements Action {
     readonly type = AuthActionTypes.LOGIN_SUCCESS;
@@ -41,7 +46,7 @@ export class Register implements Action {
 }
 export class RegisterSuccess implements Action {
     readonly type = AuthActionTypes.REGISTER_SUCCESS;
-    constructor(public payload: UserSignup) {}
+    constructor(public payload: UserReponseData) {}
 }
 export class RegisterFail implements Action {
     readonly type = AuthActionTypes.REGISTER_FAIL;
@@ -51,10 +56,21 @@ export class SetErrorMessage implements Action {
     readonly type = AuthActionTypes.SET_ERROR_MESSAGE;
     constructor(public error: string) {}
 }
+export class LoadUser implements Action {
+    readonly type = AuthActionTypes.LOAD_USER_ACTION;
+    constructor(public user: User) {}
+}
+export class LoadUserSuccess implements Action {
+    readonly type = AuthActionTypes.LOAD_USER_SUCCESS;
+    constructor(public user: UserReponseData) {}
+}
+export class LoadUserFail implements Action {
+    readonly type = AuthActionTypes.LOAD_USER_FAIL;
+    constructor(public error: string) {}
+}
 
 
-
-export type AuthActions = | Login | AutoLogin | LoginSuccess | LoginFail | Logout | Register | RegisterSuccess | RegisterFail | SetErrorMessage;
+export type AuthActions = | Login | AutoLogin | LoginSuccess | LoginFail | Logout | Register | RegisterSuccess | RegisterFail | SetErrorMessage | LoadUser | LoadUserSuccess | LoadUserFail;
 
 
 

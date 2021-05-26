@@ -3,12 +3,14 @@ export interface User {
     matKhau:string,
     accessToken?: string;
 }
-export interface UserSignup {
+export interface UserReponseData {
     taiKhoan:string,
     matKhau:string,
     hoTen:string,
     soDT:number,
-    maNhom:string, 
     email:string
     accessToken?: string;
+    maLoaiNguoiDung: string,
+    maNhom:string,
+    chiTietKhoaHocGhiDanh: Array<[]>
 }

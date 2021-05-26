@@ -5,7 +5,7 @@ import { Store } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { catchError, exhaustMap, map, mergeMap, switchMap, tap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
-import { AuthActionTypes, Login,  LoginSuccess,  Logout, Register, RegisterSuccess, LoginFail, RegisterFail } from "../_actions/auth.actions";
+import { AuthActionTypes, Login,  LoginSuccess,  Logout, Register, RegisterSuccess, LoginFail, RegisterFail, LoadUser, LoadUserSuccess, LoadUserFail } from "../_actions/auth.actions";
 import { AuthService } from "../_services/auth.service";
 
 
@@ -71,7 +71,6 @@ export class AuthEffects {
       })
       );
     
-
     @Effect({ dispatch: false })
     registerSuccess$= this.actions$.pipe(
     ofType<RegisterSuccess>(AuthActionTypes.REGISTER_SUCCESS),
@@ -79,5 +78,20 @@ export class AuthEffects {
         this.router.navigateByUrl('/auth/login');
       })
     );
-
+     
+    // LOAD USER
+    @Effect({ dispatch: false })
+    loadUser$ = this.actions$.pipe(
+      ofType<LoadUser>(AuthActionTypes.LOAD_USER_ACTION),
+      exhaustMap((action) => {
+        return this.authService.loadUser(action.user.taiKhoan).pipe(
+          map((data) => {
+            this.store.dispatch(new LoadUserSuccess(data));
+          }),
+          catchError((error) => {
+            return of(this.store.dispatch(new LoadUserFail(error.error)));
+          })
+        )
+      })
+    )
 }

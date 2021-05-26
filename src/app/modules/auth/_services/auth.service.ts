@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User, UserSignup } from 'src/app/core/Models/User.model';
+import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
 @Injectable({
   providedIn: 'root'
@@ -22,12 +22,11 @@ export class AuthService {
   }
   logout(){
     localStorage.removeItem('userData');
-    localStorage.removeItem('accessToken');
-    
+    localStorage.removeItem('accessToken'); 
   };
 
-  register(taiKhoan: string, matKhau: string, hoTen:string, soDT:number , maNhom:string, email: string): Observable<UserSignup>{
-    return this.http.post<UserSignup>(
+  register(taiKhoan: string, matKhau: string, hoTen:string, soDT:number , maNhom:string, email: string): Observable<UserReponseData>{
+    return this.http.post<UserReponseData>(
       `${this.domain}/QuanLyNguoiDung/DangKy`,
       {taiKhoan, matKhau , hoTen, soDT , maNhom , email}
     );
@@ -35,9 +34,6 @@ export class AuthService {
   setUserInLocalStorage(user: User){
     localStorage.setItem('userData', JSON.stringify(user));
   }
-  // getToken(): string {
-  //   return localStorage.getItem('token');
-  // }
   getUserFromLocalStorage(){
     const userDataString = localStorage.getItem('userData');
     if(userDataString){
@@ -45,6 +41,17 @@ export class AuthService {
       return userData;
     };
     return null
+  }
+  
+  getToken(): string {
+    return localStorage.getItem('accessToken');
+  }
+
+  loadUser(taiKhoan: string): Observable<UserReponseData>{
+    return this.http.post<UserReponseData>(
+      `${this.domain}/quanlynguoidung/ThongTinTaiKhoan`,
+      {taiKhoan}
+    );
   }
   
 }

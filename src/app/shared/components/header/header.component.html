@@ -24,7 +24,8 @@
         </form>
         <div *ngIf="(isLoggedIn | async); then doSomething; else doSomethingElse;"></div>
         <ng-template #doSomething>
-          <p>Hello ! {{user.taiKhoan}}</p>
+          <p>Hello ! {{userData.taiKhoan}}</p>
+          <a class="nav-link" href="#" [routerLink]="['/auth/profile']">Profile</a>
           <a (click)="onLogout($event)" class="nav-link" href="#">Logout</a>
         </ng-template>
         <ng-template #doSomethingElse>

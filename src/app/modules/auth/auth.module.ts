@@ -17,6 +17,7 @@ const AuthRoute:Routes = [
   {path:'',component:AuthTemplateComponent,children:[
     {path:'login',component:LoginComponent},
     {path:'register',component:RegisterComponent},
+    {path:'profile',component:ProfileComponent},
   ]}
 ]
 

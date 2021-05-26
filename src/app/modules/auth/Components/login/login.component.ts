@@ -3,9 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/shared/reducers';
-import {Login, SetErrorMessage} from '../../_actions/auth.actions';
+import {LoadUser, Login, SetErrorMessage} from '../../_actions/auth.actions';
 import { errorMessage } from '../../_selectors/auth.selectors';
-// import { loginAction } from '../../_actions/auth.actions';
 
 @Component({
   selector: 'app-login',

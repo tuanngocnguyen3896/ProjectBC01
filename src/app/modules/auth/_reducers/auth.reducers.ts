@@ -1,7 +1,8 @@
-import {User} from '../../../core/Models/User.model';
+import {User, UserReponseData} from '../../../core/Models/User.model';
 import {AuthActions,AuthActionTypes} from '../_actions/auth.actions';
 export interface AuthState{
-    user: User | null;
+    user: UserReponseData | User | null;
+    profile: UserReponseData
     loggedIn: boolean;
     errorMessage: string | null;
     // isUserLoaded: boolean;
@@ -9,9 +10,8 @@ export interface AuthState{
 export const initialState: AuthState = {
     user: null,
     loggedIn: false,
-    errorMessage : null
-    // isUserLoaded: false
-
+    errorMessage : null,
+    profile: null
 };
 
 export function AuthReducer(state = initialState, action : AuthActions) : AuthState  {
@@ -47,13 +47,29 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
                 errorMessage: action.error,
             };
         }    
-        case AuthActionTypes.LOGOUT_ACTION:
+        case AuthActionTypes.LOGOUT_ACTION: {
             return initialState;
-        case AuthActionTypes.SET_ERROR_MESSAGE:
+        }
+        case AuthActionTypes.SET_ERROR_MESSAGE: {
             return {
                 ...state,
                 errorMessage: action.error
             }    
+        }
+
+        case AuthActionTypes.LOAD_USER_SUCCESS: {
+            return {
+                ...state,
+                profile: action.user,
+            }    
+        }
+        // case AuthActionTypes.LOAD_USER_FAIL: {
+        //     return {
+        //         ...state,
+        //         errorMessage: action.error
+        //     }    
+        // }
+
         default:
             return state;
     }

@@ -23,3 +23,9 @@ export const errorMessage = createSelector(
         return state.errorMessage
     }
 )
+export const isUserLogin = createSelector(selectAuthState,(state) => {
+    return state.user ;
+})
+export const getUserProfile = createSelector(selectAuthState,(state) => {
+    return state.profile ;
+})

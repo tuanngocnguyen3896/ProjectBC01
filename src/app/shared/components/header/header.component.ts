@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/core/Models/User.model';
-import { Logout } from 'src/app/modules/auth/_actions/auth.actions';
+import { User , UserReponseData } from 'src/app/core/Models/User.model';
+import { LoadUser, Logout } from 'src/app/modules/auth/_actions/auth.actions';
 import { isLoggedIn, userLogin} from 'src/app/modules/auth/_selectors/auth.selectors';
 import { AppState } from '../../reducers';
 @Component({
@@ -12,7 +12,7 @@ import { AppState } from '../../reducers';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
-  user: User;
+  userData: User | UserReponseData;
   constructor(
     private store: Store<AppState>
   ) { }
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.store.select(isLoggedIn);
     this.store.select(userLogin).subscribe((state) => {
-      this.user = state;
+      this.userData = state;
     })
   }
   onLogout(event: Event){
