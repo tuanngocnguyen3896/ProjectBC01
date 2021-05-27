@@ -1,16 +1,148 @@
 <div class="container">
+    <h3 class="display-4  text-center">User Profile</h3>
     <div class="row">
         <div class="col-4">
-            <img src ="https://picsum.photos/200/200" />
+            <div class="col-12">
+              <a href="#" [routerLink]="['/home']">Home</a>
+            </div>
+            <div class="col-12">
+              <img class="w-100 h-100" src ="https://picsum.photos/200/200" />
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link"  id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-courses-tab" data-toggle="pill" href="#v-pills-courses" role="tab" aria-controls="v-pills-courses" aria-selected="false">Courses</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+            </div>
         </div>
         <div class="col-8">
-            <p>Tài Khoản:  {{userProfile?.taiKhoan}} </p>
-            <p>Mật Khẩu: {{userProfile?.matKhau}} </p>
-            <p>Email:  {{userProfile?.email}} </p>
-            <p>Ho Tên:  {{userProfile?.hoTen}} </p>
-            <p>SDT:  {{userProfile?.soDT}} </p>
-            <p>Mã Nhóm:  {{userProfile?.maNhom}} </p>
-            <p>Loại Người Dùng:  {{userProfile?.maLoaiNguoiDung}} </p>
-        </div>
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                  <p>Tài Khoản:  {{userProfile?.taiKhoan}} </p>
+                  <p>Mật Khẩu: {{userProfile?.matKhau}} </p>
+                  <p>Email:  {{userProfile?.email}} </p>
+                  <p>Ho Tên:  {{userProfile?.hoTen}} </p>
+                  <p>Mã Nhóm:  {{userProfile?.maNhom}} </p>
+                  <p>Loại Người Dùng:  {{userProfile?.maLoaiNguoiDung}} </p>
+              </div>
+              <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
+                  <div *ngFor="let course of userProfile?.chiTietKhoaHocGhiDanh; index as idx " class="row d-flex justify-content-between mb-5">
+                        <div class="col-4">STT: {{idx + 1}}</div>
+                        <div class="col-4">Mã Khóa Học: {{course?.maKhoaHoc}}</div>
+                        <div class="col-4">Tên Khóa Học{{course?.tenKhoaHoc}}</div>
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <form [formGroup]="editUpForm" (ngSubmit)="onEditSubmit()" class="form">
+                  <div class="row">
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Username
+                             </label>
+                             <input
+                               formControlName="taiKhoan"
+                               type="text"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Password
+                             </label>
+                             <input
+                               formControlName="matKhau"
+                               type="password"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Name
+                             </label>
+                             <input
+                               formControlName="hoTen"
+                               type="text"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Phone Number
+                             </label>
+                             <input
+                               formControlName="soDT"
+                               type="text"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Group
+                             </label>
+                             <input
+                               formControlName="maNhom"
+                               type="text"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                       <div class="form-group">
+                           <label class="form-label">
+                               Email
+                             </label>
+                             <input
+                               formControlName="email"
+                               type="email"
+                               class="form-control"
+                               required
+                             />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                
+                  <div class="col-6">
+                     <div class="form-group">
+                         <label class="form-label">
+                             Type
+                           </label>
+                           <input
+                             formControlName="maLoaiNguoiDung"
+                             type="text"
+                             class="form-control"
+                             required
+                           />
+                      </div>
+                  </div>
+                <div class="col-12">
+                    <button class="btn btn-danger">Edit</button>
+                </div>  
+              </div>
+                
+                </form>
+                <div class="error-message alert alert-danger" *ngIf="errorMessage | async as error">
+                  {{ error }}
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </div>

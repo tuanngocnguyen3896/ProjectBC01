@@ -73,7 +73,7 @@
           </div>
           <div class="form-row">
             <label class="form-label">
-              maNhom
+              Group
             </label>
             <input
               formControlName="maNhom"
@@ -84,7 +84,7 @@
             />
             <div *ngIf="signUpForm.get('maNhom').touched && !signUpForm.get('maNhom').valid">
               <div style="height:20px;line-height:0" class="valid-message alert alert-danger" *ngIf="signUpForm.get('maNhom').errors.required">
-                maNhom is required !
+                Group is required !
               </div>
             </div>
           </div>

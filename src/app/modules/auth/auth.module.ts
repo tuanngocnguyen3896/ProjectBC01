@@ -12,12 +12,15 @@ import { AUTH_STATE_NAME } from './_selectors/auth.selectors';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './_effects/auth.effects';
+import { AuthGuard } from './_guards/auth.guard';
 
 const AuthRoute:Routes = [
   {path:'',component:AuthTemplateComponent,children:[
     {path:'login',component:LoginComponent},
     {path:'register',component:RegisterComponent},
-    {path:'profile',component:ProfileComponent},
+    {path:'profile',component:ProfileComponent,
+        canActivate: [AuthGuard],
+  },
   ]}
 ]
 

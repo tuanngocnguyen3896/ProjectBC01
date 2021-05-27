@@ -17,6 +17,11 @@ export class RegisterComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.handleSignUpForm();
+    this.store.dispatch(new SetErrorMessage(null));
+    this.errorMessage = this.store.select(errorMessage);
+  }
+  handleSignUpForm(){
     this.signUpForm = new FormGroup({
       taiKhoan: new FormControl('',[
         Validators.required
@@ -37,9 +42,6 @@ export class RegisterComponent implements OnInit {
         Validators.required
       ]),
     });
-
-    this.store.dispatch(new SetErrorMessage(null));
-    this.errorMessage = this.store.select(errorMessage);
   }
   onSignUpSubmit(){
     if(!this.signUpForm.valid){

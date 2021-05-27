@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './modules/auth/_services/auth.service';
 import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor';
+import { AuthEffects } from './modules/auth/_effects/auth.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor'
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production, // Restrict extension to log-only mode
     }),

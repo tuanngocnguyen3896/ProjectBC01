@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       taiKhoan : this.loginForm.value.taiKhoan,
       matKhau : this.loginForm.value.matKhau,
     }
-    // this.store.dispatch(loginAction(payload));    
     this.store.dispatch(new Login(payload));
   }
   

@@ -20,7 +20,6 @@ export class CoursesListComponent implements OnInit {
   ngOnInit(): void {
     this.courses = this.store.select(getCoursesList)
     this.store.dispatch(loadCourses());
-    console.log(this.courses)
   }
 
 }

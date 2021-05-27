@@ -21,7 +21,6 @@ export class CoursesCategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.store.select(getCategories);
     this.store.dispatch(loadCategories());
-    console.log(this.categories);
   }
 
 }

@@ -6,11 +6,11 @@ export interface User {
 export interface UserReponseData {
     taiKhoan:string,
     matKhau:string,
-    hoTen:string,
-    soDT:number,
-    email:string
+    hoTen?:string,
+    soDT?:number,
+    email?:string
     accessToken?: string;
-    maLoaiNguoiDung: string,
-    maNhom:string,
-    chiTietKhoaHocGhiDanh: Array<[]>
+    maLoaiNguoiDung?: string,
+    maNhom?:string,
+    chiTietKhoaHocGhiDanh?: Array<[]>
 }

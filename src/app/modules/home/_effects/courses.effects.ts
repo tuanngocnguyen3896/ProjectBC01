@@ -1,18 +1,21 @@
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Actions, createEffect, Effect, ofType } from "@ngrx/effects";
+import { defer, Observable, of } from "rxjs";
+import { Store, Action } from '@ngrx/store';
 import { map, mergeMap } from "rxjs/operators";
+import { AuthActionTypes, CheckLogin, Login } from "../../auth/_actions/auth.actions";
 import { loadCategories, loadCourses, loadCoursesSuccess , loadCategoriesSuccess} from "../_actions/courses.actions";
 import { CoursesService } from "../_services/courses.service";
 
 @Injectable()
 export class CoursesEffects {
     constructor(
-        private action$: Actions,
+        private actions$: Actions,
         private coursesService: CoursesService
     ){}
     loadCourses$ = createEffect(
         () => {
-            return this.action$.pipe(
+            return this.actions$.pipe(
                 ofType(loadCourses),
                 mergeMap(data => {
                     return this.coursesService.getCourses().pipe(
@@ -26,7 +29,7 @@ export class CoursesEffects {
     );
     loadCategories$ = createEffect(
         () => {
-            return this.action$.pipe(
+            return this.actions$.pipe(
                 ofType(loadCategories),
                 mergeMap(data => {
                     return this.coursesService.getCoursesCategories().pipe(
@@ -38,4 +41,5 @@ export class CoursesEffects {
             )
         }
     );
+  
 }

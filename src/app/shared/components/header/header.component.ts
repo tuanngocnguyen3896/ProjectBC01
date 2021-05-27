@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User , UserReponseData } from 'src/app/core/Models/User.model';
-import { LoadUser, Logout } from 'src/app/modules/auth/_actions/auth.actions';
+import { LoadUser, Login, Logout } from 'src/app/modules/auth/_actions/auth.actions';
 import { isLoggedIn, userLogin} from 'src/app/modules/auth/_selectors/auth.selectors';
 import { AppState } from '../../reducers';
 @Component({

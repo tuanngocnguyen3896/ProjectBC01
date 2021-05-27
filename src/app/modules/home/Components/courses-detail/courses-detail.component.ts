@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CoursesData } from 'src/app/core/Models/Courses.model';
 import { CoursesService } from '../../_services/courses.service';
@@ -10,7 +10,7 @@ import { CoursesService } from '../../_services/courses.service';
   styleUrls: ['./courses-detail.component.scss']
 })
 export class CoursesDetailComponent implements OnInit {
-  maKhoaHoc: string;
+  maKhoaHoc:  Params;
   course: CoursesData = new CoursesData(); 
   constructor(
     private route : ActivatedRoute,
@@ -18,22 +18,27 @@ export class CoursesDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCoursesDetail();
+    // this.getCoursesDetail();
+
+    this.route.params.pipe().subscribe((value) => {
+      this.maKhoaHoc = value;
+    })
+    console.log(this.maKhoaHoc.id);
   }
 
-  getCoursesDetail = async () => {
-    try{
-    //Lấy tham số từ url 
-      const params:any = await this.route.params.pipe();
-      console.log('params: ',params.value.id)
-    //Gọi service
-      const result:any = await this.coursesService.getCoursesDetail(params.value.id).pipe().toPromise();
-      console.log(result)
-      this.course = result;
-    }catch(errors) {
-      console.log('errors',errors.error)
-    } 
+  // getCoursesDetail = async () => {
+  //   try{
+  //   //Lấy tham số từ url 
+  //     const params:any = await this.route.params.pipe();
+  //     console.log('params: ',params.value.id)
+  //   //Gọi service
+  //     const result:any = await this.coursesService.getCoursesDetail(params.value.id).pipe().toPromise();
+  //     console.log(result)
+  //     this.course = result;
+  //   }catch(errors) {
+  //     console.log('errors',errors.error)
+  //   } 
 
-  }
+  // }
  
 }
