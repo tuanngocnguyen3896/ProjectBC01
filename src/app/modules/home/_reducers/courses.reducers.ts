@@ -1,37 +1,37 @@
-import { createReducer, on } from "@ngrx/store";
 import { CourseCategories, CoursesData } from "src/app/core/Models/Courses.model";
-import { loadCategoriesSuccess, loadCoursesSuccess } from "../_actions/courses.actions";
-// state
+import { CategoriesActionTypes } from "../_actions/categories.actions";
+import { CoursesActions, CoursesActionTypes} from '../_actions/courses.actions';
 export interface CoursesState{
-    courses: CoursesData[];
-    categories: CourseCategories[]
+    courses: CoursesData;
+    // categories: CourseCategories;
+    // detail: CoursesData;
 }
 export const initialState: CoursesState = {
-    courses: [],
-    categories: [],
+    courses: null,
+    // categories: null,
+    // detail: null
 }
-// reducers
 
-const _coursesReducer = createReducer(
-    initialState,
-    on(loadCoursesSuccess,(state,action) => {
-        console.log(action);
+export function CoursesReducer(state = initialState ,action: CoursesActions) : CoursesState{
+    switch (action.type) {
+        case CoursesActionTypes.LOAD_COURSES_SUCCESS:
+            return {
+                ...state,
+                courses : action.payload.courses
+            }
+        // case CategoriesActionTypes.LOAD_CATEGORIES_SUCCESS:
+        //     return {
+        //         ...state,
+        //         categories : action.categories
+        //     }
+        // case CoursesActionTypes.LOAD_COURSES_DETAIL_SUCCESS: 
+        //     return {
+        //         ...state,
+        //         detail : action.payload.courses
+        //     }    
 
-        return {
-            ...state,
-            courses: action.courses
-        }
-    }),
-    on(loadCategoriesSuccess,(state,action) => {
-        console.log(action);
-        return {
-            ...state,
-            categories: action.categories
-        }
-    })    
-)
-
-export function CoursesReducer(state,action){
-    return _coursesReducer(state,action)
+        default: 
+            return state;
+    }
 }
 

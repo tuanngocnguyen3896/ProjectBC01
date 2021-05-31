@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CourseCategories } from 'src/app/core/Models/Courses.model';
 import { AppState } from 'src/app/shared/reducers';
-import { loadCategories } from '../../_actions/courses.actions';
-import { getCategories } from '../../_selectors/courses.selectors';
+import { LoadCategories } from '../../_actions/categories.actions';
+import { getCategories } from '../../_selectors/categories.selectors';
+
 
 
 @Component({
@@ -13,14 +14,14 @@ import { getCategories } from '../../_selectors/courses.selectors';
   styleUrls: ['./courses-categories.component.scss']
 })
 export class CoursesCategoriesComponent implements OnInit {
-  categories: Observable<CourseCategories[]>;
+  categories: Observable<CourseCategories>;
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new LoadCategories());
     this.categories = this.store.select(getCategories);
-    this.store.dispatch(loadCategories());
   }
 
 }

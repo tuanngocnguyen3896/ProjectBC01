@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CoursesData } from 'src/app/core/Models/Courses.model';
-import { CoursesService } from '../../_services/courses.service';
+import { User } from 'src/app/core/Models/User.model';
+import { userLogin } from 'src/app/modules/auth/_selectors/auth.selectors';
+import { AppState } from 'src/app/shared/reducers';
+import { LoadCoursesDetail } from '../../_actions/categories.actions';
+import {  RegisterCourses } from '../../_actions/courses.actions';
+import { RegisterForm } from '../../_models/courses.models';
+import { getCoursesDetail } from '../../_selectors/categories.selectors';
 
 @Component({
   selector: 'app-courses-detail',
@@ -11,34 +18,33 @@ import { CoursesService } from '../../_services/courses.service';
 })
 export class CoursesDetailComponent implements OnInit {
   maKhoaHoc:  Params;
-  course: CoursesData = new CoursesData(); 
+  course: CoursesData;
+  formRegister: RegisterForm;
   constructor(
     private route : ActivatedRoute,
-    private coursesService: CoursesService
+    private store: Store<AppState>,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    // this.getCoursesDetail();
-
-    this.route.params.pipe().subscribe((value) => {
-      this.maKhoaHoc = value;
-    })
-    console.log(this.maKhoaHoc.id);
+    this.route.params.pipe().subscribe(value => this.maKhoaHoc =value);
+    this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
+    this.store.select(getCoursesDetail).subscribe(value => this.course = value);
+    console.log(this.course);
   }
 
-  // getCoursesDetail = async () => {
-  //   try{
-  //   //Lấy tham số từ url 
-  //     const params:any = await this.route.params.pipe();
-  //     console.log('params: ',params.value.id)
-  //   //Gọi service
-  //     const result:any = await this.coursesService.getCoursesDetail(params.value.id).pipe().toPromise();
-  //     console.log(result)
-  //     this.course = result;
-  //   }catch(errors) {
-  //     console.log('errors',errors.error)
-  //   } 
+  onRegisterCourses(){
+    let user: User;
+    this.store.select(userLogin).subscribe(value => user = value)
+    if(user === null){
+      alert('Please login to continue')
+      this.router.navigate(['auth/login']);
+    }
+    const payload = {
+      maKhoaHoc: this.maKhoaHoc.id,
+      taiKhoan: user.taiKhoan
+    };
+    this.store.dispatch(new RegisterCourses(payload));
+  }
 
-  // }
- 
 }

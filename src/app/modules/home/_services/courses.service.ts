@@ -2,42 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CoursesData, CourseCategories } from 'src/app/core/Models/Courses.model';
-import { map } from "rxjs/operators";
-
+import { UserReponseData } from 'src/app/core/Models/User.model';
+import {RegisterForm} from '../_models/courses.models';
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
+  private domain = 'https://elearning0706.cybersoft.edu.vn/api';
   constructor(private http: HttpClient){}
-
-  getCourses(): Observable<CoursesData[]>{
-      return this.http.get<CoursesData[]>
-      (`https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP08`)
-      .pipe(
-          map((data) => {
-              const courses: CoursesData[] = [];
-              for(let key in data){
-                  courses.push({...data[key]})
-              }
-              return courses;
-          })
-      )
+  getCourses(): Observable<CoursesData>{
+      return this.http.get<CoursesData>
+      (`${this.domain}/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP08`)
   }
-  getCoursesDetail(maKhoaHoc:string):Observable<CoursesData[]> {
-      return this.http.get<CoursesData[]>
-      (`https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`)
+  getCoursesDetail(maKhoaHoc:string):Observable<CoursesData> {
+      return this.http.get<CoursesData>
+      (`${this.domain}/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`)
   }
-  getCoursesCategories(): Observable<CourseCategories[]>{
-      return this.http.get<CourseCategories[]>
-      (`https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc`)
-      .pipe(
-          map((data) => {
-              const categories: CourseCategories[] = [];
-              for(let key in data){
-                categories.push({...data[key]})
-              };
-              return categories;
-          })
-      )
+  getCoursesCategories(): Observable<CourseCategories>{
+      return this.http.get<CourseCategories>
+      (`${this.domain}/QuanLyKhoaHoc/LayDanhMucKhoaHoc`)
+  }
+  registerCourses(maKhoaHoc:string,taiKhoan :string): Observable<CoursesData>{
+      return this.http.post<CoursesData>(
+        `${this.domain}/QuanLyKhoaHoc/DangKyKhoaHoc`,
+        {maKhoaHoc,taiKhoan}
+      )    
   }
 }

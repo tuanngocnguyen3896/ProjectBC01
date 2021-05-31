@@ -41,7 +41,6 @@ export class ProfileComponent implements OnInit {
   getProfile(){
     this.store.select(getUserProfile).subscribe((state) => {
       this.userProfile = state;
-      console.log(this.userProfile);
     })
   };
  

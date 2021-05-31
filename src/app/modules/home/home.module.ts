@@ -10,24 +10,29 @@ import { FooterComponent } from 'src/app/shared/components/footer/footer.compone
 import { StoreModule } from '@ngrx/store';
 import { COURSES_STATE_NAME } from './_selectors/courses.selectors';
 import { CoursesEffects } from './_effects/courses.effects';
+import {CategoriesEffects} from './_effects/categories.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CoursesCategoriesComponent } from './Components/courses-categories/courses-categories.component';
 import { CoursesReducer } from './_reducers/courses.reducers';
 import { CoursesListComponent } from './Components/courses-list/courses-list.component';
+// import { CoursesGuard } from './_guard/courses.guard';
 
-const HomeRoute:Routes = [
-  
-  {path:'',component:HomeComponent},
-  {path:'home',component:HomeComponent},
-  {path:'courses',component:CoursesComponent,
-  children: [
-     {path:'courses-list',component:CoursesListComponent},
-     {path:'details/:id',component:CoursesDetailComponent},
-  ]
+const HomeRoute: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'courses',
+    component: CoursesComponent,
+    children: [
+      { path: 'courses-list', component: CoursesListComponent },
+      {
+        path: 'details/:id',
+        component: CoursesDetailComponent,
+        // canActivate: [CoursesGuard],
+      },
+    ],
   },
-
-  
-]
+];
 
 @NgModule({
   declarations: [
@@ -38,13 +43,13 @@ const HomeRoute:Routes = [
     HeaderComponent,
     FooterComponent,
     CoursesCategoriesComponent,
-    CoursesListComponent
+    CoursesListComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoute),
     StoreModule.forFeature(COURSES_STATE_NAME, CoursesReducer),
-    EffectsModule.forFeature([CoursesEffects]),
-  ]
+    EffectsModule.forFeature([CoursesEffects,CategoriesEffects]),
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}
