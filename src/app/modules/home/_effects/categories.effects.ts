@@ -1,11 +1,19 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { Store } from "@ngrx/store";
-import { of } from "rxjs";
-import { exhaustMap, map, catchError } from "rxjs/operators";
-import { AppState } from "src/app/shared/reducers";
-import { LoadCategories, CategoriesActionTypes, LoadCategoriesSuccess, LoadCategoriesFail, LoadCoursesDetail, LoadCoursesDetailSuccess, LoadCoursesDetailFail } from "../_actions/categories.actions";
-import { CoursesService } from "../_services/courses.service";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
+import { exhaustMap, map, catchError } from 'rxjs/operators';
+import { AppState } from 'src/app/shared/reducers';
+import {
+  LoadCategories,
+  CategoriesActionTypes,
+  LoadCategoriesSuccess,
+  LoadCategoriesFail,
+  LoadCoursesDetail,
+  LoadCoursesDetailSuccess,
+  LoadCoursesDetailFail,
+} from '../_actions/categories.actions';
+import { CoursesService } from '../_services/courses.service';
 
 @Injectable()
 export class CategoriesEffects {
@@ -32,7 +40,7 @@ export class CategoriesEffects {
   @Effect({ dispatch: false })
   loadCoursesDetail$ = this.actions$.pipe(
     ofType<LoadCoursesDetail>(CategoriesActionTypes.LOAD_COURSES_DETAIL_ACTION),
-    exhaustMap((action) => {
+    exhaustMap((action) => {      
       return this.coursesService.getCoursesDetail(action.maKhoaHoc).pipe(
         map((data) => {
           this.store.dispatch(new LoadCoursesDetailSuccess({ courses: data }));
@@ -45,5 +53,4 @@ export class CategoriesEffects {
       );
     })
   );
-
 }

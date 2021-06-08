@@ -1,5 +1,7 @@
 export class CoursesData {
     maKhoaHoc: string = '';
+    tenDanhMuc:string = '';
+    taiKhoan?: string = '';
     biDanh:string = '';
     tenKhoaHoc:string = '';
     moTa:string = '';

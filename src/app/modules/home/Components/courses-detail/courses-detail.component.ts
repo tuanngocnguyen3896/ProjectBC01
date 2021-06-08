@@ -10,6 +10,7 @@ import { LoadCoursesDetail } from '../../_actions/categories.actions';
 import {  RegisterCourses } from '../../_actions/courses.actions';
 import { RegisterForm } from '../../_models/courses.models';
 import { getCoursesDetail } from '../../_selectors/categories.selectors';
+import { CoursesService } from '../../_services/courses.service';
 
 @Component({
   selector: 'app-courses-detail',
@@ -26,11 +27,14 @@ export class CoursesDetailComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.pipe().subscribe(value => this.maKhoaHoc =value);
+   ngOnInit(): void {
+    this.route.params.pipe().subscribe(value => this.maKhoaHoc = value);
     this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
-    this.store.select(getCoursesDetail).subscribe(value => this.course = value);
-    console.log(this.course);
+    this.store.select(getCoursesDetail).subscribe(value => {
+      // console.log('data trong subscribe: ',value);
+      return this.course =value;
+    });
+    // console.log('Data ngoài:  ',this.course); // => null chỗ này
   }
 
   onRegisterCourses(){
@@ -44,7 +48,7 @@ export class CoursesDetailComponent implements OnInit {
       maKhoaHoc: this.maKhoaHoc.id,
       taiKhoan: user.taiKhoan
     };
-    this.store.dispatch(new RegisterCourses(payload));
+    this.store.dispatch(new RegisterCourses(payload.maKhoaHoc,payload.taiKhoan));
   }
 
 }

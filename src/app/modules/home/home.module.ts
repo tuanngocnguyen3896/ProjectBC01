@@ -15,6 +15,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoursesCategoriesComponent } from './Components/courses-categories/courses-categories.component';
 import { CoursesReducer } from './_reducers/courses.reducers';
 import { CoursesListComponent } from './Components/courses-list/courses-list.component';
+import { FormsModule } from '@angular/forms';
+import { CATEGORIES_STATE_NAME } from './_selectors/categories.selectors';
+import { CategoriesReducer } from './_reducers/categories.reducers';
+import { BannerComponent } from './Components/banner/banner.component';
+import { CategoryComponent } from './Components/category/category.component';
+import { AboutComponent } from './Components/about/about.component';
 // import { CoursesGuard } from './_guard/courses.guard';
 
 const HomeRoute: Routes = [
@@ -44,11 +50,15 @@ const HomeRoute: Routes = [
     FooterComponent,
     CoursesCategoriesComponent,
     CoursesListComponent,
+    BannerComponent,
+    CategoryComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoute),
     StoreModule.forFeature(COURSES_STATE_NAME, CoursesReducer),
+    StoreModule.forFeature(CATEGORIES_STATE_NAME, CategoriesReducer),
     EffectsModule.forFeature([CoursesEffects,CategoriesEffects]),
   ],
 })

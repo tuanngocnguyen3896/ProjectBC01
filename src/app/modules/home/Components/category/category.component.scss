@@ -1,0 +1,41 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+
+//cate
+.category{
+    height:60vh;
+    h3{
+        font-size: $headSize1;
+        font-weight: $bold;
+    }
+    &__item{
+        padding: 1rem 2rem;
+        border: 1px solid $bgGray;
+        border-radius:5px;
+        transition: 0.3s linear;
+        &:hover{
+            box-shadow: 0 0 0.5rem $bgGray;
+        }
+    }
+    &__content{
+        color: $textGray1;
+        font-size:$headSize2;
+        font-weight:$normal;
+    }
+    &__icon{
+        margin-right: 1rem;
+    }
+    .btn-explore{
+        padding: 0.5rem 3rem;
+        border: 1px solid $bgBlue;
+        color: $bgBlue;
+        background: transparent;
+        transition: 0.3s linear;
+        font-size: $headSize3;
+        font-weight: $light;
+        &:hover{
+            background: linear-gradient(to bottom, $bgBlue, $bgPurple);
+            color: $white;
+        }
+    }
+}

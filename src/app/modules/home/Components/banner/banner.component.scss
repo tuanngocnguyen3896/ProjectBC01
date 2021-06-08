@@ -1,0 +1,19 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+.banner {
+    background: linear-gradient(to bottom, $bgBlue, $bgPurple, $bgBlue);
+    &__content{
+        height:90vh;
+        padding-top:3rem;
+        @include flexCenter;
+        .row{
+            align-items: center;
+        }
+        &__right{
+            height:auto;
+            img{
+                height:70vh;
+            }
+        }
+    }
+}

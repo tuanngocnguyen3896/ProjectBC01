@@ -16,7 +16,7 @@
         </div>
         <div class="col-8">
             <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <div class="tab-pane active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                   <p>Tài Khoản:  {{userProfile?.taiKhoan}} </p>
                   <p>Mật Khẩu: {{userProfile?.matKhau}} </p>
                   <p>Email:  {{userProfile?.email}} </p>
@@ -25,10 +25,14 @@
                   <p>Loại Người Dùng:  {{userProfile?.maLoaiNguoiDung}} </p>
               </div>
               <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
-                  <div *ngFor="let course of userProfile?.chiTietKhoaHocGhiDanh; index as idx " class="row d-flex justify-content-between mb-5">
-                        <div class="col-4">STT: {{idx + 1}}</div>
-                        <div class="col-4">Mã Khóa Học: {{course?.maKhoaHoc}}</div>
-                        <div class="col-4">Tên Khóa Học{{course?.tenKhoaHoc}}</div>
+                 
+                <div *ngFor="let course of userProfile?.chiTietKhoaHocGhiDanh; index as idx " class="row d-flex justify-content-between mb-5">
+                        <div class="col-3">STT: {{idx + 1}}</div>
+                        <div class="col-3">Mã Khóa Học: {{course?.maKhoaHoc}}</div>
+                        <div class="col-3">Tên Khóa Học{{course?.tenKhoaHoc}}</div>
+                        <div  class="col-3">
+                          <button (click)="onCancelCourses(course)" class="btn btn-danger">Hủy ghi danh</button>
+                        </div>
                   </div>
               </div>
               <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">

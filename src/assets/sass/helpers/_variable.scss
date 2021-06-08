@@ -5,14 +5,17 @@ $bgBlue:#2980b9;
 $bgPurple: #8e44ad;
 $bgPink : #ea5252;
 $bgGray: #ccc;
-$bgGray1: #f1f1f1;
+$bgGray1: #f0f3f6;
 $bgSecondary: #f9f9f9;
 $textGray: #ccc;
+$textGray1: #54595f;
 $textC333: #333;
 $textPink: #ea5252;
 
 
-
+// zIndex
+$zNormal: 1;
+$zFixed: 99;
 
 // fontsize
 $headSize1: 20px;
@@ -25,4 +28,5 @@ $paraSize3: 8px;
 $iconSize: 24px;
 // fontweight
 $bold : 800;
+$normal: 600;
 $light: 400;

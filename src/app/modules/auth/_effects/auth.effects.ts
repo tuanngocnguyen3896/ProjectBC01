@@ -12,7 +12,6 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
-import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
 import {
   AuthActionTypes,
@@ -26,11 +25,12 @@ import {
   LoadUser,
   LoadUserSuccess,
   LoadUserFail,
-  CheckLogin,
-  SetErrorMessage,
   EditUser,
   EditUserSuccess,
   EditUserFail,
+  CancelCourses,
+  CancelCoursesFail,
+  CancelCoursesSuccess,
 } from '../_actions/auth.actions';
 import { AuthService } from '../_services/auth.service';
 
@@ -42,7 +42,7 @@ export class AuthEffects {
     private store: Store<AppState>,
     private router: Router
   ) {}
-  LOGIN;
+  // LOGIN
   @Effect({ dispatch: false })
   login$ = this.actions$.pipe(
     ofType<Login>(AuthActionTypes.LOGIN_ACTION),
@@ -52,11 +52,11 @@ export class AuthEffects {
         .pipe(
           map((data) => {
             this.authService.setUserInLocalStorage(data);
-            this.authService.setUserInLocalStorage(action.payload);
-            
+            // this.authService.setUserInLocalStorage(action.payload);
+
             this.store.dispatch(new LoginSuccess(data));
           }),
-          catchError((error) => {
+          catchError((error) => {            
             return of(this.store.dispatch(new LoginFail(error.error)));
           })
         );
@@ -70,7 +70,7 @@ export class AuthEffects {
       this.router.navigate(['/']);
     })
   );
-  
+
   //LOGOUT
   @Effect({ dispatch: false })
   logout$ = this.actions$.pipe(
@@ -114,14 +114,14 @@ export class AuthEffects {
     })
   );
 
-  // LOAD USER
+  // USER PROFILE
   @Effect({ dispatch: false })
   loadUser$ = this.actions$.pipe(
     ofType<LoadUser>(AuthActionTypes.LOAD_USER_ACTION),
     exhaustMap((action) => {
       return this.authService.loadUser(action.user.taiKhoan).pipe(
         map((data) => {
-          this.store.dispatch(new LoadUserSuccess(data));
+          return of (this.store.dispatch(new LoadUserSuccess(data)));
         }),
         catchError((error) => {
           return of(this.store.dispatch(new LoadUserFail(error.error)));
@@ -134,40 +134,59 @@ export class AuthEffects {
   editUser$ = this.actions$.pipe(
     ofType<EditUser>(AuthActionTypes.EDIT_USER_ACTION),
     exhaustMap((action) => {
-      return this.authService.editUser(
-        action.payload.taiKhoan,
-        action.payload.matKhau,
-        action.payload.hoTen,
-        action.payload.soDT,
-        action.payload.maNhom,
-        action.payload.email,
-        action.payload.maLoaiNguoiDung,
-      ).pipe(
-        map((data) => {
-          this.store.dispatch(new EditUserSuccess(data));
-          console.log(action.payload.soDT);
-          alert('Edit success')
-        }),
-        catchError((error) => {
-          return of(this.store.dispatch(new EditUserFail(error.error)));
-        })
-      );
+      return this.authService
+        .editUser(
+          action.payload.taiKhoan,
+          action.payload.matKhau,
+          action.payload.hoTen,
+          action.payload.soDT,
+          action.payload.maNhom,
+          action.payload.email,
+          action.payload.maLoaiNguoiDung
+        )
+        .pipe(
+          map((data) => {
+            this.store.dispatch(new EditUserSuccess(data));
+            alert('Edit success');
+          }),
+          catchError((error) => {
+            return of(this.store.dispatch(new EditUserFail(error.error)));
+          })
+        );
     })
-  )
+  );
+
+  @Effect({ dispatch: false })
+  cancelCourses$ = this.actions$.pipe(
+      ofType<CancelCourses>(AuthActionTypes.CANCEL_COURSES_ACTION),
+      switchMap((action) => {
+        return this.authService.cancelCourses(action.course.maKhoaHoc,action.course.taiKhoan).pipe(
+          map( () => {
+            return (new CancelCoursesSuccess());
+          }),
+          catchError((error, caught) => {
+            if(error.error.text){
+              alert(error.error.text);
+            }else{
+              alert(error.error);
+            }
+              return of(new CancelCoursesFail(error.error));
+          })
+        )
+      })
+     );
+  
 
 
-
-
-
-
+  // CHECK USER LOGGIN
   @Effect()
   init$: Observable<Action> = defer(() => {
     const userToken = localStorage.getItem('userData');
-    let observableResult  = of ({type: 'NO_ACTION'});
-    if(userToken) {
+    let observableResult = of({ type: 'NO_ACTION' });
+    if (userToken) {
       const user = JSON.parse(userToken);
-      observableResult = of(new Login(user));
+      observableResult = of(new LoginSuccess(user));
     }
     return observableResult;
-  })
+  });
 }

@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     })
     this.store.dispatch(new SetErrorMessage(null));
     this.errorMessage = this.store.select(errorMessage);
+    
   }
   onLoginSubmit(){
     const payload = {

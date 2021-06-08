@@ -9,5 +9,5 @@ export const getCategories = createSelector(getCategoriesState, (state) => {
 });
 
 export const getCoursesDetail = createSelector(getCategoriesState, (state) => {
-    return state.detail;
+    return  state.detail;
 })

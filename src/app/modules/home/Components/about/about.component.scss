@@ -1,0 +1,50 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+
+.section-1 {
+  padding: 5rem 0 10rem 0;
+  background: $bgGray1;
+}
+
+.section-1 .row .col-md-6 .pray img {
+  height: 25rem;
+  width: 80%;
+  border-radius: 0.2em;
+}
+
+.section-1 .row .col-md-6:last-child {
+  position: relative;
+}
+
+.section-1 .row .col-md-6 .panel {
+  position: absolute;
+  top: 7vmin;
+  left: -18vmin;
+  background: white;
+  border-radius: 3px;
+  text-align: left;
+  padding: 13vmin 5vmin 20vmin 10vmin;
+  box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.section-1 .row .col-md-6 .panel h1 {
+  padding: 0.4rem 0;
+  font-size: $headSize1;
+  color: $black;
+  font-weight: $bold;
+}
+
+.section-1 .row .col-md-6 .panel p {
+  font-size: $paraSize1;
+  color: $textGray1;
+  font-weight: $light;
+}
+.about-tech{
+    width:100px;
+    margin-right: 0.25rem;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid $textPink;
+    color: $textPink;
+}

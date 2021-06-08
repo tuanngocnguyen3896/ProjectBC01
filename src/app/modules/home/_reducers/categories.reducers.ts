@@ -21,7 +21,6 @@ export function CategoriesReducer(state = initialState ,action: CategoriesAction
                 ...state,
                 detail : action.payload.courses
             }    
-
         default: 
             return state;
     }

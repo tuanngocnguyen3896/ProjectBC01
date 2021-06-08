@@ -10,7 +10,7 @@ export enum CategoriesActionTypes {
     LOAD_COURSES_DETAIL_SUCCESS ='[courses page] load course detail success',
     LOAD_COURSES_DETAIL_FAIL ='[courses page] load course detail fail',
    
-}
+   }
 
 // LOAD CATEGORIES
 export class LoadCategories implements Action {
@@ -45,3 +45,4 @@ export type CategoriesActions =
     | LoadCoursesDetail
     | LoadCoursesDetailSuccess
     | LoadCoursesDetailFail
+   

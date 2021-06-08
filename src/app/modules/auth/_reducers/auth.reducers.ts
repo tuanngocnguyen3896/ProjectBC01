@@ -1,8 +1,9 @@
+import { Observable } from 'rxjs';
 import {User, UserReponseData} from '../../../core/Models/User.model';
 import {AuthActions,AuthActionTypes} from '../_actions/auth.actions';
 export interface AuthState{
     user: UserReponseData | User | null;
-    profile: UserReponseData
+    profile: UserReponseData;
     loggedIn: boolean;
     errorMessage: string | null;
     // isUserLoaded: boolean;
@@ -67,13 +68,27 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
         case AuthActionTypes.EDIT_USER_SUCCESS: {
             return {
                 ...state,
-                profile: action.payload,
+                // profile: action.payload,
             }
         }
         case AuthActionTypes.EDIT_USER_FAIL: {
             return {
                 ...state,
                 errorMessage: action.error
+            }
+        }
+        case AuthActionTypes.CANCEL_COURSES_ACTION: {
+            const newUpdateProfile = {...state.profile};
+            const currentCourse:any = newUpdateProfile.chiTietKhoaHocGhiDanh.filter(item => {
+                console.log('number item at present : ',item.maKhoaHoc);
+                return item.maKhoaHoc != action.course.maKhoaHoc
+            });
+            console.log('action courses: ',action.course.maKhoaHoc);
+            console.log('course finded: ',currentCourse);
+            newUpdateProfile.chiTietKhoaHocGhiDanh = currentCourse
+            return {
+                ...state,
+                profile: newUpdateProfile
             }
         }
 

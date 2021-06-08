@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, exhaustMap, map, mergeMap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { CoursesService } from '../_services/courses.service';
 import { AppState } from 'src/app/shared/reducers';
-import { of } from 'rxjs';
+import { of, pipe } from 'rxjs';
 import {
   CoursesActionTypes,
   LoadCourses,
+  LoadCoursesByCategories,
+  LoadCoursesByCategoriesFail,
+  LoadCoursesByCategoriesSuccess,
   LoadCoursesFail,
   LoadCoursesSuccess,
   RegisterCourses,
@@ -25,7 +28,7 @@ export class CoursesEffects {
   loadCourses$ = this.actions$.pipe(
     ofType<LoadCourses>(CoursesActionTypes.LOAD_COURSES_ACTION),
     exhaustMap((action) => {
-      return this.coursesService.getCourses().pipe(
+      return this.coursesService.getCourses(action.maNhom).pipe(
         map((data) => {
           this.store.dispatch(new LoadCoursesSuccess({ courses: data }));
         }),
@@ -37,21 +40,42 @@ export class CoursesEffects {
   );
 
   @Effect({ dispatch: false })
+  loadCoursesByCategories$ = this.actions$.pipe(
+    ofType<LoadCoursesByCategories>(CoursesActionTypes.LOAD_COURSES_BY_CATEGORIES_ACTION),
+    exhaustMap((action) => {
+      console.log('check action',action);
+      return this.coursesService.getCoursesByCategories(action.maDanhMuc,action.maNhom).pipe(
+        map((data) => {
+          this.store.dispatch(new LoadCoursesByCategoriesSuccess({courses:data}));
+        }),
+        catchError((error) => {
+          return of(this.store.dispatch(new LoadCoursesByCategoriesFail(error.error)))
+        })
+      )
+    })
+  )
+
+
+  @Effect({ dispatch: false })
   registerCourses$ = this.actions$.pipe(
     ofType<RegisterCourses>(CoursesActionTypes.REGISTER_COURSES_ACTION),
-    mergeMap((action) => {
-      return this.coursesService
-        .registerCourses(action.payload.maKhoaHoc, action.payload.taiKhoan)
-        .pipe(
-          map((data) => {
-            console.log(data);
-            return of(new RegisterCoursesSuccess());
-          }),
-          catchError((error, caught) => {
-            alert(`${error.error}`); // Khóa học đã đănh kí
-            return of(new RegisterCoursesFail(error.error));
-          })
-        );
-    })
+    switchMap((action) => {
+      return this.coursesService.registerCourses(action.maKhoaHoc, action.taiKhoan).pipe(
+        map(() => {
+          return new RegisterCoursesSuccess();
+        }),
+        catchError((error, caught) => {
+          if(error.error.text){
+            alert(error.error.text);
+          }else{
+            alert(error.error);
+          }
+          return of(new RegisterCoursesFail(error.error));
+        })
+      )
+    }),
   );
+
+
+
 }
