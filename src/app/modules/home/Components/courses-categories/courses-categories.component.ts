@@ -26,7 +26,6 @@ export class CoursesCategoriesComponent implements OnInit {
     this.categories = this.store.select(getCategories);
   }
   onLoadCoursesByCategory(categories){
-      this.store.dispatch(new LoadCoursesByCategories(categories,this.group))
+      this.store.dispatch(new LoadCoursesByCategories(categories,this.group));
   }
- 
 }

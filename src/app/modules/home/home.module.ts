@@ -56,6 +56,7 @@ const HomeRoute: Routes = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(HomeRoute),
     StoreModule.forFeature(COURSES_STATE_NAME, CoursesReducer),
     StoreModule.forFeature(CATEGORIES_STATE_NAME, CategoriesReducer),

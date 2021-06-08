@@ -1,15 +1,87 @@
-.card{
-    height: 500px !important;
-}
-.card-img-top{
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+
+.courses {
+  background: $bgGray1;
+  .card {
+    height: 280px;
+    box-shadow: 0 0 10px $white;
+    &:hover .courses__overlay {
+      opacity: 1;
+    }
+  }
+  &__header {
+    font-size: $headSize1;
+    font-weight: $bold;
+    padding: 2rem;
+  }
+  &__img {
+    position: relative;
     width: 100%;
     height: 120px;
-}
-.card-body{
-    position: relative;
-}
-.card-btn{
+  }
+  &__overlay {
     position: absolute;
-    bottom:5%;
-    left: 60px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 65%;
+    background: rgba(0, 0, 0, 0.9);
+    color: $white;
+    opacity: 0;
+    z-index: $zNormal;
+    transition: 0.3s linear;
+  }
+  &__name {
+    font-size: $headSize4;
+    font-weight: $normal;
+  }
+  .card-body {
+    position: relative;
+  }
+  .card-btn {
+    position: absolute;
+    bottom: 5%;
+    width: 75%;
+    background: $bgBlue;
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    z-index: $zCustom;
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: $paraSize2;
+      font-weight: $bold;
+    }
+  }
+  &__group {
+    @include flexCenter;
+    justify-content: space-between;
+    &__left {
+      select {
+        border: 1px solid $bgGray;
+        background: $white;
+        color: $black;
+        font-size: $light;
+        padding: 0.5rem;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+      }
+    }
+  }
+  .courses-btn-all {
+    @include button;
+    text-align: right;
+    background: $white;
+    color: $black;
+    font-size: $normal;
+    font-weight: $light;
+    padding: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+    transition: 0.3s linear;
+    &:hover {
+      background: $bgBlue;
+      color: $white;
+    }
+  }
 }

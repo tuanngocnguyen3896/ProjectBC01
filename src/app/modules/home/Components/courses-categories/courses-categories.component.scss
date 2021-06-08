@@ -1,4 +1,18 @@
-.btn{
-    font-size:16px;
-    height:60px;
+@import "../../../../../assets/sass/helpers/mixin";
+@import "../../../../../assets/sass/helpers/variable";
+.category-btn{
+    @include button;
+    text-align:right;
+    background: $white;
+    color: $black;
+    font-size:$light;
+    padding:0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+    margin-left: 0.25rem;
+    transition: 0.3s linear;
+    &:hover{
+        background: $bgBlue;
+        color: $white;
+    }
+    
 }

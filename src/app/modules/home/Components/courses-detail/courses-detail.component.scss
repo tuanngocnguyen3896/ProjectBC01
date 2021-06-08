@@ -1,0 +1,78 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+.course-detail {
+  background: $bgBlue;
+  height: 80vh;
+  padding-top: 2.5rem;
+  color: $white;
+  img{
+      height: 250px;
+      border: 1px solid $textGray;
+      border-bottom: none;
+  }
+  &__intro{
+    .detail-header{
+        font-size:$bold;
+        margin: 1.5rem 0;
+    }  
+    .detail-icon{
+          color: $textYellow;
+          margin-right: 0.5rem;
+      }
+  }
+  &__content {
+    height: 80vh;
+    background: $white;
+    color: $textGray1;
+    z-index: 2;
+    .nav-link.active{
+        background: $bgBlue;
+        color: $white;
+        border: 1px solid $bgBlue;
+        border-radius: 0;
+    }
+    .nav-link{
+        transition: 0.3s linear;
+        color: $black;
+        font-size: $headSize2;
+        font-weight: $bold;
+        &:hover{
+            background: $bgBlue;
+            color: $white;
+            border: 1px solid $bgBlue;
+            border-radius: 0;
+        }
+    }
+    .courses-detail-header {
+      margin: 1rem 0;
+      color: $black;
+      font-size: $headSize2;
+      font-weight: $normal;
+    }
+    p {
+      margin-top: 1rem;
+      color: $textGray1;
+      font-size: $paraSize1;
+      font-weight: $light;
+    }
+    .side-content {
+      width: 100%;
+      height: 100px;
+      @include flexCenter;
+      border: 1px solid $textGray;
+      .side-btn {
+        @include button;
+        padding: 0.5rem 3rem;
+        border: 1px solid $bgBlue;
+        color: $bgBlue;
+        transition: 0.3s linear;
+        font-size: $headSize3;
+        font-weight: $light;
+        &:hover {
+          background: linear-gradient(to bottom, $bgBlue, $bgPurple);
+          color: $white;
+        }
+      }
+    }
+  }
+}

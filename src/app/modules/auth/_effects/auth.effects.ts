@@ -52,8 +52,8 @@ export class AuthEffects {
         .pipe(
           map((data) => {
             this.authService.setUserInLocalStorage(data);
-            // this.authService.setUserInLocalStorage(action.payload);
-
+            localStorage.setItem('accessToken', data.accessToken);
+            this.router.navigate(['/']);
             this.store.dispatch(new LoginSuccess(data));
           }),
           catchError((error) => {            
@@ -62,14 +62,14 @@ export class AuthEffects {
         );
     })
   );
-  @Effect({ dispatch: false })
-  LogInSuccess$ = this.actions$.pipe(
-    ofType<LoginSuccess>(AuthActionTypes.LOGIN_SUCCESS),
-    tap((user) => {
-      localStorage.setItem('accessToken', user.payload.accessToken);
-      this.router.navigate(['/']);
-    })
-  );
+  // @Effect({ dispatch: false })
+  // LogInSuccess$ = this.actions$.pipe(
+  //   ofType<LoginSuccess>(AuthActionTypes.LOGIN_SUCCESS),
+  //   tap((user) => {
+  //     localStorage.setItem('accessToken', user.payload.accessToken);
+  //     this.router.navigate(['/']);
+  //   })
+  // );
 
   //LOGOUT
   @Effect({ dispatch: false })
