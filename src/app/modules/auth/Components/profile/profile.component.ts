@@ -29,15 +29,10 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Check account
     this.store.select(isUserLogin).subscribe((state) => {
       this.isUserLogin = state;
     });
     this.store.dispatch(new LoadUser(this.isUserLogin));
-
-    // Console chạy 2 lần
-    // Lần 1 null
-    // Lần 2 trả về data
     this.getProfile();
     this.handleEditForm();
     this.errorMessage = this.store.select(errorMessage);

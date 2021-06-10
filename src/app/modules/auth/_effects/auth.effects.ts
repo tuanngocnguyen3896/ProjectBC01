@@ -4,6 +4,7 @@ import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import { Store, Action } from '@ngrx/store';
 import { defer, Observable } from 'rxjs';
 import { of } from 'rxjs';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 import {
   catchError,
   exhaustMap,

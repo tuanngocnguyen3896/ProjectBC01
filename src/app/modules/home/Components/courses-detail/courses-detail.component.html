@@ -10,24 +10,25 @@
             <h2 class="detail-header">{{ course?.tenKhoaHoc }}</h2>
             <div class="course-intro__meta">
               <div class="course-meta__item">
-                
                 <p class="meta__views">
-                  <i  class="detail-icon fa fa-eye" aria-hidden="true"></i>
+                  <i class="detail-icon fa fa-eye" aria-hidden="true"></i>
 
-                  <span>
-                    {{ course?.luotXem }} Views
-                  </span></p>
+                  <span> {{ course?.luotXem }} Views </span>
+                </p>
               </div>
               <div class="course-meta__item">
                 <p class="meta__enrolled">
                   <i class="detail-icon fa fa-users" aria-hidden="true"></i>
-                 <span> {{ course?.soLuongHocVien }} Student Enrolled</span></p>
+                  <span> {{ course?.soLuongHocVien }} Student Enrolled</span>
+                </p>
               </div>
-  
+
               <div class="course-meta__item">
                 <p class="course-meta__author">
                   <i class="detail-icon fa fa-user-plus" aria-hidden="true"></i>
-                  <span itemprop="name">Created by: {{ course?.nguoiTao.hoTen }}</span>
+                  <span itemprop="name"
+                    >Created by: {{ course?.nguoiTao.hoTen }}</span
+                  >
                 </p>
               </div>
             </div>
@@ -42,32 +43,120 @@
         <div class="col-8">
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true">Overview</a>
-              <a class="nav-link" id="nav-curriculum-tab" data-toggle="tab" href="#nav-curriculum" role="tab" aria-controls="nav-curriculum" aria-selected="false">Curriculum</a>
-              <a class="nav-link" id="nav-rating-tab" data-toggle="tab" href="#nav-rating" role="tab" aria-controls="nav-rating" aria-selected="false">Rating</a>
+              <a
+                class="nav-link active"
+                id="nav-overview-tab"
+                data-toggle="tab"
+                href="#nav-overview"
+                role="tab"
+                aria-controls="nav-overview"
+                aria-selected="true"
+                >Overview</a
+              >
+              <a
+                class="nav-link"
+                id="nav-curriculum-tab"
+                data-toggle="tab"
+                href="#nav-curriculum"
+                role="tab"
+                aria-controls="nav-curriculum"
+                aria-selected="false"
+                >Curriculum</a
+              >
+              <a
+                class="nav-link"
+                id="nav-rating-tab"
+                data-toggle="tab"
+                href="#nav-rating"
+                role="tab"
+                aria-controls="nav-rating"
+                aria-selected="false"
+                >Rating</a
+              >
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab">
-              <p class="courses-detail-header"> {{ course?.moTa}} </p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Vestibulum interdum diam non mi cursus venenatis. Morbi lacinia libero et elementum vulputate. Vivamus et facilisis mauris. Maecenas nec massa auctor, ultricies massa eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec ridiculus quisque orci, vulputate mattis risus erat.</p>
+            <div
+              class="tab-pane fade show active"
+              id="nav-overview"
+              role="tabpanel"
+              aria-labelledby="nav-overview-tab"
+            >
+              <p class="courses-detail-header">{{ course?.moTa }}</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula
+                tempus vitae quis lacus. Vestibulum interdum diam non mi cursus
+                venenatis. Morbi lacinia libero et elementum vulputate. Vivamus
+                et facilisis mauris. Maecenas nec massa auctor, ultricies massa
+                eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus
+                vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices
+                mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo,
+                ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec
+                ridiculus quisque orci, vulputate mattis risus erat.
+              </p>
               <p class="courses-detail-header">What will you learn?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Vestibulum interdum diam non mi cursus venenatis. Morbi lacinia libero et elementum vulputate.</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula
+                tempus vitae quis lacus. Vestibulum interdum diam non mi cursus
+                venenatis. Morbi lacinia libero et elementum vulputate.
+              </p>
             </div>
-            <div class="tab-pane fade" id="nav-curriculum" role="tabpanel" aria-labelledby="nav-curriculum-tab">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Vestibulum interdum diam non mi cursus venenatis. Morbi lacinia libero et elementum vulputate. Vivamus et facilisis mauris. Maecenas nec massa auctor, ultricies massa eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec ridiculus quisque orci, vulputate mattis risus erat.</p>
+            <div
+              class="tab-pane fade"
+              id="nav-curriculum"
+              role="tabpanel"
+              aria-labelledby="nav-curriculum-tab"
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula
+                tempus vitae quis lacus. Vestibulum interdum diam non mi cursus
+                venenatis. Morbi lacinia libero et elementum vulputate. Vivamus
+                et facilisis mauris. Maecenas nec massa auctor, ultricies massa
+                eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus
+                vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices
+                mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo,
+                ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec
+                ridiculus quisque orci, vulputate mattis risus erat.
+              </p>
             </div>
-            <div class="tab-pane fade" id="nav-rating" role="tabpanel" aria-labelledby="nav-rating-tab">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Vestibulum interdum diam non mi cursus venenatis. Morbi lacinia libero et elementum vulputate. Vivamus et facilisis mauris. Maecenas nec massa auctor, ultricies massa eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo, ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec ridiculus quisque orci, vulputate mattis risus erat.</p>
+            <div
+              class="tab-pane fade"
+              id="nav-rating"
+              role="tabpanel"
+              aria-labelledby="nav-rating-tab"
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas in finibus neque. Vivamus in ipsum quis elit vehicula
+                tempus vitae quis lacus. Vestibulum interdum diam non mi cursus
+                venenatis. Morbi lacinia libero et elementum vulputate. Vivamus
+                et facilisis mauris. Maecenas nec massa auctor, ultricies massa
+                eu, tristique erat. Vivamus in ipsum quis elit vehicula tempus
+                vitae quis lacus. Eu pellentesque, accumsan tellus leo, ultrices
+                mi dui lectus sem nulla eu.Eu pellentesque, accumsan tellus leo,
+                ultrices mi dui lectus sem nulla eu. Maecenas arcu, nec
+                ridiculus quisque orci, vulputate mattis risus erat.
+              </p>
             </div>
           </div>
         </div>
         <div class="col-4">
           <div class="side-content">
-            <button class="side-btn" (click)="onRegisterCourses()">Take this course</button>
+            <button class="side-btn" (click)="onRegisterCourses()">
+              Take this course
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div
+  class="error-message alert alert-danger text-center mt-3 mt-md-5"
+  *ngIf="errorMessage | async as error"
+>
+  {{ error }}
 </div>

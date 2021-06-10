@@ -10,8 +10,7 @@ import { LoadCoursesDetail } from '../../_actions/categories.actions';
 import {  RegisterCourses } from '../../_actions/courses.actions';
 import { RegisterForm } from '../../_models/courses.models';
 import { getCoursesDetail } from '../../_selectors/categories.selectors';
-import { CoursesService } from '../../_services/courses.service';
-
+import {getCoursesError} from '../../_selectors/categories.selectors';
 @Component({
   selector: 'app-courses-detail',
   templateUrl: './courses-detail.component.html',
@@ -21,6 +20,7 @@ export class CoursesDetailComponent implements OnInit {
   maKhoaHoc:  Params;
   course: CoursesData;
   formRegister: RegisterForm;
+  errorMessage: Observable<string>;
   constructor(
     private route : ActivatedRoute,
     private store: Store<AppState>,
@@ -35,8 +35,8 @@ export class CoursesDetailComponent implements OnInit {
       return this.course =value;
     });
     // console.log('Data ngoài:  ',this.course); // => null chỗ này
+    this.errorMessage = this.store.select(getCoursesError);
   }
-
   onRegisterCourses(){
     let user: User;
     this.store.select(userLogin).subscribe(value => user = value)

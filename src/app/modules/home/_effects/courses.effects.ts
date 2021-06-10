@@ -5,6 +5,7 @@ import { catchError, exhaustMap, map, mergeMap, switchMap } from 'rxjs/operators
 import { CoursesService } from '../_services/courses.service';
 import { AppState } from 'src/app/shared/reducers';
 import { of, pipe } from 'rxjs';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 import {
   CoursesActionTypes,
   LoadCourses,
@@ -65,9 +66,17 @@ export class CoursesEffects {
         }),
         catchError((error, caught) => {
           if(error.error.text){
-            alert(error.error.text);
+            Swal.fire({  
+              icon: 'success',  
+              title: 'Congratz',  
+              text: `${error.error.text}`,  
+            })  
           }else{
-            alert(error.error);
+            Swal.fire({  
+              icon: 'error',  
+              title: 'Oops...',  
+              text: `${error.error}`,  
+            })  
           }
           return of(new RegisterCoursesFail(error.error));
         })

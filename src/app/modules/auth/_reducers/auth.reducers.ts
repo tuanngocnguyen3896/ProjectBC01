@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import {User, UserReponseData} from '../../../core/Models/User.model';
 import {AuthActions,AuthActionTypes} from '../_actions/auth.actions';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 export interface AuthState{
     user: UserReponseData | User | null;
     profile: UserReponseData;
@@ -80,12 +81,12 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
         case AuthActionTypes.CANCEL_COURSES_ACTION: {
             const newUpdateProfile = {...state.profile};
             const currentCourse = newUpdateProfile.chiTietKhoaHocGhiDanh.filter(item => {
-                return item.maKhoaHoc != action.course.maKhoaHoc
+                return item.maKhoaHoc != action.course.maKhoaHoc;
             });
-            newUpdateProfile.chiTietKhoaHocGhiDanh = currentCourse
+            newUpdateProfile.chiTietKhoaHocGhiDanh = currentCourse; 
             return {
                 ...state,
-                profile: newUpdateProfile
+                profile: newUpdateProfile,
             }
         }
 
