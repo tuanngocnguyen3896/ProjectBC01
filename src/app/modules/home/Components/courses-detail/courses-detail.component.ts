@@ -27,7 +27,10 @@ export class CoursesDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.pipe().subscribe(value => this.maKhoaHoc =value);
+    this.route.params.pipe().subscribe(value => 
+      {console.log(value);
+      
+        return this.maKhoaHoc =value});
     this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
     this.store.select(getCoursesDetail).subscribe(value => this.course = value);
     console.log(this.course);

@@ -6,7 +6,8 @@
             <div class="card text-white bg-dark">
               <img class="card-img-top" [src]="item.hinhAnh" [alt]="item.tenKhoaHoc">
               <div class="card-body">
-                <h4 class="card-title">{{item.tenKhoaHoc}}</h4>        
+                <h4 class="card-title">{{item.tenKhoaHoc}}</h4>   
+                <h3>{{item.maKhoaHoc}}</h3>     
                 {{(item.moTa.length > 100) ? (item.moTa | slice:0:150)+'...': (item.moTa)}}
                 <div class="card-btn">
                   <a class="btn btn-success" [routerLink]="['/courses', 'details', item.maKhoaHoc]">Xem chi tiết</a>

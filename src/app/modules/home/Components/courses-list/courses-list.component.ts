@@ -13,12 +13,15 @@ import { getCoursesList } from '../../_selectors/courses.selectors';
 export class CoursesListComponent implements OnInit {
   courses: Observable<CoursesData>;
 
+
   constructor(    private store: Store<AppState>
     ) { }
 
   ngOnInit(): void {
     this.store.dispatch(new LoadCourses());
     this.courses = this.store.select(getCoursesList)
+    // console.log(JSON.stringify(this.courses));
+    // console.log(this.courses);
     
   }
 
