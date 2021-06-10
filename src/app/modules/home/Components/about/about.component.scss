@@ -2,14 +2,32 @@
 @import "../../../../../assets/sass/helpers/mixin";
 
 .section-1 {
-  padding: 5rem 0 10rem 0;
+  padding: 5rem 0 8rem 0;
   background: $bgGray1;
+  @include xs{
+    padding-bottom: 4rem;
+  }
+  @include md{
+    padding-bottom: 10rem;
+  }
+
 }
 
 .section-1 .row .col-md-6 .pray img {
   height: 25rem;
   width: 80%;
   border-radius: 0.2em;
+  @include xs{
+    width: 100%;
+
+  }
+  @include sm{
+    width: 100%;
+
+  }
+  @include md{
+    width: 100%;
+  }
 }
 
 .section-1 .row .col-md-6:last-child {
@@ -17,15 +35,32 @@
 }
 
 .section-1 .row .col-md-6 .panel {
-  position: absolute;
-  top: 7vmin;
-  left: -18vmin;
   background: white;
   border-radius: 3px;
   text-align: left;
   padding: 13vmin 5vmin 20vmin 10vmin;
   box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  @include xs{
+    padding: 2.5rem;
+  }
+  @include md {
+    position: absolute;
+    top: 7vmin;
+    left: -10vmin;
+    padding: 13vmin 5vmin 15vmin 10vmin;
+
+  }
+  @include lg {
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+  }
+  @include xl{
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+  }
 }
 
 .section-1 .row .col-md-6 .panel h1 {
@@ -38,11 +73,20 @@
 .section-1 .row .col-md-6 .panel p {
   font-size: $paraSize1;
   color: $textGray1;
-  font-weight: $light;
+  font-weight: $normal;
+  @include xs{
+    font-size: $paraSize2;
+  }
+  @include sm{
+    font-size: $paraSize1;
+    margin-bottom: 0.5rem;
+  }
+
 }
 .about-tech{
     width:100px;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
     text-align: center;
     display: inline-block;
     border: 1px solid $textPink;

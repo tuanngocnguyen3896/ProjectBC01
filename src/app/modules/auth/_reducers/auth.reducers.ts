@@ -79,12 +79,9 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
         }
         case AuthActionTypes.CANCEL_COURSES_ACTION: {
             const newUpdateProfile = {...state.profile};
-            const currentCourse:any = newUpdateProfile.chiTietKhoaHocGhiDanh.filter(item => {
-                console.log('number item at present : ',item.maKhoaHoc);
+            const currentCourse = newUpdateProfile.chiTietKhoaHocGhiDanh.filter(item => {
                 return item.maKhoaHoc != action.course.maKhoaHoc
             });
-            console.log('action courses: ',action.course.maKhoaHoc);
-            console.log('course finded: ',currentCourse);
             newUpdateProfile.chiTietKhoaHocGhiDanh = currentCourse
             return {
                 ...state,

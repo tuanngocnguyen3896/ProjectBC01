@@ -1,152 +1,409 @@
-<div class="container">
-    <h3 class="display-4  text-center">User Profile</h3>
-    <div class="row">
-        <div class="col-4">
-            <div class="col-12">
-              <a href="#" [routerLink]="['/home']">Home</a>
+<div class="auth container-fluid p-0">
+  <input type="checkbox" id="check" />
+  <!-- header  -->
+  <div class="auth__header">
+    <label for="check">
+      <i class="fa fa-bars sidebar-btn"></i>
+    </label>
+    <div class="auth__header__left">
+      <h3>User<span>Profile</span></h3>
+    </div>
+    <div class="right_area">
+      <a class="home_btn" href="#" [routerLink]="['/home']">
+        <i class="fa fa-home" aria-hidden="true"></i>
+      </a>
+      <a (click)="onLogout($event)" class="logout_btn" href="#">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <!-- mobile nav -->
+  <div class="auth__mobilenav">
+    <div class="auth__mobilenav__content">
+      <img src="https://picsum.photos/50/50" alt="avatar" />
+      <i id="click-btn" class="fa fa-bars mobile-btn"></i>
+    </div>
+    <div class="auth__mobilenav__items">
+      <div
+        class="nav flex-column nav-pills"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        <a
+          class="nav-link active"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          href="#v-pills-profile"
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false"
+        >
+          <i class="fa fa-user"></i><span>Profile</span>
+        </a>
+        <a
+          class="nav-link"
+          id="v-pills-courses-tab"
+          data-toggle="pill"
+          href="#v-pills-courses"
+          role="tab"
+          aria-controls="v-pills-courses"
+          aria-selected="false"
+        >
+          <i class="fa fa-book"></i><span>Courses</span>
+        </a>
+        <a
+          class="nav-link"
+          id="v-pills-settings-tab"
+          data-toggle="pill"
+          href="#v-pills-settings"
+          role="tab"
+          aria-controls="v-pills-settings"
+          aria-selected="false"
+        >
+          <i class="fa fa-cog"></i><span>Settings</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar  -->
+  <div class="auth__sidebar">
+    <div class="profile-info">
+      <img
+        class="profile-image"
+        src="https://picsum.photos/200/200"
+        alt="avatar"
+      />
+      <h4>{{ userProfile?.taiKhoan }}</h4>
+    </div>
+    <div
+      class="nav flex-column nav-pills"
+      id="v-pills-tab"
+      role="tablist"
+      aria-orientation="vertical"
+    >
+      <a
+        class="nav-link active"
+        id="v-pills-profile-tab"
+        data-toggle="pill"
+        href="#v-pills-profile"
+        role="tab"
+        aria-controls="v-pills-profile"
+        aria-selected="false"
+      >
+        <i class="fa fa-user"></i><span>Profile</span>
+      </a>
+      <a
+        class="nav-link"
+        id="v-pills-courses-tab"
+        data-toggle="pill"
+        href="#v-pills-courses"
+        role="tab"
+        aria-controls="v-pills-courses"
+        aria-selected="false"
+      >
+        <i class="fa fa-book"></i><span>Courses</span>
+      </a>
+      <a
+        class="nav-link"
+        id="v-pills-settings-tab"
+        data-toggle="pill"
+        href="#v-pills-settings"
+        role="tab"
+        aria-controls="v-pills-settings"
+        aria-selected="false"
+      >
+        <i class="fa fa-cog"></i><span>Settings</span>
+      </a>
+    </div>
+  </div>
+  <div class="content">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div
+        class="tab-pane active"
+        id="v-pills-profile"
+        role="tabpanel"
+        aria-labelledby="v-pills-profile-tab"
+      >
+        <div class="container p-0 content__profile">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>Userame: {{ userProfile?.taiKhoan }}</span>
+              </p>
             </div>
-            <div class="col-12">
-              <img class="w-100 h-100" src ="https://picsum.photos/200/200" />
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active"  id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="v-pills-courses-tab" data-toggle="pill" href="#v-pills-courses" role="tab" aria-controls="v-pills-courses" aria-selected="false">Courses</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            <div class="col-6">
+              <p>
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <span>Password: {{ userProfile?.matKhau }}</span>
+              </p>
             </div>
+            <div class="col-6">
+              <p>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <span>Email: {{ userProfile?.email }} </span>
+              </p>
             </div>
+            <div class="col-6">
+              <p>
+                <i class="fa fa-info" aria-hidden="true"></i>
+                <span>Name: {{ userProfile?.hoTen }}</span>
+              </p>
+            </div>
+            <div class="col-6">
+              <p>
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span> Group: {{ userProfile?.maNhom }}</span>
+              </p>
+            </div>
+            <div class="col-6">
+              <p>
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                <span> Type: {{ userProfile?.maLoaiNguoiDung }}</span>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="col-8">
-            <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                  <p>Tài Khoản:  {{userProfile?.taiKhoan}} </p>
-                  <p>Mật Khẩu: {{userProfile?.matKhau}} </p>
-                  <p>Email:  {{userProfile?.email}} </p>
-                  <p>Ho Tên:  {{userProfile?.hoTen}} </p>
-                  <p>Mã Nhóm:  {{userProfile?.maNhom}} </p>
-                  <p>Loại Người Dùng:  {{userProfile?.maLoaiNguoiDung}} </p>
-              </div>
-              <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
-                 
-                <div *ngFor="let course of userProfile?.chiTietKhoaHocGhiDanh; index as idx " class="row d-flex justify-content-between mb-5">
-                        <div class="col-3">STT: {{idx + 1}}</div>
-                        <div class="col-3">Mã Khóa Học: {{course?.maKhoaHoc}}</div>
-                        <div class="col-3">Tên Khóa Học{{course?.tenKhoaHoc}}</div>
-                        <div  class="col-3">
-                          <button (click)="onCancelCourses(course)" class="btn btn-danger">Hủy ghi danh</button>
-                        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="v-pills-courses"
+        role="tabpanel"
+        aria-labelledby="v-pills-courses-tab"
+      >
+        <div class="content__table">
+          <h3 class="text-center">My Courses</h3>
+          <table class="table table-striped mt-4 text-center">
+            <thead class="thead-dark">
+              <tr>
+                <th class="th-index">Index</th>
+                <th class="th-course">Course ID</th>
+                <th class="th-course">Course Name</th>
+                <th class="th-action">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let course of userProfile?.chiTietKhoaHocGhiDanh;
+                  index as idx
+                "
+              >
+                <td class="align-middle">{{ idx + 1 }}</td>
+                <td class="align-middle">{{ course?.maKhoaHoc }}</td>
+                <td class="align-middle">{{ course?.tenKhoaHoc }}</td>
+                <td class="align-middle">
+                  <button
+                    (click)="onCancelCourses(course)"
+                    class="leave-course-btn"
+                  >
+                    Leave course
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="v-pills-settings"
+        role="tabpanel"
+        aria-labelledby="v-pills-settings-tab"
+      >
+        <h3 class="mb-4 text-center">Edit User</h3>
+        <form
+          [formGroup]="editForm"
+          (ngSubmit)="onEditSubmit()"
+          class="form content__settings"
+        >
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Username </label>
+                <input
+                  formControlName="taiKhoan"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('taiKhoan').touched &&
+                    !editForm.get('taiKhoan').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('taiKhoan').errors.required"
+                  >
+                    Username is required !
                   </div>
+                </div>
               </div>
-              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <form [formGroup]="editUpForm" (ngSubmit)="onEditSubmit()" class="form">
-                  <div class="row">
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Username
-                             </label>
-                             <input
-                               formControlName="taiKhoan"
-                               type="text"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Password
-                             </label>
-                             <input
-                               formControlName="matKhau"
-                               type="password"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Name
-                             </label>
-                             <input
-                               formControlName="hoTen"
-                               type="text"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Phone Number
-                             </label>
-                             <input
-                               formControlName="soDT"
-                               type="text"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Group
-                             </label>
-                             <input
-                               formControlName="maNhom"
-                               type="text"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                       <div class="form-group">
-                           <label class="form-label">
-                               Email
-                             </label>
-                             <input
-                               formControlName="email"
-                               type="email"
-                               class="form-control"
-                               required
-                             />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                
-                  <div class="col-6">
-                     <div class="form-group">
-                         <label class="form-label">
-                             Type
-                           </label>
-                           <input
-                             formControlName="maLoaiNguoiDung"
-                             type="text"
-                             class="form-control"
-                             required
-                           />
-                      </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Password </label>
+                <input
+                  formControlName="matKhau"
+                  type="password"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('matKhau').touched &&
+                    !editForm.get('matKhau').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('matKhau').errors.required"
+                  >
+                    Username is required !
                   </div>
-                <div class="col-12">
-                    <button class="btn btn-danger">Edit</button>
-                </div>  
-              </div>
-                
-                </form>
-                <div class="error-message alert alert-danger" *ngIf="errorMessage | async as error">
-                  {{ error }}
                 </div>
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Name </label>
+                <input
+                  formControlName="hoTen"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('hoTen').touched &&
+                    !editForm.get('hoTen').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('hoTen').errors.required"
+                  >
+                    Username is required !
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Phone Number </label>
+                <input
+                  formControlName="soDT"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('soDT').touched &&
+                    !editForm.get('soDT').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('soDT').errors.required"
+                  >
+                    Username is required !
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Group </label>
+                <input
+                  formControlName="maNhom"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('maNhom').touched &&
+                    !editForm.get('maNhom').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('maNhom').errors.required"
+                  >
+                    Username is required !
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Email </label>
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                  required
+                />
+                <div
+                  *ngIf="
+                    editForm.get('email').touched &&
+                    !editForm.get('email').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('email').errors.required"
+                  >
+                    Username is required !
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-label"> Type </label>
+                <input
+                  formControlName="maLoaiNguoiDung"
+                  type="text"
+                  class="form-control"
+                  required
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-12 text-center mt-1 mt-md-5">
+              <button
+                [disabled]="!editForm.valid"
+                class="btn btn-danger edit-btn"
+              >
+                Change Info
+              </button>
+            </div>
+          </div>
+        </form>
+        <div
+          class="error-message alert alert-danger mt-3 mt-md-5"
+          *ngIf="errorMessage | async as error"
+        >
+          {{ error }}
+        </div>
+      </div>
     </div>
+  </div>
 </div>

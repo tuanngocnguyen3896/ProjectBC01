@@ -25,7 +25,7 @@ export class CoursesListComponent implements OnInit {
   onChangeGroup(value){
     this.coursesGroup = value;
     if(this.coursesGroup === undefined){
-      this.coursesGroup = 'GP08';
+      this.coursesGroup = 'GP01';
     }     
     this.store.dispatch(new LoadCourses(this.coursesGroup));
   }

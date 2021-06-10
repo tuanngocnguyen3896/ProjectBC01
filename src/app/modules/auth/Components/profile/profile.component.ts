@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { RegisterForm } from 'src/app/modules/home/_models/courses.models';
 import { AppState } from 'src/app/shared/reducers';
-import { CancelCourses, EditUser, LoadUser } from '../../_actions/auth.actions';
+import { CancelCourses, EditUser, LoadUser, Logout } from '../../_actions/auth.actions';
 import {
   errorMessage,
   getUserProfile,
@@ -21,7 +21,7 @@ import { AuthService } from '../../_services/auth.service';
 export class ProfileComponent implements OnInit {
   isUserLogin: User | UserReponseData;
   userProfile: UserReponseData;
-  editUpForm: FormGroup;
+  editForm: FormGroup;
   errorMessage: Observable<string>;
   constructor(
     private store: Store<AppState>,
@@ -49,28 +49,28 @@ export class ProfileComponent implements OnInit {
   }
 
   handleEditForm() {
-    this.editUpForm = new FormGroup({
+    this.editForm = new FormGroup({
       taiKhoan: new FormControl('', [Validators.required]),
       matKhau: new FormControl('', [Validators.required]),
       hoTen: new FormControl('', [Validators.required]),
       soDT: new FormControl('', [Validators.required]),
-      maNhom: new FormControl('', [Validators.required]),
+      maNhom: new FormControl('gp03', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       maLoaiNguoiDung: new FormControl('hv', [Validators.required]),
     });
   }
   onEditSubmit() {
-    if (!this.editUpForm.valid) {
+    if (!this.editForm.valid) {
       return;
     }
     const payload = {
-      taiKhoan: this.editUpForm.value.taiKhoan,
-      matKhau: this.editUpForm.value.matKhau,
-      hoTen: this.editUpForm.value.hoTen,
-      soDT: this.editUpForm.value.soDT,
-      email: this.editUpForm.value.email,
-      maNhom: this.editUpForm.value.maNhom,
-      maLoaiNguoiDung: this.editUpForm.value.maLoaiNguoiDung,
+      taiKhoan: this.editForm.value.taiKhoan,
+      matKhau: this.editForm.value.matKhau,
+      hoTen: this.editForm.value.hoTen,
+      soDT: this.editForm.value.soDT,
+      email: this.editForm.value.email,
+      maNhom: this.editForm.value.maNhom,
+      maLoaiNguoiDung: this.editForm.value.maLoaiNguoiDung,
     };
 
     this.store.dispatch(new EditUser(payload));
@@ -82,5 +82,9 @@ export class ProfileComponent implements OnInit {
       taiKhoan: this.isUserLogin.taiKhoan
     }
     this.store.dispatch(new CancelCourses(payload))
+  }
+  onLogout(event: Event){
+    event.preventDefault();
+    this.store.dispatch(new Logout())
   }
 }

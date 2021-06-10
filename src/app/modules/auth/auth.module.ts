@@ -29,7 +29,7 @@ const AuthRoute:Routes = [
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AuthTemplateComponent
+    AuthTemplateComponent,
   ],
   imports: [
     CommonModule,

@@ -5,13 +5,45 @@
     &__content{
         height:80vh;
         @include flexCenter;
+        @include xs{
+            height: 75vh;
+        }
         .row{
             align-items: center;
+        }
+        &__left{
+            h1{
+                font-weight: $bold;
+                @include xs{
+                    font-size: $headSize2;
+                }
+                @include sm {
+                    font-size: $headSize1;
+                }
+            }
+            h6,p {
+                font-weight: $normal;
+                @include xs{
+                    font-size: $paraSize2;
+                }
+                @include sm{
+                    font-size: $paraSize1;
+                }
+            }
         }
         &__right{
             height:auto;
             img{
                 height:70vh;
+                @include xs{
+                    height: 30vh;
+                }
+                @include sm {
+                    height:45vh;
+                }
+                @include md {
+                    height:65vh;
+                }
             }
         }
     }

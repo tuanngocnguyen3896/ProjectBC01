@@ -4,9 +4,22 @@
 //cate
 .category{
     height:60vh;
+    @include xs {
+        height: 100vh;
+    }
+    @include sm {
+        height:100vh;
+    }
+    @include md {
+        height:85vh;
+    }
+    @include lg {
+        height:70vh;
+    }
     h3{
         font-size: $headSize1;
-        font-weight: $bold;
+        font-weight: $bold; 
+        
     }
     &__item{
         padding: 1rem 2rem;
@@ -16,6 +29,15 @@
         &:hover{
             box-shadow: 0 0 0.5rem $bgGray;
         }
+        @include xs{
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+        @include sm{
+            text-align: center;
+            padding: 0.75rem 0;
+        }
+
     }
     &__content{
         color: $textGray1;
@@ -37,5 +59,11 @@
             background: linear-gradient(to bottom, $bgBlue, $bgPurple);
             color: $white;
         }
+        @include xs {
+            margin-top: 1rem;
+        }
+        @include md {
+            margin-top: 1.25rem;
+        }   
     }
 }

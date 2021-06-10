@@ -5,15 +5,34 @@
   height: 80vh;
   padding-top: 2.5rem;
   color: $white;
+  @include xs{
+    height: 100vh;
+  }
+  @include sm{
+    height: 100vh;
+  }
   img{
       height: 250px;
       border: 1px solid $textGray;
       border-bottom: none;
+      
   }
   &__intro{
+    @include xs{
+      text-align: center;
+      padding: 1rem 0;
+    }
+    @include sm{
+      text-align: center;
+      padding: 1rem 0;
+    }
+   
     .detail-header{
         font-size:$bold;
         margin: 1.5rem 0;
+        @include xs{
+          font-size: $headSize1;
+        }
     }  
     .detail-icon{
           color: $textYellow;
@@ -25,6 +44,7 @@
     background: $white;
     color: $textGray1;
     z-index: 2;
+
     .nav-link.active{
         background: $bgBlue;
         color: $white;
@@ -42,22 +62,40 @@
             border: 1px solid $bgBlue;
             border-radius: 0;
         }
+        @include xs{
+          font-size: $paraSize3;
+        }
+        @include sm{
+          font-size: $paraSize2;
+        }
     }
     .courses-detail-header {
       margin: 1rem 0;
       color: $black;
       font-size: $headSize2;
       font-weight: $normal;
+      @include xs{
+        font-size: $paraSize2;
+      }
     }
     p {
       margin-top: 1rem;
       color: $textGray1;
       font-size: $paraSize1;
       font-weight: $light;
+      @include xs{
+        font-size: $paraSize2;
+      }
     }
     .side-content {
       width: 100%;
       height: 100px;
+      @include xs{
+        height: 80px;
+        position: absolute;
+        top: 15%;
+        right: 0;
+      }
       @include flexCenter;
       border: 1px solid $textGray;
       .side-btn {
@@ -72,7 +110,19 @@
           background: linear-gradient(to bottom, $bgBlue, $bgPurple);
           color: $white;
         }
+        @include xs{
+          padding: 0.15rem;
+          font-size: $paraSize3;
+        }
+        @include sm{
+          padding: 0.25rem;
+          font-size: $paraSize2;
+        }
+        @include md{
+          padding: 0.5rem;
+        }
       }
+
     }
   }
 }

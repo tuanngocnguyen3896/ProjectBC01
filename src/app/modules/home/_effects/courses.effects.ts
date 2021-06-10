@@ -43,7 +43,6 @@ export class CoursesEffects {
   loadCoursesByCategories$ = this.actions$.pipe(
     ofType<LoadCoursesByCategories>(CoursesActionTypes.LOAD_COURSES_BY_CATEGORIES_ACTION),
     exhaustMap((action) => {
-      console.log('check action',action);
       return this.coursesService.getCoursesByCategories(action.maDanhMuc,action.maNhom).pipe(
         map((data) => {
           this.store.dispatch(new LoadCoursesByCategoriesSuccess({courses:data}));
