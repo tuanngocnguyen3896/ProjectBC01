@@ -20,6 +20,7 @@
       top: 0.75em;
       font-size: $headSize1;
       padding: 0.25em 0;
+      margin-left: 1px;
       transition: 0.5s linear;
       &:hover {
         color: #19b3d3;
@@ -98,11 +99,14 @@
       display: block;
       width: 100%;
       line-height: 1.5em;
-      padding-left: 2.5em;
+      padding-left: 2em;
       transition: 0.3s linear;
       &:hover {
         background: #19b3d3;
       }
+    }
+    .modify{
+      margin-left: 3px;
     }
     i {
       padding-right: 0.625em;
