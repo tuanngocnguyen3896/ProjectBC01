@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
       soDT: new FormControl('', [Validators.required]),
       maNhom: new FormControl('gp03', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      maLoaiNguoiDung: new FormControl('hv', [Validators.required]),
+      maLoaiNguoiDung: new FormControl('', [Validators.required]),
     });
   }
   onEditSubmit() {

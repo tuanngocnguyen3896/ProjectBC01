@@ -267,7 +267,7 @@
                     class="valid-message alert alert-danger"
                     *ngIf="editForm.get('matKhau').errors.required"
                   >
-                    Username is required !
+                    Password is required !
                   </div>
                 </div>
               </div>
@@ -294,14 +294,14 @@
                     class="valid-message alert alert-danger"
                     *ngIf="editForm.get('hoTen').errors.required"
                   >
-                    Username is required !
+                    Name is required !
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label class="form-label"> Phone Number </label>
+                <label class="form-label"> Phone </label>
                 <input
                   formControlName="soDT"
                   type="text"
@@ -319,7 +319,7 @@
                     class="valid-message alert alert-danger"
                     *ngIf="editForm.get('soDT').errors.required"
                   >
-                    Username is required !
+                    Phone is required !
                   </div>
                 </div>
               </div>
@@ -334,6 +334,7 @@
                   type="text"
                   class="form-control"
                   required
+                  placeholder="gp01-08"
                 />
                 <div
                   *ngIf="
@@ -346,7 +347,7 @@
                     class="valid-message alert alert-danger"
                     *ngIf="editForm.get('maNhom').errors.required"
                   >
-                    Username is required !
+                    Group is required !
                   </div>
                 </div>
               </div>
@@ -371,7 +372,7 @@
                     class="valid-message alert alert-danger"
                     *ngIf="editForm.get('email').errors.required"
                   >
-                    Username is required !
+                    Email is required !
                   </div>
                 </div>
               </div>
@@ -386,8 +387,22 @@
                   type="text"
                   class="form-control"
                   required
-                  disabled
+                  placeholder="hv or gv "
                 />
+                <div
+                  *ngIf="
+                    editForm.get('maLoaiNguoiDung').touched &&
+                    !editForm.get('maLoaiNguoiDung').valid
+                  "
+                >
+                  <div
+                    style="height: 20px; line-height: 0"
+                    class="valid-message alert alert-danger"
+                    *ngIf="editForm.get('maLoaiNguoiDung').errors.required"
+                  >
+                    Type is required !
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-12 text-center mt-1 mt-md-5">
