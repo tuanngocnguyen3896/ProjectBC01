@@ -35,7 +35,6 @@ export class ProfileComponent implements OnInit {
     });
     this.store.dispatch(new LoadUser(this.isUserLogin));
     this.getProfile();
-    console.log(this.userProfile);
     this.handleEditForm();
     this.errorMessage = this.store.select(errorMessage);
     

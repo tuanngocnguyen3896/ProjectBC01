@@ -63,15 +63,7 @@ export class AuthEffects {
         );
     })
   );
-  // @Effect({ dispatch: false })
-  // LogInSuccess$ = this.actions$.pipe(
-  //   ofType<LoginSuccess>(AuthActionTypes.LOGIN_SUCCESS),
-  //   tap((user) => {
-  //     localStorage.setItem('accessToken', user.payload.accessToken);
-  //     this.router.navigate(['/']);
-  //   })
-  // );
-
+  
   //LOGOUT
   @Effect({ dispatch: false })
   logout$ = this.actions$.pipe(
@@ -119,7 +111,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loadUser$ = this.actions$.pipe(
     ofType<LoadUser>(AuthActionTypes.LOAD_USER_ACTION),
-    exhaustMap((action) => {
+    exhaustMap((action) => {      
       return this.authService.loadUser(action.user.taiKhoan).pipe(
         map((data) => {
           return of (this.store.dispatch(new LoadUserSuccess(data)));
@@ -149,6 +141,7 @@ export class AuthEffects {
           map((data) => {
             this.authService.setUserInLocalStorage(data);
             this.store.dispatch(new EditUserSuccess(data));
+            console.log(data);
             Swal.fire({  
               icon: 'success',  
               title: 'Congratz',  

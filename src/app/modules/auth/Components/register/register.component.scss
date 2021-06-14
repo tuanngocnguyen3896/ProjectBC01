@@ -1,24 +1,125 @@
 @import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
 @import "../../../../../assets/sass/form/form";
-.form-cont{
-    height: 100vh !important;
-}
+
 .valid-message{
     position: absolute;
-    top: 50%;
-    left: -70%;
+    width: 100%;
+    top: 80%;
+    left: 0;
+    text-align: center;
     background: $bgPink;
     color: $white;
     font-weight: $bold;
+    @include xs {
+        font-size: $paraSize3;
+    }
+    @include sm {
+        font-size: $paraSize2;
+    }
 }
-.error-message{
-    position: absolute;
-    top: 50%;
-    right: -70%;
-    background: $bgPink;
-    color: $white;
-    font-weight: $bold;
-}
-.login-sign-up{
-    bottom: 0% !important;
+
+.login{
+    .form-cont{
+        margin: 20px auto;
+        height: 120vh;
+        width: 60%;
+        @include md{
+            width: 45%;
+        }
+        @include lg{
+            width: 40%;
+        }
+        @include xl{
+            width: 40%;
+        }
+    }
+    .form-submit{
+        padding: 0.5em !important;
+        font-size: $paraSize2;
+        margin: 15px auto 0 auto !important;
+        @include sm{
+            font-size: $paraSize1;
+        }
+        @include xl{
+            font-size: $headSize2;
+        }
+    }
+    .login-sign-up{
+        position: unset !important;
+        text-align: center;
+        margin-top: 4.5em;
+        @include xs{
+            font-size: 10px !important;
+        }
+        @include xl{
+            margin-top: 70px;
+        }
+        a{
+            text-decoration: none;
+            &:hover{
+                color: $bgPurple;
+            }
+        }
+    }
+    h1{
+        font-size: 24px;
+        font-weight: $bold;
+        @include xs{
+            font-size: $headSize3;
+        }
+        @include sm{
+            font-size: $headSize2;
+        }
+        @include md{
+            font-size: $headSize1;
+        }
+    }
+    .form-content{
+        .form-label{
+            @include xs{
+                font-size: 10px !important;
+            }
+        }
+        input{
+            padding: 0.25em;
+            margin-bottom: 1em;
+        }
+    }
+    .error-message{
+        position: absolute;
+        top: 50%;
+        right: -70%;
+        background: $bgPink;
+        color: $white;
+        font-weight: $bold;
+        text-align: center;
+        height: 35px;
+        line-height:10px;
+        width: 100%;
+        @include xs {
+            font-size: 10px;
+            top: 85%;
+            left: 0;
+        }
+        @include sm {
+            font-size: $paraSize2;
+            top: 89%;
+            left: 0;           
+        }
+        @include md{
+            top: 89%;
+            left:0;
+            font-size: $paraSize1;
+        }
+        @include lg{
+            top: 89%;
+            left: 0;
+        }
+        @include xl{
+            top: 87%;
+            left: 0;
+        }
+    }
+    
 }

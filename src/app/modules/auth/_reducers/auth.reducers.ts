@@ -23,6 +23,7 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
                 ...state,
                 loggedIn: true,
                 user: action.payload,
+                profile: action.payload,
                 errorMessage: null
             };
         case AuthActionTypes.LOGIN_FAIL: {
@@ -69,7 +70,7 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
         case AuthActionTypes.EDIT_USER_SUCCESS: {
             return {
                 ...state,
-                // profile: action.payload,
+                profile: {...action.payload,soDT: action.payload.soDt},
             }
         }
         case AuthActionTypes.EDIT_USER_FAIL: {

@@ -8,6 +8,7 @@ export interface UserReponseData {
     matKhau:string,
     hoTen?:string,
     soDT?:number,
+    soDt?: number,
     email?:string
     accessToken?: string;
     maLoaiNguoiDung?: string,

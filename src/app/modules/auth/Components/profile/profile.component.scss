@@ -132,6 +132,11 @@
         @include xs {
           padding: 0.3125em 2.5em;
           height: 50px;
+          overflow-y: auto;
+        }
+        @include sm{
+          padding: 0.625em 1.5em;
+          overflow-y: auto;
         }
         @include md {
           padding: 0.3125em 2.1875em;
@@ -151,7 +156,7 @@
           padding: 0.4275em 0.625em;
         }
         @include lg{
-          padding: 0.4275 0.625em;
+          padding: 0.4175em 0.625em;
         }
         width: 50px;
         text-align: center;
@@ -170,7 +175,7 @@
         }
         @include sm {
           font-size: $paraSize1;
-          margin-left: 1.25em;
+          margin-left: 2.5em;
         }
         @include md {
           margin-left: 2em;
@@ -250,8 +255,8 @@
         text-align: center;
         @include xs {
           font-size: 10px;
-          min-width: 80px;
-          line-height: 25px;
+          min-width: 55px;
+          line-height: 35px;
         }
       }
     }

@@ -60,7 +60,8 @@ export class CoursesEffects {
   registerCourses$ = this.actions$.pipe(
     ofType<RegisterCourses>(CoursesActionTypes.REGISTER_COURSES_ACTION),
     switchMap((action) => {
-      return this.coursesService.registerCourses(action.maKhoaHoc, action.taiKhoan).pipe(
+      console.log(action);
+      return this.coursesService.registerCourses(action.payload.maKhoaHoc,action.payload.taiKhoan).pipe(
         map(() => {
           return new RegisterCoursesSuccess();
         }),

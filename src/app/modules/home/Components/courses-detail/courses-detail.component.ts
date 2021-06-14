@@ -48,7 +48,7 @@ export class CoursesDetailComponent implements OnInit {
       maKhoaHoc: this.maKhoaHoc.id,
       taiKhoan: user.taiKhoan
     };
-    this.store.dispatch(new RegisterCourses(payload.maKhoaHoc,payload.taiKhoan));
+    this.store.dispatch(new RegisterCourses(payload));
   }
 
 }

@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { CoursesData } from "src/app/core/Models/Courses.model";
-import { UserReponseData } from 'src/app/core/Models/User.model';
 import { RequestForm } from '../_models/courses.models';
 
 export enum CoursesActionTypes {
@@ -17,9 +16,7 @@ export enum CoursesActionTypes {
     REGISTER_COURSES_SUCCESS = '[courses page] register course success',
     REGISTER_COURSES_FAIL = '[courses page] register course fail',
 
-   
 }
-
 // LOAD COURSES
 export class LoadCourses implements Action {
     readonly type = CoursesActionTypes.LOAD_COURSES_ACTION;
@@ -48,24 +45,19 @@ export class LoadCoursesByCategoriesFail implements Action {
     constructor(public error:string){}
 }
 
-
-
-
 // REGISTER COURSES
 export class RegisterCourses implements Action {
     readonly type = CoursesActionTypes.REGISTER_COURSES_ACTION;
-    constructor(public maKhoaHoc: string, public taiKhoan: string){}
-    // constructor(public payload: RequestForm){}
+    constructor(public payload: RequestForm){}
+    // constructor(public maKhoaHoc: string, public taiKhoan: string){}
 }
 export class RegisterCoursesSuccess implements Action {
     readonly type = CoursesActionTypes.REGISTER_COURSES_SUCCESS;
-    // constructor(public courses: CoursesData){}
 }
 export class RegisterCoursesFail implements Action {
     readonly type = CoursesActionTypes.REGISTER_COURSES_FAIL;
     constructor(public error: string){}
 }
-    // CANCEL COURSES
 
 export type CoursesActions = 
     | LoadCourses

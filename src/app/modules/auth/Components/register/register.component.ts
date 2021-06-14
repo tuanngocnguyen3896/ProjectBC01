@@ -23,22 +23,22 @@ export class RegisterComponent implements OnInit {
   }
   handleSignUpForm(){
     this.signUpForm = new FormGroup({
-      taiKhoan: new FormControl('',[
+      taiKhoan: new FormControl('aaa1',[
         Validators.required
       ]),
-      matKhau: new FormControl('',[
+      matKhau: new FormControl('aaa1',[
         Validators.required
       ]),
-      hoTen: new FormControl('',[
+      hoTen: new FormControl('aaaa',[
         Validators.required
       ]),
-      soDT: new FormControl('',[
+      soDT: new FormControl('aaaa',[
         Validators.required
       ]),
-      maNhom: new FormControl('',[
+      maNhom: new FormControl('aaaa',[
         Validators.required
       ]),
-      email: new FormControl('',[
+      email: new FormControl('aaa@test.com',[
         Validators.required
       ]),
     });
