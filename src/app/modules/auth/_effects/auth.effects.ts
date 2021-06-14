@@ -147,8 +147,13 @@ export class AuthEffects {
         )
         .pipe(
           map((data) => {
+            this.authService.setUserInLocalStorage(data);
             this.store.dispatch(new EditUserSuccess(data));
-            alert('Edit success');
+            Swal.fire({  
+              icon: 'success',  
+              title: 'Congratz',  
+              text: `Edit success`,  
+            });  
           }),
           catchError((error) => {
             return of(this.store.dispatch(new EditUserFail(error.error)));

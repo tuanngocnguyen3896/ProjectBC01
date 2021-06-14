@@ -4,6 +4,7 @@
       <a class="navbar-brand" [routerLink]="['/']">
         <img class="navbar__logo" src="../../../../assets/images/logo.png" alt="logo"/>
       </a>
+      <input type="checkbox" id="nav-check" />
       <button
         class="navbar-toggler"
         type="button"
@@ -13,8 +14,9 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-      <i class="fa fa-bars navbar-toggler-icon" aria-hidden="true"></i>
-  
+      <label for="nav-check">
+        <i class="fa fa-bars navbar-toggler-icon" aria-hidden="true"></i>
+      </label>    
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
@@ -33,6 +35,9 @@
           <div class="navbar-right-content">
             <div *ngIf="(isLoggedIn | async); then doSomething; else doSomethingElse;"></div>
             <ng-template #doSomething>
+              <a *ngIf="(userData.maLoaiNguoiDung).toLowerCase() === 'gv'" class="nav-link" href="#" [routerLink]="['/admin']">
+                <i class="fa fa-unlock" aria-hidden="true"></i>
+              </a>
               <a class="nav-link" href="#" [routerLink]="['/auth/profile']">
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               </a>

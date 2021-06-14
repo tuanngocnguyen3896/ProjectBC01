@@ -22,9 +22,12 @@
   </div>
   <!-- mobile nav -->
   <div class="auth__mobilenav">
+    <input type="checkbox" id="nav-check" />
     <div class="auth__mobilenav__content">
       <img src="https://picsum.photos/50/50" alt="avatar" />
-      <i id="click-btn" class="fa fa-bars mobile-btn"></i>
+      <label for="nav-check">
+        <i id="click-btn" class="fa fa-bars mobile-btn"></i>
+      </label>
     </div>
     <div class="auth__mobilenav__items">
       <div
@@ -230,6 +233,7 @@
                   type="text"
                   class="form-control"
                   required
+                  disabled
                 />
                 <div
                   *ngIf="
@@ -387,7 +391,7 @@
                   type="text"
                   class="form-control"
                   required
-                  placeholder="hv or gv "
+                  disabled
                 />
                 <div
                   *ngIf="

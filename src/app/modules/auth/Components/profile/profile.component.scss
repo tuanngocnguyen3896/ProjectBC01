@@ -120,7 +120,6 @@
     height: 70vh;
     transition: 0.5s linear;
     &__profile {
-      @include bgImage("../../../../../assets/images/bg.jpg");
       height: 60vh;
       .row {
         padding: 1.25em;
@@ -147,7 +146,13 @@
         top: 0;
         left: 0;
         font-size: 24px;
-        padding: 0.4375em 0.625em;
+        padding: 0.4175em 0.625em;
+        @include md{
+          padding: 0.4275em 0.625em;
+        }
+        @include lg{
+          padding: 0.4275 0.625em;
+        }
         width: 50px;
         text-align: center;
         @include xs {
@@ -166,6 +171,9 @@
         @include sm {
           font-size: $paraSize1;
           margin-left: 1.25em;
+        }
+        @include md {
+          margin-left: 2em;
         }
       }
     }
@@ -290,6 +298,12 @@
     &__mobilenav {
       display: block;
       width: calc(100% - 0%);
+      #nav-check {
+        display: none;
+      }
+      #nav-check:checked ~ &__items{
+        display: block;
+      }
       &__content {
         background: #222;
         width: calc(100% - 0px);

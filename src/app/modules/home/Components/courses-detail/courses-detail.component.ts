@@ -8,7 +8,7 @@ import { userLogin } from 'src/app/modules/auth/_selectors/auth.selectors';
 import { AppState } from 'src/app/shared/reducers';
 import { LoadCoursesDetail } from '../../_actions/categories.actions';
 import {  RegisterCourses } from '../../_actions/courses.actions';
-import { RegisterForm } from '../../_models/courses.models';
+import { RequestForm } from '../../_models/courses.models';
 import { getCoursesDetail } from '../../_selectors/categories.selectors';
 import {getCoursesError} from '../../_selectors/categories.selectors';
 @Component({
@@ -19,7 +19,7 @@ import {getCoursesError} from '../../_selectors/categories.selectors';
 export class CoursesDetailComponent implements OnInit {
   maKhoaHoc:  Params;
   course: CoursesData;
-  formRegister: RegisterForm;
+  formRegister: RequestForm;
   errorMessage: Observable<string>;
   constructor(
     private route : ActivatedRoute,

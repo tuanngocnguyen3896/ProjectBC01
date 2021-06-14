@@ -1,4 +1,4 @@
-export interface RegisterForm {
+export interface RequestForm {
     maKhoaHoc : string, 
     taiKhoan: string
 }

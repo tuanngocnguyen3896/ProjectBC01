@@ -2,10 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CoursesData } from 'src/app/core/Models/Courses.model';
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
-import { RegisterForm } from '../../home/_models/courses.models';
+import { RequestForm } from '../../home/_models/courses.models';
 @Injectable({
   providedIn: 'root',
 })

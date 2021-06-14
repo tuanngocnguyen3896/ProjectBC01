@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { CourseCategories, CoursesData } from "src/app/core/Models/Courses.model";
+import { CoursesData } from "src/app/core/Models/Courses.model";
 import { UserReponseData } from 'src/app/core/Models/User.model';
-import { RegisterForm } from '../_models/courses.models';
+import { RequestForm } from '../_models/courses.models';
 
 export enum CoursesActionTypes {
     // COURSES DATA LIST
@@ -55,7 +55,7 @@ export class LoadCoursesByCategoriesFail implements Action {
 export class RegisterCourses implements Action {
     readonly type = CoursesActionTypes.REGISTER_COURSES_ACTION;
     constructor(public maKhoaHoc: string, public taiKhoan: string){}
-    // constructor(public payload: RegisterForm){}
+    // constructor(public payload: RequestForm){}
 }
 export class RegisterCoursesSuccess implements Action {
     readonly type = CoursesActionTypes.REGISTER_COURSES_SUCCESS;
