@@ -13,6 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './modules/auth/_services/auth.service';
 import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor';
 import { AuthEffects } from './modules/auth/_effects/auth.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomerSerializer } from './store/router/custom-serializer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { AuthEffects } from './modules/auth/_effects/auth.effects';
     StoreDevtoolsModule.instrument({
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    StoreRouterConnectingModule.forRoot({serializer:CustomerSerializer})
   ],
   providers: [
     AuthService,

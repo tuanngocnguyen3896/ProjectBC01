@@ -30,4 +30,9 @@ export class AdminService {
   deleteCourses(maKhoaHoc:string){
       return this.http.delete(`${this.domain}/QuanLyKhoaHoc/XoaKhoaHoc?maKhoaHoc=${maKhoaHoc}`)
   }
+  editCourses(courses:CoursesUpdate){
+    return this.http.put(`${this.domain}/QuanLyKhoaHoc/CapNhatKhoaHoc`,{
+      courses
+    })
+  }
 }

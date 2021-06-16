@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CoursesData, CoursesUpdate } from 'src/app/core/Models/Courses.model';
 import { AppState } from 'src/app/shared/reducers';
-import { LoadCourses } from '../../home/_actions/courses.actions';
-import { getCoursesList } from '../../home/_selectors/courses.selectors';
-import { deleteCourses } from '../_action/admin.action';
+import { LoadCourses } from '../../../home/_actions/courses.actions';
+import { getCoursesList } from '../../../home/_selectors/courses.selectors';
+import { deleteCourses } from '../../_action/admin.action';
 
 @Component({
   selector: 'app-admin-load-courses',

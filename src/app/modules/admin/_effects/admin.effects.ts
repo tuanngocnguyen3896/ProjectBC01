@@ -5,7 +5,7 @@ import { Store } from "@ngrx/store";
 import { of } from "rxjs";
 import { map,mergeMap, switchMap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
-import { addCourses, addCoursesSuccess, deleteCourses, deleteCoursesSuccess } from '../_action/admin.action';
+import { addCourses, addCoursesSuccess, deleteCourses, deleteCoursesSuccess, editCourses, editCoursesSuccess } from '../_action/admin.action';
 import { AdminService } from '../_services/admin.services';
 
 @Injectable()
@@ -52,6 +52,19 @@ export class AdminEffects{
                     
                     return deleteCoursesSuccess({maKhoaHoc: action.maKhoaHoc})
                 }))
+            })
+        )
+    })
+
+    editCourses$ = createEffect(()=>{
+        return this.actions$.pipe(
+            ofType(editCourses),
+            switchMap((action)=>{
+                return this.adminService.editCourses(action.payload).pipe(
+                    map((data)=>{
+                        return editCoursesSuccess({payload: action.payload})
+                    })
+                )
             })
         )
     })

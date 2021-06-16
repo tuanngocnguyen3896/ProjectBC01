@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
 import { CoursesUpdate } from "src/app/core/Models/Courses.model";
-import { addCoursesSuccess, deleteCoursesSuccess } from "../_action/admin.action"
+import { addCoursesSuccess, deleteCoursesSuccess, editCoursesSuccess } from "../_action/admin.action"
 
 export interface CoursesUpdateState{
     coursesUpdtate: CoursesUpdate[]
@@ -32,6 +32,14 @@ const _adminReducer = createReducer(
 
         })
         
+        return{
+            ...state,
+            coursesUpdtate: updatedCourses
+        }
+    }),on(editCoursesSuccess, (state,action)=>{
+        const updatedCourses = state.coursesUpdtate.map((course)=>{
+            return action.payload.maKhoaHoc === course.maKhoaHoc ? action.payload : course
+        })
         return{
             ...state,
             coursesUpdtate: updatedCourses

@@ -11,7 +11,7 @@
                 {{(item.moTa.length > 100) ? (item.moTa | slice:0:150)+'...': (item.moTa)}}
                 <div class="card-btn">
                   <a class="btn btn-success" [routerLink]="['/courses', 'details', item.maKhoaHoc]">More Details</a>
-                  <a class="btn btn-success" [routerLink]="['/courses', 'details', item.maKhoaHoc]">Edit Courses</a>
+                  <a class="btn btn-success" [routerLink]="['/admin', 'edit']">Edit Courses</a>
                   <button class="btn btn-danger" (click)="onDeleteCourses()">Delete Courses</button>
                 </div>
               </div>

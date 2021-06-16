@@ -1,4 +1,4 @@
-export class CoursesData {
+export class CoursesData{
     maKhoaHoc: string = '';
     biDanh:string = '';
     tenKhoaHoc:string = '';
