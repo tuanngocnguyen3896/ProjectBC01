@@ -88,10 +88,13 @@
     left: 40vw;
     top: 30%;
     z-index: 99;
-    background-color: #fff;
+    background-color: transparent;
     text-align:center;
-    padding: 2rem;
-    border: 1px solid #000;
+    padding: 2em;
+    color: #fff;
+}
+.lds-roller div:after{
+  background: #fff !important ;
 }
 .backdrop{
     position:fixed;

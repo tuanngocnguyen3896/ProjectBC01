@@ -10,8 +10,6 @@ export class CoursesData {
     ngayTao:string = '';
     hinhAnh:string ='';
     soLuongHocVien:number = 0;
-    nguoiTao:CourseAuthor = new CourseAuthor();
-    danhMucKhoaHoc:CourseCategories = new CourseCategories();
 }
 
 export class CourseAuthor {

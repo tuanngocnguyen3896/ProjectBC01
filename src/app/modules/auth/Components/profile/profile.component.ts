@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { RequestForm } from 'src/app/modules/home/_models/courses.models';
 import { AppState } from 'src/app/shared/reducers';
+import { SetLoadingSpinner } from 'src/app/shared/_actions/shared.action';
 import { CancelCourses, EditUser, LoadUser, Logout } from '../../_actions/auth.actions';
 import {
   errorMessage,
   getUserProfile,
-  isUserLogin,
+  userLogin,
 } from '../../_selectors/auth.selectors';
 import { AuthService } from '../../_services/auth.service';
 
@@ -18,6 +18,7 @@ import { AuthService } from '../../_services/auth.service';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  
 })
 export class ProfileComponent implements OnInit {
   isUserLogin: User | UserReponseData;
@@ -26,26 +27,24 @@ export class ProfileComponent implements OnInit {
   errorMessage: Observable<string>;
   constructor(
     private store: Store<AppState>,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.store.select(isUserLogin).subscribe((state) => {
+    this.store.select(userLogin).subscribe((state) => {
       this.isUserLogin = state;
     });
-    this.store.dispatch(new LoadUser(this.isUserLogin));
     this.getProfile();
     this.handleEditForm();
-    this.errorMessage = this.store.select(errorMessage);
-    
+    this.errorMessage = this.store.select(errorMessage); 
   }
+  
   getProfile() {
+    this.store.dispatch(new LoadUser(this.isUserLogin));
     this.store.select(getUserProfile).subscribe((state) => {
       this.userProfile = state;
     });
-    
   }
-
   handleEditForm() {
     const data = this.authService.getUserFromLocalStorage();    
     this.editForm = new FormGroup({
@@ -86,4 +85,5 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.store.dispatch(new Logout())
   }
+  
 }

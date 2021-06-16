@@ -35,9 +35,9 @@
           <div class="navbar-right-content">
             <div *ngIf="(isLoggedIn | async); then doSomething; else doSomethingElse;"></div>
             <ng-template #doSomething>
-              <a *ngIf="(userData.maLoaiNguoiDung).toLowerCase() === 'gv'" class="nav-link" href="#" [routerLink]="['/admin']">
+              <!-- <a *ngIf="(userData.maLoaiNguoiDung).toLowerCase() === 'gv'" class="nav-link" href="#" [routerLink]="['/admin']">
                 <i class="fa fa-unlock" aria-hidden="true"></i>
-              </a>
+              </a> -->
               <a class="nav-link" href="#" [routerLink]="['/auth/profile']">
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               </a>

@@ -158,5 +158,9 @@
   class="error-message alert alert-danger text-center mt-3 mt-md-5"
   *ngIf="errorMessage | async as error"
 >
-  {{ error }}
+  <p>  {{ error }}  </p>
+  <a class="btn-back" [routerLink]="['/courses', 'courses-list']">
+    Go Back
+    <i class="fa fa-undo " aria-hidden="true"></i>
+  </a>
 </div>

@@ -11,14 +11,13 @@ export const initialState: CategoriesState = {
     errorMessage: null
 }
 export function CategoriesReducer(state = initialState ,action: CategoriesActions) : CategoriesState{
-    switch (action.type) {
-       
+    switch (action.type) { 
         case CategoriesActionTypes.LOAD_CATEGORIES_SUCCESS:
             return {
                 ...state,
                 categories : action.categories
             }
-        case CategoriesActionTypes.LOAD_COURSES_DETAIL_SUCCESS: 
+        case CategoriesActionTypes.LOAD_COURSES_DETAIL_SUCCESS:             
             return {
                 ...state,
                 detail : action.payload.courses,

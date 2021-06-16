@@ -13,9 +13,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './modules/auth/_services/auth.service';
 import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor';
 import { AuthEffects } from './modules/auth/_effects/auth.effects';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

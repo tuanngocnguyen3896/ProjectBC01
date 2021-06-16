@@ -34,7 +34,6 @@ const HomeRoute: Routes = [
       {
         path: 'details/:id',
         component: CoursesDetailComponent,
-        // canActivate: [CoursesGuard],
       },
     ],
   },

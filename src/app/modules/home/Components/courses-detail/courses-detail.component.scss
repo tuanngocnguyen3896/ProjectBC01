@@ -129,8 +129,15 @@
 }
 .error-message{
   position: absolute;
-  top: 30%;
-  left: 40%;
-  width: 30vh;
+  top: 40%;
+  left: 0;
+  width: 100%;
   padding: 50px;
+  font-size: $paraSize3*2;
+  font-weight: $bold;
+}
+.btn-back{
+  padding: 0.5em;
+  color:  inherit;
+  text-decoration: none;
 }

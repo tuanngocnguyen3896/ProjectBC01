@@ -33,10 +33,10 @@ const AuthRoute:Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(AuthRoute),
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    RouterModule.forChild(AuthRoute),
     EffectsModule.forFeature([AuthEffects]),
     StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
   ]

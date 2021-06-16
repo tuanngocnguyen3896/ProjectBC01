@@ -13,5 +13,5 @@ export interface UserReponseData {
     accessToken?: string;
     maLoaiNguoiDung?: string,
     maNhom?:string,
-    chiTietKhoaHocGhiDanh?: Array<any> 
+    chiTietKhoaHocGhiDanh?: Array<{maKhoaHoc:string,tenKhoaHoc:string}> 
 }

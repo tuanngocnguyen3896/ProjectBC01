@@ -11,6 +11,7 @@ import {  RegisterCourses } from '../../_actions/courses.actions';
 import { RequestForm } from '../../_models/courses.models';
 import { getCoursesDetail } from '../../_selectors/categories.selectors';
 import {getCoursesError} from '../../_selectors/categories.selectors';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 @Component({
   selector: 'app-courses-detail',
   templateUrl: './courses-detail.component.html',
@@ -31,18 +32,21 @@ export class CoursesDetailComponent implements OnInit {
     this.route.params.pipe().subscribe(value => this.maKhoaHoc = value);
     this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
     this.store.select(getCoursesDetail).subscribe(value => {
-      // console.log('data trong subscribe: ',value);
       return this.course =value;
     });
-    // console.log('Data ngoài:  ',this.course); // => null chỗ này
     this.errorMessage = this.store.select(getCoursesError);
   }
   onRegisterCourses(){
     let user: User;
     this.store.select(userLogin).subscribe(value => user = value)
     if(user === null){
-      alert('Please login to continue')
-      this.router.navigate(['auth/login']);
+      Swal.fire({  
+        icon: 'error',  
+        title: 'Oops...',  
+        text: 'Please login to continue',
+          
+      });  
+        this.router.navigate(['auth/login']);
     }
     const payload = {
       maKhoaHoc: this.maKhoaHoc.id,
