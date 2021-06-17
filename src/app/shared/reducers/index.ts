@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import { routerReducer, RouterReducerState } from "@ngrx/router-store";
+=======
+import { AdminReducer, CoursesUpdateState } from "src/app/modules/admin/_reducer/courses-admin.reducer";
+import { COURSES_UPDATE_STATE_NAME } from "src/app/modules/admin/_selectors/courses-admin.selectors";
+>>>>>>> Stashed changes
 import { AuthReducer, AuthState } from "src/app/modules/auth/_reducers/auth.reducers";
 import { AUTH_STATE_NAME } from "src/app/modules/auth/_selectors/auth.selectors";
 import { CategoriesReducer, CategoriesState } from "src/app/modules/home/_reducers/categories.reducers";
@@ -10,7 +15,11 @@ export interface AppState {
     [AUTH_STATE_NAME]: AuthState,
     [COURSES_STATE_NAME]: CoursesState,
     [CATEGORIES_STATE_NAME] : CategoriesState,
+<<<<<<< Updated upstream
     router: RouterReducerState
+=======
+    [COURSES_UPDATE_STATE_NAME]: CoursesUpdateState,
+>>>>>>> Stashed changes
 
 }
 
@@ -18,5 +27,9 @@ export const appReducer = {
     [AUTH_STATE_NAME]: AuthReducer,
     [COURSES_STATE_NAME] : CoursesReducer,
     [CATEGORIES_STATE_NAME] : CategoriesReducer,
+<<<<<<< Updated upstream
     router: routerReducer
+=======
+    [COURSES_UPDATE_STATE_NAME]: AdminReducer,
+>>>>>>> Stashed changes
 }
