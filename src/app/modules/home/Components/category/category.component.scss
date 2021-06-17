@@ -3,18 +3,18 @@
 
 //cate
 .category{
-    height:60vh;
+    height:300px;
     @include xs {
-        height: 100vh;
+        height: 500px;
     }
     @include sm {
-        height:100vh;
+        height: 550px;
     }
     @include md {
-        height:85vh;
+        height: 450px;
     }
     @include lg {
-        height:70vh;
+        height:300px;
     }
     h3{
         font-size: $headSize1;

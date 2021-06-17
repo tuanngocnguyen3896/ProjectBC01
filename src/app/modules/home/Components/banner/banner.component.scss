@@ -3,10 +3,10 @@
 .banner {
     background: linear-gradient(to bottom, $bgBlue, $bgPurple, $bgBlue);
     &__content{
-        height:80vh;
+        height:500px;
         @include flexCenter;
         @include xs{
-            height: 75vh;
+            height:450px;
         }
         .row{
             align-items: center;
@@ -34,15 +34,15 @@
         &__right{
             height:auto;
             img{
-                height:70vh;
+                height:400px;
                 @include xs{
-                    height: 30vh;
+                    height: 200px;
                 }
                 @include sm {
-                    height:45vh;
+                    height:250px;
                 }
                 @include md {
-                    height:65vh;
+                    height:300px;
                 }
             }
         }

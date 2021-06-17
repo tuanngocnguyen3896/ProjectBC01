@@ -3,6 +3,9 @@
 
 .courses {
   background: $bgGray1;
+  .container{
+    padding-bottom: 4rem;
+  }
   .card {
     height: 280px;
     box-shadow: 0 0 10px $white;

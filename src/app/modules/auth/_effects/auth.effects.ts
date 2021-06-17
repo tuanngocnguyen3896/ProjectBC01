@@ -62,6 +62,9 @@ export class AuthEffects {
   
           }),
           catchError((error) => {
+            setTimeout(() => {
+              this.store.dispatch(new SetLoadingSpinner(false));
+            }, 1500);
             return of(this.store.dispatch(new LoginFail(error.error)));
           })
         );

@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   errorMessage: Observable<string>;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      taiKhoan: new FormControl('aaa1', [Validators.required]),
-      matKhau: new FormControl('aaa1', [Validators.required]),
+      taiKhoan: new FormControl('', [Validators.required]),
+      matKhau: new FormControl('', [Validators.required]),
     });
     this.store.dispatch(new SetErrorMessage(null));
     this.errorMessage = this.store.select(errorMessage);

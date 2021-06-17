@@ -38,28 +38,28 @@
   background: white;
   border-radius: 3px;
   text-align: left;
-  padding: 13vmin 5vmin 20vmin 10vmin;
+  padding: 4em 5em 7em 5em;
   box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
   z-index: 1;
   @include xs{
-    padding: 2.5rem;
+    padding: 1.5rem;
   }
   @include md {
     position: absolute;
-    top: 7vmin;
-    left: -10vmin;
-    padding: 13vmin 5vmin 15vmin 10vmin;
-
+    top: 15%;
+    left: -25%;
+    padding: 3em 3em 5em 3em;
   }
   @include lg {
     position: absolute;
-    top: 7vmin;
-    left: -18vmin;
+    top: 10%;
+    left: -25%;
   }
   @include xl{
     position: absolute;
-    top: 7vmin;
-    left: -18vmin;
+    top: 10%;
+    left: -25%;
+    padding: 3em 4em 10em 4em;
   }
 }
 
