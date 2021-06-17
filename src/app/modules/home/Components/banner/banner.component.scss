@@ -1,7 +1,7 @@
 @import "../../../../../assets/sass/helpers/variable";
 @import "../../../../../assets/sass/helpers/mixin";
 .banner {
-    background: linear-gradient(to bottom, $bgBlue, $bgPurple, $bgBlue);
+    background: linear-gradient(to bottom, $color-blue, $color-purple1, $color-purple2);
     &__content{
         height:500px;
         @include flexCenter;
@@ -14,6 +14,7 @@
         &__left{
             h1{
                 font-weight: $bold;
+                color: $color-ogrange;
                 @include xs{
                     font-size: $headSize2;
                 }

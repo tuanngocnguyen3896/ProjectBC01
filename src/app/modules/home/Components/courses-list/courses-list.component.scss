@@ -58,7 +58,11 @@
     position: absolute;
     bottom: 10%;
     width: 75%;
-    background: $bgBlue;
+    background: $color-blue;
+    transition: 0.3s linear;
+    &:hover{
+      background: $color-ogrange;
+    }
     text-align: center;
     padding: 0.25rem;
     border-radius: 0.25rem;
@@ -95,7 +99,7 @@
     justify-content: space-between;
     &__left {
       select {
-        border: 1px solid $bgGray;
+        border: 1px solid $color-gray1;
         background: $white;
         color: $black;
         font-size: $light;
@@ -135,7 +139,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
     transition: 0.3s linear;
     &:hover {
-      background: $bgBlue;
+      background: $color-blue;
       color: $white;
     }
     @include xs{

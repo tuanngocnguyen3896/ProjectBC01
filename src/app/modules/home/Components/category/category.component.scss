@@ -23,11 +23,11 @@
     }
     &__item{
         padding: 1rem 2rem;
-        border: 1px solid $bgGray;
+        border: 1px solid $color-gray1;
         border-radius:5px;
         transition: 0.3s linear;
         &:hover{
-            box-shadow: 0 0 0.5rem $bgGray;
+            box-shadow: 0 0 0.5rem $color-gray1;
         }
         @include xs{
             text-align: center;
@@ -40,7 +40,7 @@
 
     }
     &__content{
-        color: $textGray1;
+        color: $color-black2;
         font-size:$headSize2;
         font-weight:$normal;
     }
@@ -49,14 +49,14 @@
     }
     .btn-explore{
         padding: 0.5rem 3rem;
-        border: 1px solid $bgBlue;
-        color: $bgBlue;
+        border: 1px solid $color-blue;
+        color: $color-blue;;
         background: transparent;
         transition: 0.3s linear;
         font-size: $headSize3;
         font-weight: $light;
         &:hover{
-            background: linear-gradient(to bottom, $bgBlue, $bgPurple);
+            background: linear-gradient(to bottom, $color-blue, $color-purple1);
             color: $white;
         }
         @include xs {

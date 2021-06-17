@@ -7,9 +7,9 @@
     // left:4%;
     // z-index: $zNormal;
     // background: transparent;
-    background: $bgBlue;
+    background: $color-blue;
     transition: 0.3s linear;
-
+    
     .navbar{
         transition: 0.3s linear;
         &__logo{
@@ -46,7 +46,7 @@
             margin-left: 0.5rem;
         }
         &:hover{
-            color: $textGray;
+            color: $color-ogrange;
         }
         @include xs{
             font-size: $paraSize2;

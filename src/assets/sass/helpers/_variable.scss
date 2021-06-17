@@ -1,6 +1,5 @@
 // VARIABLES
-$white: #fff;
-$black: #000;
+
 $bgBlue:#2980b9;
 $bgPurple: #8e44ad;
 $bgPink : #ea5252;
@@ -12,13 +11,25 @@ $textGray1: #54595f;
 $textC333: #333;
 $textPink: #ea5252;
 $textYellow: #f4c150;
-
+// COLOR
+$white: #fff;
+$black: #000;
+$color-black1: #2f323a;
+$color-black2: #54595f;
+$color-gray1: #ccc;
+$color-gray2: #f0f3f6;
+$color-blue: #1578EB;
+$color-light-blue1: #8AA5FF;
+$color-light-blue2: #B9CBFF;
+$color-ogrange: #F5B404;
+$color-yellow: #F2E65E;
+$color-purple1: #6360DB;
+$color-purple2: #7800EB;
 
 // zIndex
 $zNormal: 1;
 $zCustom: 2;
 $zFixed: 99;
-
 // fontsize
 $headSize1: 20px;
 $headSize2: 18px;
