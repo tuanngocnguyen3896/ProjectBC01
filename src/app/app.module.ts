@@ -13,12 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './modules/auth/_services/auth.service';
 import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor';
 import { AuthEffects } from './modules/auth/_effects/auth.effects';
-<<<<<<< Updated upstream
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { CustomerSerializer } from './store/router/custom-serializer';
-=======
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,11 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     StoreDevtoolsModule.instrument({
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-<<<<<<< Updated upstream
-    StoreRouterConnectingModule.forRoot({serializer:CustomerSerializer})
-=======
     NgbModule,
->>>>>>> Stashed changes
   ],
   providers: [
     AuthService,
