@@ -51,11 +51,14 @@
 
 .login {
     .form-cont{
+        height: 480px !important;
         @include xs{
             width: 60% !important;
+            height: 420px !important;
         }
         @include sm{
             width: 60% !important;
+            height: 460px !important;
         }
         h1{
             font-size: 2em;
