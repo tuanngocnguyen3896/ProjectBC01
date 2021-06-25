@@ -1,4 +1,5 @@
 <div class="container-fluid p-0 courses">
+<<<<<<< Updated upstream
   <div class="container">
     <div class="text-center courses__header">Our Courses</div>
   </div> 
@@ -38,11 +39,54 @@
             <a [routerLink]="['/courses', 'details', item.maKhoaHoc]"
               >View Detail</a
             >
+=======
+    <div class="container">
+      <div class="text-center courses__header">Our Courses</div>
+    </div> 
+    <div class="courses__group">
+      <div class="courses__group__left">
+        <select #g (change)="onChangeGroup(g.value)">
+          <option value="GP01">GP01</option>
+          <option value="GP02">GP02</option>
+          <option value="GP03">GP03</option>
+          <option value="GP04">GP04</option>
+          <option value="GP05">GP05</option>
+          <option value="GP06">GP06</option>
+          <option value="GP07">GP07</option>
+          <option value="GP08">GP08</option>
+        </select>
+      </div>
+      <div>
+        <button (click)="onGetAllCourses('All')" class="courses-btn-all">All</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-2" *ngFor="let item of courseUpdate| async">
+        <div class="card">
+          <img
+            class="card-img-top courses__img"
+            [src]="item.hinhAnh"
+            [alt]="item.tenKhoaHoc"
+          />
+          <div class="courses__overlay">
+            <p>Views: {{ item.luotXem }}</p>
+            <p>Student: {{ item.soLuongHocVien }}</p>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title courses__name">{{ item.tenKhoaHoc }}</h4>
+            <!-- {{(item.moTa.length > 100) ? (item.moTa | slice:0:150)+'...': (item.moTa)}} -->
+            <div class="card-btn">
+              <a [routerLink]="['/courses', 'details', item.maKhoaHoc]"
+                >View Detail</a
+              >
+            </div>
+>>>>>>> Stashed changes
           </div>
         </div>
       </div>
     </div>
   </div>
+<<<<<<< Updated upstream
 </div>
 
 <!-- Add courses -->
@@ -105,3 +149,66 @@
     <button type="button" class="btn btn-outline-dark" (click)="onAddSubmit()">Save</button>
   </div>
 </ng-template>
+=======
+  
+  <!-- Add courses -->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="addForm" (ngSubmit)="onAddSubmit()" novalidate>
+        <div class="form-group">
+          <label for="">Course ID</label>
+          <input type="text" class="form-control" formControlName="maKhoaHoc">
+        </div>
+        <div class="form-group">
+          <label for="biDanh">Nick Name</label>
+          <input type="text" class="form-control" formControlName="biDanh">
+        </div>
+        <div class="form-group">
+          <label for="tenKhoaHoc">Course Name</label>
+          <input type="text" class="form-control" formControlName="tenKhoaHoc">
+        </div>
+        <div class="form-group">
+          <label for="moTa">Description</label>
+          <input type="text" class="form-control" formControlName="moTa">
+        </div>
+        <div class="form-group">
+          <label for="luotXem">Views</label>
+          <input type="text" class="form-control" formControlName="luotXem">
+        </div>
+        <div class="form-group">
+          <label for="danhGia">Rate</label>
+          <input type="text" class="form-control" formControlName="danhGia">
+        </div>
+        <div class="form-group">
+          <label for="hinhAnh">Photo</label>
+          <input type="text" class="form-control" formControlName="hinhAnh">
+        </div>
+        <div class="form-group">
+          <label for="ngayTao">Date</label>
+          <input type="text" class="form-control" formControlName="ngayTao">
+        </div>
+        <div class="form-group">
+          <label for="maNhom">Courses Group ID</label>
+          <input type="text" class="form-control" formControlName="maNhom">
+        </div>
+        <div class="form-group">
+          <label for="maDanhMucKhoaHoc">Course Group Name</label>
+          <input type="text" class="form-control" formControlName="maDanhMucKhoaHoc">
+        </div>
+        <div class="form-group">
+          <label for="taiKhoanNguoiTao">Admin Account</label>
+          <input type="text" class="form-control" formControlName="taiKhoanNguoiTao">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="onAddSubmit()">Save</button>
+    </div>
+  </ng-template>
+>>>>>>> Stashed changes

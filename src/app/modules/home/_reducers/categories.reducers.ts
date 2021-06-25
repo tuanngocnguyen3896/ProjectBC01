@@ -3,10 +3,12 @@ import {CategoriesActions , CategoriesActionTypes} from '../_actions/categories.
 export interface CategoriesState {
     categories: CourseCategories;
     detail: CoursesData;
+    errorMessage: string
 }
 export const initialState: CategoriesState = {
     categories: null,
-    detail: null
+    detail: null,
+    errorMessage: null
 }
 export function CategoriesReducer(state = initialState ,action: CategoriesActions) : CategoriesState{
     switch (action.type) {

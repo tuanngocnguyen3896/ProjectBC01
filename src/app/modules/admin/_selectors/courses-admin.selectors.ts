@@ -1,9 +1,14 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { CoursesUpdateState } from "../_reducer/courses-admin.reducer";
+export const ADMIN_COURSES_NAME = 'coursesUpdate'
+const getCoursesUpdateState = createFeatureSelector<CoursesUpdateState>(ADMIN_COURSES_NAME);
 
-export const COURSES_UPDATE_STATE_NAME = 'coursesUpdate'
-export const getCousrsesUpdateState = createFeatureSelector<CoursesUpdateState>(COURSES_UPDATE_STATE_NAME);
 
-const getCoursesUpdate = createSelector(getCousrsesUpdateState,(state)=>{
-    return state.coursesUpdtate
+export const getCoursesLists = createSelector(getCoursesUpdateState,(state)=>{
+    
+    return state.coursesUpdate
+} )
+export const getCoursesById = createSelector(getCoursesUpdateState,(state,props) =>{
+    
+ return state.coursesUpdate.find((courses)=>courses.id === props.id)
 })

@@ -9,7 +9,7 @@ import { AppState } from 'src/app/shared/reducers';
 import { LoadCoursesDetail } from '../../_actions/categories.actions';
 import {  RegisterCourses } from '../../_actions/courses.actions';
 import { RegisterForm } from '../../_models/courses.models';
-import { getCoursesDetail } from '../../_selectors/categories.selectors';
+import { getCoursesDetail, getCoursesError } from '../../_selectors/categories.selectors';
 
 @Component({
   selector: 'app-courses-detail',
@@ -20,6 +20,7 @@ export class CoursesDetailComponent implements OnInit {
   maKhoaHoc:  Params;
   course: CoursesData;
   formRegister: RegisterForm;
+  errorMessage: Observable<string>
   constructor(
     private route : ActivatedRoute,
     private store: Store<AppState>,
@@ -32,17 +33,12 @@ export class CoursesDetailComponent implements OnInit {
       
         return this.maKhoaHoc =value});
     this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
-<<<<<<< Updated upstream
-    this.store.select(getCoursesDetail).subscribe(value => this.course = value);
-    console.log(this.course);
-=======
     this.store.select(getCoursesDetail).subscribe(value => {
       console.log(this.course);
       
       return this.course =value;
     });
     this.errorMessage = this.store.select(getCoursesError);
->>>>>>> Stashed changes
   }
 
   onRegisterCourses(){

@@ -10,4 +10,7 @@ export const getCategories = createSelector(getCategoriesState, (state) => {
 
 export const getCoursesDetail = createSelector(getCategoriesState, (state) => {
     return state.detail;
+});
+export const getCoursesError = createSelector(getCategoriesState, (state) => {
+    return  state.errorMessage;
 })

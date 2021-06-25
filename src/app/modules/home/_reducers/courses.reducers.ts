@@ -3,12 +3,7 @@ import { CategoriesActionTypes } from "../_actions/categories.actions";
 import { CoursesActions, CoursesActionTypes} from '../_actions/courses.actions';
 export interface CoursesState{
     courses: CoursesData;
-<<<<<<< Updated upstream
-    // categories: CourseCategories;
-    // detail: CoursesData;
-=======
     
->>>>>>> Stashed changes
 }
 export const initialState: CoursesState = {
     courses: null,

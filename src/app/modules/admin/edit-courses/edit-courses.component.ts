@@ -7,9 +7,8 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { CoursesData } from 'src/app/core/Models/Courses.model';
 import { AppState } from 'src/app/shared/reducers';
-import { Logout } from '../../auth/_actions/auth.actions';
-import { editCourses } from '../_action/courses-admin.action';
-import { getCoursesById } from '../_selectors/courses-admin.selector';
+import { editCourses } from '../_actions/courses-admin.action';
+import { getCoursesById } from '../_selectors/courses-admin.selectors';
 // import { getCoursesById } from '../_selectors/courses-admin.selector';
 
 @Component({
