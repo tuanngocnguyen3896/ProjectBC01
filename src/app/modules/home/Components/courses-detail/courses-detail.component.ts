@@ -32,8 +32,17 @@ export class CoursesDetailComponent implements OnInit {
       
         return this.maKhoaHoc =value});
     this.store.dispatch(new LoadCoursesDetail(this.maKhoaHoc.id));
+<<<<<<< Updated upstream
     this.store.select(getCoursesDetail).subscribe(value => this.course = value);
     console.log(this.course);
+=======
+    this.store.select(getCoursesDetail).subscribe(value => {
+      console.log(this.course);
+      
+      return this.course =value;
+    });
+    this.errorMessage = this.store.select(getCoursesError);
+>>>>>>> Stashed changes
   }
 
   onRegisterCourses(){
