@@ -1,19 +1,60 @@
-<div class="container">
-    <div class="display-4 text-center">Danh sách khoá học</div>
-      <app-courses-categories></app-courses-categories>
-    <div class="row">
-        <div class="col-4 mt-2" *ngFor="let item of courses | async">
-            <div class="card text-white bg-dark">
-              <img class="card-img-top" [src]="item.hinhAnh" [alt]="item.tenKhoaHoc">
-              <div class="card-body">
-                <h4 class="card-title">{{item.tenKhoaHoc}}</h4>   
-                <h3>{{item.maKhoaHoc}}</h3>     
-                {{(item.moTa.length > 100) ? (item.moTa | slice:0:150)+'...': (item.moTa)}}
-                <div class="card-btn">
-                  <a class="btn btn-success" [routerLink]="['/courses', 'details', item.maKhoaHoc]">Xem chi tiết</a>
-                </div>
-              </div>
-            </div>
-        </div>
+<div class="container-fluid p-0 courses">
+  <div class="container">
+    <div class="text-center courses__header">Our Courses</div>
+  <!-- <div class="row">
+      <div [ngSwitch]="coursesGroup">
+          <p *ngSwitchCase="'GP01'">Group GP01</p>
+          <p *ngSwitchCase="'GP02'">Group GP02</p>
+          <p *ngSwitchCase="'GP03'">Group GP03</p>
+          <p *ngSwitchCase="'GP04'">Group GP04</p>
+          <p *ngSwitchCase="'GP05'">Group GP05</p>
+          <p *ngSwitchCase="'GP06'">Group GP06</p>
+          <p *ngSwitchCase="'GP07'">Group GP07</p>
+          <p *ngSwitchDefault>Group GP08</p>
+      </div>
+     
+  </div> -->
+  <div class="courses__group">
+    <div class="courses__group__left">
+      <select #g (change)="onChangeGroup(g.value)">
+        <option value="GP01">GP01</option>
+        <option value="GP02">GP02</option>
+        <option value="GP03">GP03</option>
+        <option value="GP04">GP04</option>
+        <option value="GP05">GP05</option>
+        <option value="GP06">GP06</option>
+        <option value="GP07">GP07</option>
+        <option value="GP08">GP08</option>
+      </select>
+    </div>
+    <div>
+      <button (click)="onGetAllCourses('All')" class="courses-btn-all">All</button>
+    <app-courses-categories [group]="coursesGroup"></app-courses-categories>
     </div>
   </div>
+  <div class="row mt-5">
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-2" *ngFor="let item of courses$ | async">
+      <div class="card">
+        <img
+          class="card-img-top courses__img"
+          [src]="item.hinhAnh"
+          [alt]="item.tenKhoaHoc"
+        />
+        <div class="courses__overlay">
+          <p>Views: {{ item.luotXem }}</p>
+          <p>Student: {{ item.soLuongHocVien }}</p>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title courses__name">{{ item.tenKhoaHoc }}</h4>
+          <!-- {{(item.moTa.length > 100) ? (item.moTa | slice:0:150)+'...': (item.moTa)}} -->
+          <div class="card-btn">
+            <a [routerLink]="['/courses', 'details', item.maKhoaHoc]"
+              >View Detail</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

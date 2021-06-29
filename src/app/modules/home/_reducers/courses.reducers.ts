@@ -1,14 +1,11 @@
-import { CourseCategories, CoursesData } from "src/app/core/Models/Courses.model";
-import { CategoriesActionTypes } from "../_actions/categories.actions";
+import { CoursesData } from "src/app/core/Models/Courses.model";
+import { UserReponseData } from "src/app/core/Models/User.model";
 import { CoursesActions, CoursesActionTypes} from '../_actions/courses.actions';
 export interface CoursesState{
     courses: CoursesData;
-    
 }
 export const initialState: CoursesState = {
     courses: null,
-    // categories: null,
-    // detail: null
 }
 
 export function CoursesReducer(state = initialState ,action: CoursesActions) : CoursesState{
@@ -18,19 +15,16 @@ export function CoursesReducer(state = initialState ,action: CoursesActions) : C
                 ...state,
                 courses : action.payload.courses
             }
-        // case CategoriesActionTypes.LOAD_CATEGORIES_SUCCESS:
-        //     return {
-        //         ...state,
-        //         categories : action.categories
-        //     }
-        // case CoursesActionTypes.LOAD_COURSES_DETAIL_SUCCESS: 
-        //     return {
-        //         ...state,
-        //         detail : action.payload.courses
-        //     }    
-
+        case CoursesActionTypes.LOAD_COURSES_BY_CATEGORIES_SUCCESS: 
+            return {
+                ...state,
+                courses: action.payload.courses
+            }    
+        case CoursesActionTypes.REGISTER_COURSES_FAIL:
+            return {
+                ...state
+            }
         default: 
             return state;
     }
 }
-

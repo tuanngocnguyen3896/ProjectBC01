@@ -1,0 +1,51 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+.banner {
+    background: linear-gradient(to bottom, $color-blue, $color-purple1, $color-purple2);
+    &__content{
+        height:500px;
+        @include flexCenter;
+        @include xs{
+            height:450px;
+        }
+        .row{
+            align-items: center;
+        }
+        &__left{
+            h1{
+                font-weight: $bold;
+                color: $color-ogrange;
+                @include xs{
+                    font-size: $headSize2;
+                }
+                @include sm {
+                    font-size: $headSize1;
+                }
+            }
+            h6,p {
+                font-weight: $normal;
+                @include xs{
+                    font-size: $paraSize2;
+                }
+                @include sm{
+                    font-size: $paraSize1;
+                }
+            }
+        }
+        &__right{
+            height:auto;
+            img{
+                height:400px;
+                @include xs{
+                    height: 200px;
+                }
+                @include sm {
+                    height:250px;
+                }
+                @include md {
+                    height:300px;
+                }
+            }
+        }
+    }
+}
