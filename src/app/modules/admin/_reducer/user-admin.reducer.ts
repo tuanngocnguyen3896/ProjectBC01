@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store"
 import { User, UserReponseData } from "src/app/core/Models/User.model"
+import { deleteUserSuccess, loadUserSuccess } from "../_action/user-admin.action"
 
-import { deleteUserSuccess, loadUserSuccess } from "../_actions/user-admin.action"
 export interface AdminUserState{
     adminUser: UserReponseData[]
 }
@@ -11,13 +11,10 @@ export const initialState:AdminUserState={
 
 const _adminUserReducer = createReducer(initialState,
     on(loadUserSuccess, (state,action)=>{
-
         return{
             ...state,
             adminUser: action.user
         }
-
-    
     }), on(deleteUserSuccess, (state,{taiKhoan})=>{
         const updatedUser = state.adminUser.filter((user)=>{
             return user.taiKhoan !== taiKhoan

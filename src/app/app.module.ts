@@ -15,7 +15,10 @@ import { TokenInterceptor } from './modules/auth/_interceptors/auth.interceptor'
 import { AuthEffects } from './modules/auth/_effects/auth.effects';
 
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [

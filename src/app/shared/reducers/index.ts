@@ -1,7 +1,7 @@
 import { AdminReducer, CoursesUpdateState } from "src/app/modules/admin/_reducer/courses-admin.reducer";
 import { adminUserReducer, AdminUserState } from "src/app/modules/admin/_reducer/user-admin.reducer";
-import { ADMIN_COURSES_NAME } from "src/app/modules/admin/_selectors/courses-admin.selectors";
-import { ADMIN_USER_NAME } from "src/app/modules/admin/_selectors/user-admin.selectors";
+import { ADMIN_COURSES_NAME } from "src/app/modules/admin/_selectors/courses-admin.selector";
+import { ADMIN_USER_NAME } from "src/app/modules/admin/_selectors/user.selector";
 import { AuthReducer, AuthState } from "src/app/modules/auth/_reducers/auth.reducers";
 import { AUTH_STATE_NAME } from "src/app/modules/auth/_selectors/auth.selectors";
 import { CategoriesReducer, CategoriesState } from "src/app/modules/home/_reducers/categories.reducers";
@@ -18,6 +18,8 @@ export interface AppState {
     [SHARED_STATE_NAME] : SharedState,
     [ADMIN_USER_NAME]: AdminUserState,
     [ADMIN_COURSES_NAME]: CoursesUpdateState
+
+
 }
 
 export const appReducer = {

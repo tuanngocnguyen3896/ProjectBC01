@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { CoursesData} from "src/app/core/Models/Courses.model";
-import { addCoursesSuccess, deleteCoursesSuccess, editCoursesSuccess, loadCoursesSuccess } from "../_actions/courses-admin.action";
+import { addCoursesSuccess, deleteCoursesSuccess, editCoursesSuccess, loadCoursesSuccess } from "../_action/courses-admin.action";
 
 export interface CoursesUpdateState{
     coursesUpdate: CoursesData[]

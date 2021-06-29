@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,10 +7,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
-
-import { deleteUser,loadUser } from '../_actions/user-admin.action';
-import { getUserList } from '../_selectors/user-admin.selectors';
-
+import { deleteUser,loadUser } from '../_action/user-admin.action';
+import { getUserList } from '../_selectors/user.selector';
 
 @Component({
   selector: 'app-user',
@@ -19,9 +16,7 @@ import { getUserList } from '../_selectors/user-admin.selectors';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
-user: Observable<UserReponseData[]>
-  
+  user: Observable<UserReponseData[]>;
   isActive: boolean= true;
   userGroup: string;
   getAll: string;

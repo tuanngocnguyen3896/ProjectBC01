@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-
-
 import { of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
-import {  deleteUser, deleteUserFail, deleteUserSuccess, loadUser, loadUserSuccess } from "../_actions/user-admin.action";
-import { AdminUserService } from "../_services/user-admin.services";
+import {  deleteUser, deleteUserFail, deleteUserSuccess, loadUser, loadUserSuccess } from "../_action/user-admin.action";
+import { AdminUserService } from "../_services/admin-user.service";
+
 
 @Injectable({
     providedIn:'root'
@@ -24,13 +23,11 @@ export class AdminUserEffects{
         return this.action$.pipe(
             ofType(loadUser),
             mergeMap((action)=>{
-
                 return this.userService.getUser(action.maNhom).pipe(map((data)=>{
                     return loadUserSuccess({user:data})
                 }))
             })
         )
-
     });
     deleteUser$ = createEffect(()=>{
         return this.action$.pipe(
@@ -74,5 +71,4 @@ export class AdminUserEffects{
     //         })
     //     )
     // })
-
 }
