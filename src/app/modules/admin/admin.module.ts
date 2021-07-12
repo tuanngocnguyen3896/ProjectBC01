@@ -13,15 +13,24 @@ import { CourseAdminEffects } from './_effects/course-admin.effects';
 import { StoreModule } from '@ngrx/store';
 import { ADMIN_USER_NAME } from './_selectors/user.selector';
 import { adminUserReducer } from './_reducer/user-admin.reducer';
+import { AdminGuard } from './_guard/admin.guard';
 
 
 const adminRoutes: Routes = [
-  {path:'', component:AdminTemplateComponent, children:[
-    {path:'admin-courses', component:AdminCoursesComponent},
-    {path:'edit-courses/:maKhoaHoc', component:EditCoursesComponent},
-    {path:'admin-user', component:UserComponent}
-  ]}
+  {
+    path: '', component: AdminTemplateComponent, children: [
+      { path: 'admin-courses', component: AdminCoursesComponent, 
+      
+    },
+      { path: 'edit-courses/:maKhoaHoc', component: EditCoursesComponent },
+      { path: 'admin-user', component: UserComponent }
+    ],
   
+    canActivate: [AdminGuard],
+
+  }
+
+
 ]
 
 @NgModule({

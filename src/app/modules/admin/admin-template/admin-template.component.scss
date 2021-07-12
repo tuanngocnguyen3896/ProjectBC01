@@ -1,0 +1,8 @@
+@import "../../../../assets/sass/helpers/mixin";
+@import "../../../../assets/sass/helpers//variable";
+
+
+.admin{
+    background: linear-gradient(to bottom, $color-blue, $color-purple1, $color-purple2);
+    color: $color-yellow
+}
