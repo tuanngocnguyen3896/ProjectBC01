@@ -1,3 +1,5 @@
+
+
 import { StringMap, StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
 import { createAction, props } from "@ngrx/store";
 import { CoursesData} from "src/app/core/Models/Courses.model";
@@ -6,8 +8,6 @@ import { CoursesData} from "src/app/core/Models/Courses.model";
 export const LOAD_COURSES_ACTION = '[admin page] load courses action';
 export const LOAD_COURSES_SUCCESS = '[admin page] load courses success';
 export const LOAD_COURSES_FAIL = '[admin page] load courses fail';
-
-
 export const ADD_COURSES_ACTION = '[admin page] add courses action';
 export const ADD_COURSES_SUCCESS = '[admin page] add courses success';
 export const ADD_COURSES_FAIL = '[admin page] add courses fail';

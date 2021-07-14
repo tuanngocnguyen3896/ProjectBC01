@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './modules/admin/_guard/admin.guard';
 import { HomeTemplateComponent } from './modules/home/Components/home-template/home-template.component';
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
+
   },
   // { path: '**', redirectTo: 'home' },
 ];

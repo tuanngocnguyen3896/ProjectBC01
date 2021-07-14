@@ -8,8 +8,8 @@ import { CategoriesReducer, CategoriesState } from "src/app/modules/home/_reduce
 import { CoursesReducer, CoursesState } from "src/app/modules/home/_reducers/courses.reducers";
 import { CATEGORIES_STATE_NAME } from "src/app/modules/home/_selectors/categories.selectors";
 import { COURSES_STATE_NAME } from "src/app/modules/home/_selectors/courses.selectors";
-import { SharedReducer, SharedState } from "../_reducer/shared.reducer";
-import { SHARED_STATE_NAME } from "../_selector/shared.selectors";
+import { SharedReducer, SharedState } from "../_reducers/shared.reducers";
+import { SHARED_STATE_NAME } from "../_selector/shared.selector";
 
 export interface AppState {
     [AUTH_STATE_NAME]: AuthState,

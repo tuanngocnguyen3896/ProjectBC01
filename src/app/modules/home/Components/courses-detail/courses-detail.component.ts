@@ -8,7 +8,7 @@ import { userLogin } from 'src/app/modules/auth/_selectors/auth.selectors';
 import { AppState } from 'src/app/shared/reducers';
 import { LoadCoursesDetail } from '../../_actions/categories.actions';
 import {  RegisterCourses } from '../../_actions/courses.actions';
-import { RequestForm } from '../../_models/courses.models';
+import { RegisterForm } from '../../_models/courses.models';
 import { getCoursesDetail } from '../../_selectors/categories.selectors';
 import {getCoursesError} from '../../_selectors/categories.selectors';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
@@ -20,7 +20,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class CoursesDetailComponent implements OnInit {
   maKhoaHoc:  Params;
   course: CoursesData;
-  formRegister: RequestForm;
+  formRegister: RegisterForm;
   errorMessage: Observable<string>;
   constructor(
     private route : ActivatedRoute,

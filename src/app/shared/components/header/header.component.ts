@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = this.store.select(isLoggedIn);
     this.store.select(userLogin).subscribe((state) => {
       this.userData = state;
-    })
+    });
+    
   }
   onLogout(event: Event){
     event.preventDefault();

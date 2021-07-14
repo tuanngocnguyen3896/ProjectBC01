@@ -5,7 +5,7 @@ import { of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
 import {  deleteUser, deleteUserFail, deleteUserSuccess, loadUser, loadUserSuccess } from "../_action/user-admin.action";
-import { AdminUserService } from "../_services/user-admin.services";
+import { AdminUserService } from "../_services/admin-user.service";
 
 
 @Injectable({

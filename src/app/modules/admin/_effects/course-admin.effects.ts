@@ -5,7 +5,7 @@ import { of } from "rxjs";
 import { catchError, exhaustMap, map, mergeMap, switchMap } from "rxjs/operators";
 import { AppState } from "src/app/shared/reducers";
 import { addCoursesAction, addCoursesFail, addCoursesSuccess, deleteCourses, deleteCoursesFail, deleteCoursesSuccess, editCourses, editCoursesSuccess, loadCoursesAction, loadCoursesFail, loadCoursesSuccess } from "../_action/courses-admin.action";
-import { AdminService } from "../_services/courses-admin.service";
+import { AdminService } from "../_services/admin-courses.service";
 
 @Injectable({
     providedIn:'root'

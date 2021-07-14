@@ -13,7 +13,6 @@ import { AdminCoursesComponent } from './admin-courses/admin-courses.component';
 import { AdminUserEffects } from './_effects/user-admin.effects';
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 import {CourseAdminEffects} from './_effects/course-admin.effects'
-import { CanActivateTeam } from './_guard/admin.guard';
 import { AuthGuard } from '../auth/_guards/auth.guard';
 
 const adminRoutes: Routes = [
@@ -25,7 +24,8 @@ const adminRoutes: Routes = [
   ],
   canActivate: [AuthGuard]
 }
-  
+
+
 ]
 
 @NgModule({
@@ -33,7 +33,9 @@ const adminRoutes: Routes = [
     AdminTemplateComponent,
     UserComponent,
     AdminCoursesComponent,
-    EditCoursesComponent
+    EditCoursesComponent,
+    AdminTemplateComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

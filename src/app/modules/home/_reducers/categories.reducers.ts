@@ -8,7 +8,7 @@ export interface CategoriesState {
 export const initialState: CategoriesState = {
     categories: null,
     detail: null,
-    errorMessage:null
+    errorMessage: null
 }
 export function CategoriesReducer(state = initialState ,action: CategoriesActions) : CategoriesState{
     switch (action.type) {
