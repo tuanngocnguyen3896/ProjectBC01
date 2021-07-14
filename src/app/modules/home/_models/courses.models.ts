@@ -1,6 +1,4 @@
-export interface RequestForm {
+export interface RegisterForm {
     maKhoaHoc : string, 
-    taiKhoan: string,
-    maDanhMuc?: string,
-    maNhom?: string;
+    taiKhoan: string
 }
