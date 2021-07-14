@@ -1,0 +1,172 @@
+@import "../../../../assets//sass/helpers/mixin";
+@import "../../../../assets//sass/helpers/variable";
+
+.courses {
+  margin-top: 20px;
+//   .container{
+//     padding-bottom: 2rem;
+//   }
+h3{
+  color: $black;
+  font-size: $iconSize;
+}
+  .card {
+    height: 280px;
+    box-shadow: 0 0 10px $white;
+    &:hover .courses__overlay {
+      opacity: 1;
+    }
+  }
+//   &__header {
+//     font-size: $headSize1;
+//     font-weight: $bold;
+//     padding: 2rem;
+//   }
+  &__img {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    @include xs{
+      height: 150px;
+    }
+  }
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 65%;
+    background: rgba(0, 0, 0, 0.9);
+    color: $white;
+    opacity: 0;
+    z-index: $zNormal;
+    transition: 0.3s linear;
+    @include xs{
+      padding-top: 40%;
+    }
+  }
+  &__name {
+    font-size: $headSize4;
+    font-weight: $normal;
+    @include xs{
+      font-size: $paraSize2;
+    }
+    @include sm{
+      font-size: $paraSize1;
+    }
+  }
+  .card-body {
+    position: relative;
+  }
+  .card-btn {
+    position: absolute;
+    bottom: 10%;
+    width: 75%;
+    background: $color-blue;
+    transition: 0.3s linear;
+    &:hover{
+      background: $color-ogrange;
+    }
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    z-index: $zCustom;
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: $paraSize2;
+      font-weight: $bold;
+    }
+    @include xs{
+      left: 13%;
+      padding: 0.15rem;
+      font-size: $paraSize2;
+      font-weight: $light;
+    }
+  }
+  &__group {
+    @include flexCenter;
+    @include xs{
+      text-align: center;
+      flex-direction: column;
+    }
+    @include sm{
+      text-align: center;
+      flex-direction: column;
+    }
+    @include md{
+      text-align: right;
+    }
+    @include lg{
+      text-align: right;
+    }
+    justify-content: space-between;
+    &__left {
+      select {
+        border: 1px solid $color-gray1;
+        background: $white;
+        color: $black;
+        font-size: $light;
+        padding: 0.5rem;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+        @include xs{
+          padding:0.15rem;
+          font-size: $paraSize2;
+          margin-bottom: 1rem;
+        }
+        @include sm{
+          padding:0.35rem;
+          font-size: $paraSize1;
+          margin-bottom: 1rem;
+        }
+        @include md{
+          padding:0.25rem;
+          font-size: $paraSize3;
+          margin-right: 0.25rem;
+        }
+        @include lg{
+          padding:0.25rem;
+          font-size: $paraSize2;
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+  .courses-btn-all {
+    @include button;
+    text-align: right;
+    background: $white;
+    color: $black;
+    font-size: $normal;
+    font-weight: $light;
+    padding: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+    transition: 0.3s linear;
+    &:hover {
+      background: $color-blue;
+      color: $white;
+    }
+    @include xs{
+      padding:0.15rem;
+      font-size: $paraSize2;
+      margin-bottom: 0.25rem;
+      margin-right: 0.5rem;
+    }
+    @include sm{
+      padding:0.35rem;
+      font-size: $paraSize1;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    @include md{
+      padding:0.25rem;
+      font-size: $paraSize3;
+      margin-right: 0.25rem;
+  }
+  @include lg{
+    padding:0.25rem;
+    font-size: $paraSize2;
+    margin-right: 0.25rem;
+}
+  }
+}

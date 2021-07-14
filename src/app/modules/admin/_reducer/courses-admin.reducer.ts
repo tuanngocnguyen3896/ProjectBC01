@@ -1,52 +1,4 @@
 import { createReducer, on } from "@ngrx/store";
-<<<<<<< Updated upstream
-import { CoursesData } from "src/app/core/Models/Courses.model";
-import { addCoursesSuccess } from "../_action/courses-admin.action";
-
-export interface CoursesUpdateState{
-    coursesUpdtate: CoursesData[]
-}
-export const initialState: CoursesUpdateState={
-    coursesUpdtate: null
- }
-
-
-const _adminReducer = createReducer(
-    initialState,
-    on(addCoursesSuccess, (state,action)=>{
-            let course = {...action.payload};
-            console.log(course);
-            
-            return {
-                ...state,
-                coursesUpdtate:[...state.coursesUpdtate, course]
-            }
-    })
-    // ,on(deleteCoursesSuccess, (state,{maKhoaHoc})=>{
-    //     // const arr = Array.from(state.coursesUpdtate);
-        
-    //     const updatedCourses = state.coursesUpdtate.filter((course)=>{
-            
-    //         return course.maKhoaHoc !==maKhoaHoc
-
-    //     })
-        
-    //     return{
-    //         ...state,
-    //         coursesUpdtate: updatedCourses
-    //     }
-    // }),on(editCoursesSuccess, (state,action)=>{
-    //     const updatedCourses = state.coursesUpdtate.map((course)=>{
-    //         return action.payload.maKhoaHoc === course.maKhoaHoc ? action.payload : course
-    //     })
-    //     return{
-    //         ...state,
-    //         coursesUpdtate: updatedCourses
-    //     }
-    // })
-    
-    // )
-=======
 import { CoursesData} from "src/app/core/Models/Courses.model";
 import { addCoursesSuccess, deleteCoursesSuccess, editCoursesSuccess, loadCoursesSuccess } from "../_action/courses-admin.action";
 
@@ -67,6 +19,8 @@ const _adminReducer = createReducer(
         }
     }),
     on(addCoursesSuccess, (state,action)=>{
+        console.log(state);
+        
             let course = {...action.payload};
             
             console.log(course);
@@ -98,7 +52,6 @@ const _adminReducer = createReducer(
     })
     
 
->>>>>>> Stashed changes
 )
 
 export function AdminReducer(state,action){

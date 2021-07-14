@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
+import { RequestForm } from '../../home/_models/courses.models';
 @Injectable({
   providedIn: 'root',
 })
@@ -71,4 +72,10 @@ export class AuthService {
       { taiKhoan, matKhau, hoTen, soDT, maNhom, email, maLoaiNguoiDung }
     );
   }
+  cancelCourses(maKhoaHoc:string,taiKhoan : string): Observable<UserReponseData>{
+    return this.http.post<UserReponseData>(
+      `${this.domain}/QuanLyKhoaHoc/HuyGhiDanh`,
+      {maKhoaHoc,taiKhoan}
+    )    
+}
 }

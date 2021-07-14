@@ -1,0 +1,19 @@
+@import "../../../../assets//sass/helpers/mixin";
+@import "../../../../assets//sass/helpers/variable";
+
+.column{
+    
+    i{
+        font-size: $iconSize;
+    }
+    a{
+        margin-top: 20px;
+        text-decoration: none;
+        font-size: $iconSize;
+        // color: $white !important;
+      color: rgb(26, 23, 23);
+    }  
+}
+.item{
+    background-color: $white !important;
+}

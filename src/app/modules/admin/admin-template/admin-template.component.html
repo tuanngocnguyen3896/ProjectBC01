@@ -1,25 +1,17 @@
-<<<<<<< Updated upstream
-<div class="container">
-   
+<div>
     <div class="row">
-        <div class="col-6">
-           <a href="" [routerLink]="['/admin/admin-courses']" routerLinkActive="router-link-active" >Courses</a>
+        <div class="col-2 mb-2 column">
+            <a class="home_btn btn btn-outline-primary px-5 ml-2" href="#" [routerLink]="['/home']">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </a>
+            <br>
+           <a href="" [routerLink]="['/admin/admin-courses']" routerLinkActive="router-link-active" class="btn btn-outline-primary px-4 ml-2" >Courses</a>
+           <br>
+           <a href="" [routerLink]="['/admin/admin-user']" routerLinkActive="router-link-active" class="btn btn-outline-primary px-5 ml-2">User</a>
         </div>
-        <div class="col-6">
-            <a href="" [routerLink]="['/admin/admin-user']" routerLinkActive="router-link-active" >User</a>
+        <div class="col-10 mb-2">
+            <router-outlet></router-outlet>
          </div>
-         
-=======
-<div class="container mt-5 ">
-   
-    <div class="row">
-        <div class="col-6 mb-2 ">
-           <a href="" [routerLink]="['/admin/admin-courses']" routerLinkActive="router-link-active" class="btn btn-success">Courses</a>
-        </div>
-        <div class="col-6 mb-2 ">
-            <a href="" [routerLink]="['/admin/admin-user']" routerLinkActive="router-link-active" class="btn btn-success">User</a>
-         </div>
->>>>>>> Stashed changes
     </div>
-    <router-outlet></router-outlet>
+    
 </div>

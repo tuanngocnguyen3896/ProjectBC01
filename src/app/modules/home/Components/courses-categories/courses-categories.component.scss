@@ -1,4 +1,39 @@
-.btn{
-    font-size:16px;
-    height:60px;
+@import "../../../../../assets/sass/helpers/mixin";
+@import "../../../../../assets/sass/helpers/variable";
+.category-btn{
+    @include button;
+    text-align:right;
+    background: $white;
+    color: $black;
+    font-size:$light;
+    padding:0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+    margin: 0 0.25rem;
+    transition: 0.3s linear;
+    &:hover{
+        background: $color-blue;
+        color: $white;
+    }
+    @include xs{
+        padding:0.15rem;
+        font-size: $paraSize2;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    @include sm{
+        padding:0.35rem;
+        font-size: $paraSize1;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    @include md{
+        padding:0.25rem;
+        font-size: $paraSize3;
+        margin-right: 0.25rem;
+    }
+    @include lg{
+        padding:0.25rem;
+        font-size: $paraSize2;
+        margin-right: 0.25rem;
+    }
 }

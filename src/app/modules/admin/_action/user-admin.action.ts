@@ -4,12 +4,6 @@ import { UserReponseData } from "src/app/core/Models/User.model";
 export const LOAD_USER_ACTION = '[admin page] load user action';
 export const LOAD_USER_SUCCESS = '[admin page] load user success';
 export const LOAD_USER_FAIL = '[admin page] load user fail';
-<<<<<<< Updated upstream
-
-export const loadUser = createAction(LOAD_USER_ACTION);
-export const loadUserSuccess = createAction(LOAD_USER_SUCCESS, props<{user:UserReponseData[]}>());
-export const loadUserFail = createAction(LOAD_USER_FAIL, props<{payload:UserReponseData}>())
-=======
 export const DELETE_USER_ACTION = '[admin page] delete user action';
 export const DELETE_USER_SUCCESS = '[admin page] delete user success';
 export const DELETE_USER_FAIL = '[admin page] delete user fail';
@@ -48,4 +42,3 @@ export const deleteUserFail = createAction(DELETE_USER_FAIL, props<{error:string
 // }>());
 // export const editUserSuccess = createAction(EDIT_USER_SUCCESS, props<{payload: UserReponseData}>());
 // export const editUserFail = createAction(EDIT_USER_FAIL, props<{error: string}>())
->>>>>>> Stashed changes

@@ -23,20 +23,3 @@ export class CourseCategories {
     maDanhMucKhoaHoc:string;
     tenDanhMucKhoaHoc:string;
 }
-<<<<<<< Updated upstream
-export class CoursesUpdate{
-    maKhoaHoc: string = '';
-    biDanh:string = '';
-    tenKhoaHoc:string = '';
-    moTa:string = '';
-    luotXem:number = 0;
-    danhGia:number =0;
-    hinhAnh:string ='';
-    maNhom: string = '';
-    ngayTao: string='';
-    maDanhMucKhoaHoc: string='';
-    taiKhoanNguoiTao: string='';
-
-}
-=======
->>>>>>> Stashed changes

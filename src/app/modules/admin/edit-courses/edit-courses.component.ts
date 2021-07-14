@@ -1,16 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { CoursesData } from 'src/app/core/Models/Courses.model';
 import { AppState } from 'src/app/shared/reducers';
 import { Logout } from '../../auth/_actions/auth.actions';
 import { editCourses } from '../_action/courses-admin.action';
-import { getCoursesById } from '../_selectors/courses-admin.selector';
-// import { getCoursesById } from '../_selectors/courses-admin.selector';
 
 @Component({
   selector: 'app-edit-courses',
@@ -19,38 +16,32 @@ import { getCoursesById } from '../_selectors/courses-admin.selector';
 })
 export class EditCoursesComponent implements OnInit, OnDestroy {
 editForm: FormGroup
-courses:CoursesData;
+courseUpdate:CoursesData;
 coursesSubscription: Subscription;
+maKhoaHoc:Params
 
-  constructor(private route:ActivatedRoute ,private store:Store<AppState>,
-    private modalService: NgbModal,
-    private httpClient: HttpClient,) { }
+  constructor(private route:ActivatedRoute ,private store:Store<AppState>) { }
 
   ngOnInit(): void {
     this.handleEditForm()
-    this.route.paramMap.subscribe(params=>{
-      console.log(params.get('id'));
+    this.route.params.pipe().subscribe(value => 
+      {console.log(value)
       
-    //  const id = params.get('id');
-    //  this.coursesSubscription=this.store.select(getCoursesById,{id}).subscribe(data=>{
-    //    this.courses= data
-    //    console.log(this.courses);
-    //  })
-    })
+      return this.maKhoaHoc = value});
   }
   handleEditForm(){
     this.editForm = new FormGroup({
-      maKhoaHoc: new FormControl('', Validators.required),
-      biDanh: new FormControl('test', Validators.required),
-      tenKhoaHoc: new FormControl('', Validators.required),
-      moTa: new FormControl('hadshbf', Validators.required),
-      luotXem: new FormControl('12', Validators.required),
-      danhGia: new FormControl('9', Validators.required),
-      hinhAnh: new FormControl('', Validators.required),
-      ngayTao: new FormControl('16/06/2021', Validators.required),
-      maNhom: new FormControl('GP08', Validators.required),
-      maDanhMucKhoaHoc: new FormControl('Backend', Validators.required),
-      taiKhoanNguoiTao: new FormControl('amin', Validators.required),
+      maKhoaHoc: new FormControl('', [Validators.required]),
+      biDanh: new FormControl('', [Validators.required]),
+      tenKhoaHoc: new FormControl('', [Validators.required]),
+      moTa: new FormControl('', [Validators.required]),
+      luotXem: new FormControl('', [Validators.required]),
+      danhGia: new FormControl('', [Validators.required]),
+      hinhAnh: new FormControl('', [Validators.required]),
+      ngayTao: new FormControl('', [Validators.required]),
+      maNhom: new FormControl('', [Validators.required]),
+      maDanhMucKhoaHoc: new FormControl('', [Validators.required]),
+      taiKhoanNguoiTao: new FormControl('', [Validators.required]),
     })
   }
   onEditSubmit(){

@@ -1,0 +1,404 @@
+@import "../../../../../assets/sass/helpers/variable";
+@import "../../../../../assets/sass/helpers/mixin";
+.auth {
+  &__header {
+    @include flexCenter;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    justify-content: space-between;
+    background: #22242a;
+    padding: 1em;
+    width: calc(100% - 0%);
+    height: 60px;
+    label .sidebar-btn {
+      z-index: 1;
+      color: $white;
+      position: fixed;
+      cursor: pointer;
+      left: 0.75em;
+      top: 0.75em;
+      font-size: $headSize1;
+      padding: 0.25em 0;
+      margin-left: 1px;
+      transition: 0.5s linear;
+      &:hover {
+        color: #f5b404;
+      }
+      @include xl {
+        top: 1em;
+      }
+    }
+    &__left {
+      h3 {
+        color: $white;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: $headSize1;
+        font-weight: $bold;
+        @include xs {
+          font-size: $headSize3;
+        }
+      }
+      span {
+        color: $color-ogrange;
+      }
+    }
+    .logout_btn,
+    .home_btn {
+      padding: 0.25em;
+      // text-decoration: none;
+      // margin-top: -30px;
+      margin-right: 2em;
+      border-radius: 2px;
+      font-size: $headSize1;
+      color: $white;
+      font-weight: $normal;
+      transition: 0.3s linear;
+      &:hover {
+        background: $color-yellow;
+      }
+      @include xs {
+        margin-right: 1em;
+      }
+    }
+  }
+  &__sidebar {
+    z-index: 1;
+    top: 0;
+    background: #2f323a;
+    margin-top: 3.925em;
+    @include md {
+      margin-top: 3.75em;
+    }
+    @include lg {
+      margin-top: 3.725em;
+    }
+    @include xl {
+      margin-top: 3.725em;
+    }
+    padding-top: 3em;
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    transition: 0.5s linear;
+    // overflow-y: auto;
+    .profile-info {
+      @include flexCenter;
+      flex-direction: column;
+      .profile-image {
+        width: 50%;
+        height: 100%;
+        border-radius: 50%;
+        margin-bottom: 0.625em;
+      }
+    }
+
+    h4 {
+      color: $white;
+      margin-top: 0;
+      margin-bottom: 1.25em;
+    }
+    .nav-pills .nav-link.active,
+    .nav-pills .show > .nav-link {
+      background: $color-ogrange;
+    }
+    a {
+      color: $white;
+      display: block;
+      width: 100%;
+      line-height: 1.5em;
+      padding-left: 2em;
+      transition: 0.3s linear;
+      &:hover {
+        background: $color-yellow;
+      }
+    }
+    .modify {
+      margin-left: 3px;
+    }
+    i {
+      padding-right: 0.625em;
+    }
+  }
+  .content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    margin-top: 60px;
+    @include xl {
+      margin-top: 5%;
+    }
+    padding: 20px;
+    transition: 0.5s linear;
+    &__profile {
+      .row {
+        padding: 1.25em;
+      }
+      p {
+        position: relative;
+        background: rgba(0, 0, 0, 0.05);
+        color: $white;
+        padding: 0.625em 2.5em;
+        @include xs {
+          padding: 0.3125em 2.5em;
+          height: 50px;
+          overflow-y: auto;
+        }
+        @include sm {
+          padding: 0.625em 1.5em;
+          overflow-y: auto;
+        }
+        @include md {
+          padding: 0.3125em 2.1875em;
+          height: 45px;
+          line-height: 35px;
+          font-size: $paraSize1;
+        }
+      }
+      i {
+        position: absolute;
+        background: #f5b404;
+        top: 0;
+        left: 0;
+        font-size: 24px;
+        padding: 0.4175em 0.625em;
+        @include md {
+          padding: 0.4275em 0.625em;
+        }
+        @include lg {
+          padding: 0.4175em 0.625em;
+        }
+        width: 50px;
+        text-align: center;
+        @include xs {
+          font-size: $paraSize1;
+          padding: 18px 10px;
+          width: 30px;
+        }
+      }
+      span {
+        margin-left: 1.5625em;
+        color: $black;
+        font-weight: $normal;
+        @include xs {
+          font-size: $paraSize2;
+          margin-left: 0;
+          display: inline-block;
+          line-height: 40px;
+        }
+        @include sm {
+          font-size: $paraSize1;
+          margin-left: 2.5em;
+        }
+        @include md {
+          margin-left: 2em;
+        }
+      }
+      .fa-envelope-o::before,
+      .fa-users::before {
+        margin-left: -2px;
+      }
+      .fa-address-card-o::before {
+        margin-left: -3px;
+      }
+    }
+    &__table {
+      th,
+      td {
+        font-size: $paraSize1;
+        @include xs {
+          font-size: $paraSize2;
+        }
+      }
+      .th-index {
+        width: 40px;
+      }
+      .th-action {
+        width: 80px;
+      }
+      .th-course {
+        width: 120px;
+      }
+      .leave-course-btn {
+        padding: 0.625em 1.25em;
+        @include button;
+        background-color: $color-ogrange;
+        color: $white;
+        font-weight: $normal;
+        border-radius: 5px;
+        transition: 0.3s linear;
+        &:hover {
+          background: $color-yellow;
+          color: $black;
+        }
+      }
+    }
+    &__settings {
+      .form-group {
+        display: flex;
+        height: 50px;
+        margin-bottom: 2.5em;
+        @include xs {
+          height: 45px;
+        }
+      }
+      .valid-message {
+        position: absolute;
+        left: 4%;
+        bottom: -10%;
+        @include xs {
+          width: 80%;
+          left: 10%;
+          font-size: $paraSize3;
+        }
+      }
+      input {
+        border-radius: 0;
+        height: auto;
+        color: $black;
+        font-weight: $normal;
+      }
+      .edit-btn {
+        padding: 0.625em 1.25em;
+        @include button;
+        background: $color-ogrange;
+        border-radius: 5px;
+        transition: 0.3s linear;
+        &:hover {
+          background: $color-yellow;
+        }
+      }
+      label {
+        background: $color-ogrange;
+        color: $white;
+        padding: 0.625em;
+        margin-bottom: 0;
+        font-size: $paraSize1;
+        min-width: 100px;
+        line-height: 30px;
+        text-align: center;
+        @include xs {
+          font-size: 10px;
+          min-width: 55px;
+          line-height: 35px;
+        }
+      }
+    }
+  }
+  #check {
+    display: none;
+  }
+  #check:checked ~ &__sidebar {
+    left: -150px;
+    a {
+      font-size: $headSize1;
+      margin-left: 125px;
+      width: 37.5%;
+      border-radius: 0;
+      span {
+        display: none;
+      }
+    }
+    .profile-info {
+      display: none;
+    }
+  }
+  #check:checked ~ .content {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+  }
+  // mobile menu
+  &__mobilenav {
+    display: none;
+    .mobile-btn {
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .auth {
+    &__sidebar {
+      display: none;
+      .sidebar-btn {
+        display: none;
+      }
+    }
+    &__mobilenav {
+      display: block;
+      width: calc(100% - 0%);
+      #nav-check {
+        display: none;
+      }
+      #nav-check:checked ~ &__items {
+        display: block;
+      }
+      &__content {
+        background: #222;
+        width: calc(100% - 0px);
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        label {
+          margin-bottom: 0;
+        }
+        .mobile-btn {
+          font-size: 22px;
+          cursor: pointer;
+          transition: 0.5s linear;
+          &:hover {
+            color: #f5b404;
+          }
+        }
+      }
+      &__items {
+        background: $color-black1;
+        display: none;
+        .nav-pills .nav-link.active,
+        .nav-pills .show > .nav-link {
+          background: $color-ogrange !important;
+        }
+        a {
+          color: $white;
+          display: block;
+          text-align: center;
+          letter-spacing: 1px;
+          line-height: 1.5rem;
+          text-decoration: none;
+          transition: 0.5s linear;
+          &:hover {
+            background: #f5b404;
+          }
+        }
+        i {
+          padding-right: 10px;
+        }
+      }
+    }
+    .content {
+      margin-left: 0;
+      width: 100%;
+      margin-top: 0;
+      padding: 10px 20px;
+      transition: 0s;
+    }
+    #check:checked ~ .content {
+      margin-left: 0;
+      width: 100%;
+    }
+    .sidebar-btn {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+  }
+}

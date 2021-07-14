@@ -15,6 +15,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoursesCategoriesComponent } from './Components/courses-categories/courses-categories.component';
 import { CoursesReducer } from './_reducers/courses.reducers';
 import { CoursesListComponent } from './Components/courses-list/courses-list.component';
+import { CategoryComponent } from './Components/category/category.component';
+import { BannerComponent } from './Components/banner/banner.component';
+import { AboutComponent } from './Components/about/about.component';
+
+
 // import { CoursesGuard } from './_guard/courses.guard';
 
 const HomeRoute: Routes = [
@@ -44,6 +49,9 @@ const HomeRoute: Routes = [
     FooterComponent,
     CoursesCategoriesComponent,
     CoursesListComponent,
+    CategoryComponent,
+    BannerComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,

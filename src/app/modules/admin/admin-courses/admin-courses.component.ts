@@ -35,13 +35,13 @@ export class AdminCoursesComponent implements OnInit {
 
   creatingForm() {
     this.addForm = new FormGroup({
-      maKhoaHoc: new FormControl('', Validators.required),
+      maKhoaHoc: new FormControl('hiahia123', Validators.required),
       biDanh: new FormControl('test', Validators.required),
-      tenKhoaHoc: new FormControl('', Validators.required),
+      tenKhoaHoc: new FormControl('BC01', Validators.required),
       moTa: new FormControl('hadshbf', Validators.required),
       luotXem: new FormControl('12', Validators.required),
       danhGia: new FormControl('9', Validators.required),
-      hinhAnh: new FormControl('', Validators.required),
+      hinhAnh: new FormControl('https://jobseekers.vn/wp-content/uploads/2018/01/gcs-logo.jpg', Validators.required),
       ngayTao: new FormControl('16/06/2021', Validators.required),
       maNhom: new FormControl('GP08', Validators.required),
       maDanhMucKhoaHoc: new FormControl('Backend', Validators.required),
@@ -100,7 +100,10 @@ export class AdminCoursesComponent implements OnInit {
     this.modalService.dismissAll(); //dismiss the modal
   }
   onDelete(maKhoaHoc: string) {
+    if(confirm("Are you sure to delete?")){
+      console.log('delete user');
+    
     this.store.dispatch(deleteCourses({ maKhoaHoc }))
-  }
+  }}
 
 }

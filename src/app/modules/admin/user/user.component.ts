@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { User, UserReponseData } from 'src/app/core/Models/User.model';
-import { AppState } from 'src/app/shared/reducers';
-import { loadUser } from '../_action/user-admin.action';
-import { getUserList } from '../_selectors/user-admin.selectors';
-=======
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +9,6 @@ import { UserReponseData } from 'src/app/core/Models/User.model';
 import { AppState } from 'src/app/shared/reducers';
 import { deleteUser,loadUser } from '../_action/user-admin.action';
 import { getUserList } from '../_selectors/user.selector';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-user',
@@ -26,16 +16,6 @@ import { getUserList } from '../_selectors/user.selector';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-<<<<<<< Updated upstream
-user: Observable<UserReponseData[]>
-  constructor(private store:Store<AppState>) { }
-
-  ngOnInit(): void {
-    this.user = this.store.select(getUserList),
-    this.store.dispatch(loadUser())
-  }
-
-=======
   user: Observable<UserReponseData[]>;
   isActive: boolean= true;
   userGroup: string;
@@ -55,7 +35,10 @@ user: Observable<UserReponseData[]>
   }
 
   onDelete(taiKhoan:string){
+    if(confirm("Are you sure to delete?")){
+      console.log('delete user');
     this.store.dispatch(deleteUser({taiKhoan}))
+    }
   }
   onChangeGroup(value){
     this.userGroup = value;
@@ -71,5 +54,4 @@ user: Observable<UserReponseData[]>
    this.store.dispatch(loadUser({maNhom:value}))
   }
   
->>>>>>> Stashed changes
 }

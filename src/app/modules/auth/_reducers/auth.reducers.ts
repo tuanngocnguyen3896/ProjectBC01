@@ -1,8 +1,9 @@
 import {User, UserReponseData} from '../../../core/Models/User.model';
 import {AuthActions,AuthActionTypes} from '../_actions/auth.actions';
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
 export interface AuthState{
     user: UserReponseData | User | null;
-    profile: UserReponseData
+    profile: UserReponseData;
     loggedIn: boolean;
     errorMessage: string | null;
     // isUserLoaded: boolean;
@@ -21,6 +22,7 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
                 ...state,
                 loggedIn: true,
                 user: action.payload,
+                // profile: action.payload,
                 errorMessage: null
             };
         case AuthActionTypes.LOGIN_FAIL: {
@@ -51,8 +53,9 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
                 errorMessage: action.error
             }    
         }
-
         case AuthActionTypes.LOAD_USER_SUCCESS: {
+            let newProfile = {...state.profile};
+            newProfile = action.user;
             return {
                 ...state,
                 profile: action.user,
@@ -67,7 +70,7 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
         case AuthActionTypes.EDIT_USER_SUCCESS: {
             return {
                 ...state,
-                profile: action.payload,
+                profile: {...action.payload,soDT: action.payload.soDT},
             }
         }
         case AuthActionTypes.EDIT_USER_FAIL: {
@@ -76,6 +79,17 @@ export function AuthReducer(state = initialState, action : AuthActions) : AuthSt
                 errorMessage: action.error
             }
         }
+        // case AuthActionTypes.CANCEL_COURSES_ACTION: {
+        //     const newProfile = {...state.profile};
+        //     const updateCourses = newProfile.chiTietKhoaHocGhiDanh.filter(item => {
+        //         return item.maKhoaHoc != action.course.maKhoaHoc;
+        //     });
+        //     newProfile.chiTietKhoaHocGhiDanh = updateCourses;
+        //     return {
+        //         ...state,
+        //         profile: newProfile,
+        //     }
+        // }
 
         default:
             return state;

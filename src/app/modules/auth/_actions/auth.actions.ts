@@ -1,5 +1,6 @@
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { Action } from '@ngrx/store';
+import { RequestForm } from '../../home/_models/courses.models';
 
 export enum AuthActionTypes {
   LOGIN_ACTION = '[auth page] login action',
@@ -24,6 +25,11 @@ export enum AuthActionTypes {
   EDIT_USER_ACTION = '[auth page] edit user',
   EDIT_USER_SUCCESS = '[auth page] edit user success',
   EDIT_USER_FAIL = '[auth page] edit user fail',
+
+  // CANCEL COURSES
+  CANCEL_COURSES_ACTION = '[auth page] cancel course',
+  CANCEL_COURSES_SUCCESS = '[auth page] cancel course success',
+  CANCEL_COURSES_FAIL = '[auth page] cancel course fail',
 }
 
 // LOGIN
@@ -81,7 +87,7 @@ export class LoadUser implements Action {
 }
 export class LoadUserSuccess implements Action {
   readonly type = AuthActionTypes.LOAD_USER_SUCCESS;
-  constructor(public user: UserReponseData) {}
+  constructor(public user: UserReponseData ) {}
 }
 export class LoadUserFail implements Action {
   readonly type = AuthActionTypes.LOAD_USER_FAIL;
@@ -100,7 +106,19 @@ export class EditUserFail implements Action {
   readonly type = AuthActionTypes.EDIT_USER_FAIL;
   constructor(public error: string) {}
 }
-
+// CANCEL COURSES
+export class CancelCourses implements Action {
+  readonly type = AuthActionTypes.CANCEL_COURSES_ACTION;
+  constructor(public course: RequestForm) {}
+}
+export class CancelCoursesSuccess implements Action {
+  readonly type = AuthActionTypes.CANCEL_COURSES_SUCCESS;
+  // constructor(public payload: UserReponseData) {}
+}
+export class CancelCoursesFail implements Action {
+  readonly type = AuthActionTypes.CANCEL_COURSES_FAIL;
+  constructor(public error: string) {}
+}
 export type AuthActions =
   | Login
   | CheckLogin
@@ -117,3 +135,6 @@ export type AuthActions =
   | EditUser
   | EditUserSuccess
   | EditUserFail
+  | CancelCourses
+  | CancelCoursesSuccess
+  | CancelCoursesFail;
