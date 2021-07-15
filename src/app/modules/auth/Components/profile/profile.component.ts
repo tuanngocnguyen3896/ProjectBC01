@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
-import { RequestForm } from 'src/app/modules/home/_models/courses.models';
+import { RegisterForm } from 'src/app/modules/home/_models/courses.models';
 import { AppState } from 'src/app/shared/reducers';
 import { CancelCourses, EditUser, LoadUser, Logout } from '../../_actions/auth.actions';
 import {
@@ -73,8 +73,8 @@ export class ProfileComponent implements OnInit {
     this.store.dispatch(new EditUser(payload));
     return;
   }
-  onCancelCourses(item: RequestForm){
-    const payload: RequestForm ={
+  onCancelCourses(item: RegisterForm){
+    const payload: RegisterForm ={
       maKhoaHoc : item.maKhoaHoc,
       taiKhoan: this.isUserLogin.taiKhoan
     }

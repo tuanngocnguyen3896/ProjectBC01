@@ -1,17 +1,25 @@
 
 <div class="admin">
-    <div class="container mt-5">
+   
    
         <div class="row">
-            <div class="col-6 mb-2 ">
-               <a href="" [routerLink]="['/admin/admin-courses']" routerLinkActive="router-link-active" class="btn btn-success">Courses</a>
+            <div class="col-2 mb-2 ">
+                <div>
+                    <a class="btn btn-outline-primary px-5" href="#" [routerLink]="['/home']">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                      </a>
+                </div>
+               <div>
+                <a href="" [routerLink]="['/admin/admin-courses']" routerLinkActive="router-link-active" class="btn btn-outline-primary px-4">Courses</a>
+               </div>
+               <div>
+                <a href="" [routerLink]="['/admin/admin-user']" routerLinkActive="router-link-active" class="btn btn-outline-primary px-5">User</a>
+               </div>
             </div>
-            <div class="col-6 mb-2 ">
-                <a href="" [routerLink]="['/admin/admin-user']" routerLinkActive="router-link-active" class="btn btn-success">User</a>
+            <div class="col-10 mb-2 item">
+                <router-outlet></router-outlet>
              </div>
         </div>
-        <router-outlet></router-outlet>
-    </div>
     
 </div>
 

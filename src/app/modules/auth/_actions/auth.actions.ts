@@ -1,6 +1,6 @@
 import { User, UserReponseData } from 'src/app/core/Models/User.model';
 import { Action } from '@ngrx/store';
-import { RequestForm } from '../../home/_models/courses.models';
+import { RegisterForm } from '../../home/_models/courses.models';
 
 export enum AuthActionTypes {
   LOGIN_ACTION = '[auth page] login action',
@@ -109,7 +109,7 @@ export class EditUserFail implements Action {
 // CANCEL COURSES
 export class CancelCourses implements Action {
   readonly type = AuthActionTypes.CANCEL_COURSES_ACTION;
-  constructor(public course: RequestForm) {}
+  constructor(public course: RegisterForm) {}
 }
 export class CancelCoursesSuccess implements Action {
   readonly type = AuthActionTypes.CANCEL_COURSES_SUCCESS;

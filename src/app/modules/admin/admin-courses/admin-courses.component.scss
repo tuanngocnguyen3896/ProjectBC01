@@ -2,13 +2,12 @@
 @import "../../../../assets//sass/helpers/variable";
 
 .courses {
-  margin-top: 20px;
+  // margin-top: 20px;
 //   .container{
 //     padding-bottom: 2rem;
 //   }
 h3{
   color: $black;
-  font-size: $iconSize;
 }
   .card {
     height: 280px;
@@ -16,6 +15,9 @@ h3{
     &:hover .courses__overlay {
       opacity: 1;
     }
+  }
+  label{
+    font-weight: 800;
   }
 //   &__header {
 //     font-size: $headSize1;
@@ -107,7 +109,7 @@ h3{
         background: $white;
         color: $black;
         font-size: $light;
-        padding: 0.5rem;
+        padding: 0.3rem;
         box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
         @include xs{
           padding:0.15rem;
